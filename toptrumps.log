@@ -1,0 +1,4491 @@
+DECK CONTENTS
+350r
+Avenger
+Carrack
+Constellation
+Hawk
+Hornet
+Hurricane
+Idris
+m50
+Merchantman
+Orion
+Sabre
+Vanguard
+350r
+Avenger
+Carrack
+Constellation
+Hawk
+Hornet
+Hurricane
+Idris
+m50
+Merchantman
+Orion
+Sabre
+Vanguard
+350r
+Avenger
+Carrack
+Constellation
+Hawk
+Hornet
+Hurricane
+Idris
+m50
+Merchantman
+Orion
+Sabre
+Vanguard
+Avenger
+
+-------------------------
+SHUFFLED DECK
+Orion
+Avenger
+Hurricane
+Vanguard
+Hornet
+Orion
+Sabre
+Hawk
+Sabre
+Merchantman
+350r
+Constellation
+Hurricane
+m50
+Idris
+Merchantman
+Orion
+350r
+Avenger
+Idris
+m50
+Vanguard
+Carrack
+Hornet
+Sabre
+Constellation
+350r
+Carrack
+Hawk
+Hornet
+Hawk
+Avenger
+Avenger
+Idris
+Merchantman
+m50
+Constellation
+Vanguard
+Hurricane
+Carrack
+
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Orion
+Orion
+350r
+Merchantman
+m50
+Constellation
+Hawk
+m50
+
+AI PLAYER1's DECK
+Avenger
+Sabre
+Constellation
+Orion
+Vanguard
+350r
+Avenger
+Constellation
+
+AI PLAYER2's DECK
+Hurricane
+Hawk
+Hurricane
+350r
+Carrack
+Carrack
+Avenger
+Vanguard
+
+AI PLAYER3's DECK
+Vanguard
+Sabre
+m50
+Avenger
+Hornet
+Hawk
+Idris
+Hurricane
+
+AI PLAYER4's DECK
+Hornet
+Merchantman
+Idris
+Idris
+Sabre
+Hornet
+Merchantman
+Carrack
+
+-------------------------
+ROUND 1
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Hurricane
+Vanguard
+Hornet
+
+-------------------------
+
+AI PLAYER3 SELECTS range
+
+Avenger : range 4
+Hurricane : range 3
+Vanguard : range 5
+Hornet : range 3
+-------------------------
+
+AI PLAYER3 WINS ROUND 1
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Sabre
+Constellation
+Orion
+Vanguard
+350r
+Avenger
+Constellation
+
+AI PLAYER2's DECK
+Hawk
+Hurricane
+350r
+Carrack
+Carrack
+Avenger
+Vanguard
+
+AI PLAYER3's DECK
+Sabre
+m50
+Avenger
+Hornet
+Hawk
+Idris
+Hurricane
+Hurricane
+Avenger
+Hornet
+Vanguard
+
+AI PLAYER4's DECK
+Merchantman
+Idris
+Idris
+Sabre
+Hornet
+Merchantman
+Carrack
+
+-------------------------
+ROUND 2
+-------------------------
+
+CARDS IN PLAY
+Sabre
+Hawk
+Sabre
+Merchantman
+
+-------------------------
+
+AI PLAYER4 SELECTS cargo
+
+Sabre : cargo 0
+Hawk : cargo 0
+Sabre : cargo 0
+Merchantman : cargo 8
+-------------------------
+
+AI PLAYER4 WINS ROUND 2
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Constellation
+Orion
+Vanguard
+350r
+Avenger
+Constellation
+
+AI PLAYER2's DECK
+Hurricane
+350r
+Carrack
+Carrack
+Avenger
+Vanguard
+
+AI PLAYER3's DECK
+m50
+Avenger
+Hornet
+Hawk
+Idris
+Hurricane
+Hurricane
+Avenger
+Hornet
+Vanguard
+
+AI PLAYER4's DECK
+Idris
+Idris
+Sabre
+Hornet
+Merchantman
+Carrack
+Sabre
+Hawk
+Sabre
+Merchantman
+
+-------------------------
+ROUND 3
+-------------------------
+
+CARDS IN PLAY
+Constellation
+Hurricane
+m50
+Idris
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Constellation : speed 5
+Hurricane : speed 5
+m50 : speed 10
+Idris : speed 2
+-------------------------
+
+AI PLAYER3 WINS ROUND 3
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Orion
+Vanguard
+350r
+Avenger
+Constellation
+
+AI PLAYER2's DECK
+350r
+Carrack
+Carrack
+Avenger
+Vanguard
+
+AI PLAYER3's DECK
+Avenger
+Hornet
+Hawk
+Idris
+Hurricane
+Hurricane
+Avenger
+Hornet
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Idris
+Sabre
+Hornet
+Merchantman
+Carrack
+Sabre
+Hawk
+Sabre
+Merchantman
+
+-------------------------
+ROUND 4
+-------------------------
+
+CARDS IN PLAY
+Orion
+350r
+Avenger
+Idris
+
+-------------------------
+
+AI PLAYER1 SELECTS size
+
+Orion : size 10
+350r : size 1
+Avenger : size 2
+Idris : size 8
+-------------------------
+
+AI PLAYER1 WINS ROUND 4
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Vanguard
+350r
+Avenger
+Constellation
+Idris
+350r
+Orion
+Avenger
+
+AI PLAYER2's DECK
+Carrack
+Carrack
+Avenger
+Vanguard
+
+AI PLAYER3's DECK
+Hornet
+Hawk
+Idris
+Hurricane
+Hurricane
+Avenger
+Hornet
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Sabre
+Hornet
+Merchantman
+Carrack
+Sabre
+Hawk
+Sabre
+Merchantman
+
+-------------------------
+ROUND 5
+-------------------------
+
+CARDS IN PLAY
+Vanguard
+Carrack
+Hornet
+Sabre
+
+-------------------------
+
+AI PLAYER1 SELECTS range
+
+Vanguard : range 5
+Carrack : range 10
+Hornet : range 3
+Sabre : range 2
+-------------------------
+
+AI PLAYER2 WINS ROUND 5
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+350r
+Avenger
+Constellation
+Idris
+350r
+Orion
+Avenger
+
+AI PLAYER2's DECK
+Carrack
+Avenger
+Vanguard
+Carrack
+Vanguard
+Sabre
+Hornet
+
+AI PLAYER3's DECK
+Hawk
+Idris
+Hurricane
+Hurricane
+Avenger
+Hornet
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Hornet
+Merchantman
+Carrack
+Sabre
+Hawk
+Sabre
+Merchantman
+
+-------------------------
+ROUND 6
+-------------------------
+
+CARDS IN PLAY
+350r
+Carrack
+Hawk
+Hornet
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+350r : range 2
+Carrack : range 10
+Hawk : range 2
+Hornet : range 3
+-------------------------
+
+AI PLAYER2 WINS ROUND 6
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+Constellation
+Idris
+350r
+Orion
+Avenger
+
+AI PLAYER2's DECK
+Avenger
+Vanguard
+Carrack
+Vanguard
+Sabre
+Hornet
+Carrack
+350r
+Hawk
+Hornet
+
+AI PLAYER3's DECK
+Idris
+Hurricane
+Hurricane
+Avenger
+Hornet
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Merchantman
+Carrack
+Sabre
+Hawk
+Sabre
+Merchantman
+
+-------------------------
+ROUND 7
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Avenger
+Idris
+Merchantman
+
+-------------------------
+
+AI PLAYER4 SELECTS cargo
+
+Avenger : cargo 2
+Avenger : cargo 2
+Idris : cargo 6
+Merchantman : cargo 8
+-------------------------
+
+AI PLAYER4 WINS ROUND 7
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Constellation
+Idris
+350r
+Orion
+Avenger
+
+AI PLAYER2's DECK
+Vanguard
+Carrack
+Vanguard
+Sabre
+Hornet
+Carrack
+350r
+Hawk
+Hornet
+
+AI PLAYER3's DECK
+Hurricane
+Hurricane
+Avenger
+Hornet
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Carrack
+Sabre
+Hawk
+Sabre
+Merchantman
+Avenger
+Avenger
+Merchantman
+Idris
+
+-------------------------
+ROUND 8
+-------------------------
+
+CARDS IN PLAY
+Constellation
+Vanguard
+Hurricane
+Carrack
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Constellation : speed 5
+Vanguard : speed 4
+Hurricane : speed 5
+Carrack : speed 2
+-------------------------
+ROUND 8 DRAW BETWEEN AI PLAYER1 AI PLAYER3 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Constellation Vanguard Hurricane Carrack ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 4 CARDS:
+Constellation Vanguard Hurricane Carrack 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Idris
+350r
+Orion
+Avenger
+
+AI PLAYER2's DECK
+Carrack
+Vanguard
+Sabre
+Hornet
+Carrack
+350r
+Hawk
+Hornet
+
+AI PLAYER3's DECK
+Hurricane
+Avenger
+Hornet
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Sabre
+Hawk
+Sabre
+Merchantman
+Avenger
+Avenger
+Merchantman
+Idris
+
+-------------------------
+ROUND 9
+-------------------------
+
+CARDS IN PLAY
+Idris
+Carrack
+Hurricane
+Sabre
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Idris : speed 2
+Carrack : speed 2
+Hurricane : speed 5
+Sabre : speed 7
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER4 WINS ROUND 9
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+350r
+Orion
+Avenger
+
+AI PLAYER2's DECK
+Vanguard
+Sabre
+Hornet
+Carrack
+350r
+Hawk
+Hornet
+
+AI PLAYER3's DECK
+Avenger
+Hornet
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Hawk
+Sabre
+Merchantman
+Avenger
+Avenger
+Merchantman
+Idris
+Idris
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+
+-------------------------
+ROUND 10
+-------------------------
+
+CARDS IN PLAY
+350r
+Vanguard
+Avenger
+Hawk
+
+-------------------------
+
+AI PLAYER4 SELECTS firepower
+
+350r : firepower 3
+Vanguard : firepower 5
+Avenger : firepower 3
+Hawk : firepower 4
+-------------------------
+
+AI PLAYER2 WINS ROUND 10
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Orion
+Avenger
+
+AI PLAYER2's DECK
+Sabre
+Hornet
+Carrack
+350r
+Hawk
+Hornet
+350r
+Hawk
+Avenger
+Vanguard
+
+AI PLAYER3's DECK
+Hornet
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Sabre
+Merchantman
+Avenger
+Avenger
+Merchantman
+Idris
+Idris
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+
+-------------------------
+ROUND 11
+-------------------------
+
+CARDS IN PLAY
+Orion
+Sabre
+Hornet
+Sabre
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Orion : speed 1
+Sabre : speed 7
+Hornet : speed 5
+Sabre : speed 7
+-------------------------
+ROUND 11 DRAW BETWEEN AI PLAYER2 AI PLAYER4 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Orion Sabre Hornet Sabre ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 4 CARDS:
+Orion Sabre Hornet Sabre 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+
+AI PLAYER2's DECK
+Hornet
+Carrack
+350r
+Hawk
+Hornet
+350r
+Hawk
+Avenger
+Vanguard
+
+AI PLAYER3's DECK
+Vanguard
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Merchantman
+Avenger
+Avenger
+Merchantman
+Idris
+Idris
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+
+-------------------------
+ROUND 12
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Hornet
+Vanguard
+Merchantman
+
+-------------------------
+
+AI PLAYER1 SELECTS speed
+
+Avenger : speed 5
+Hornet : speed 5
+Vanguard : speed 4
+Merchantman : speed 3
+-------------------------
+ROUND 12 DRAW BETWEEN AI PLAYER1 AI PLAYER2 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Avenger Hornet Vanguard Merchantman ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 8 CARDS:
+Orion Sabre Hornet Sabre Avenger Hornet Vanguard Merchantman 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+
+AI PLAYER2's DECK
+Carrack
+350r
+Hawk
+Hornet
+350r
+Hawk
+Avenger
+Vanguard
+
+AI PLAYER3's DECK
+Hurricane
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Avenger
+Avenger
+Merchantman
+Idris
+Idris
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+
+-------------------------
+
+AI PLAYER1 ELIMINATED
+-------------------------
+ROUND 13
+-------------------------
+
+CARDS IN PLAY
+Carrack
+Hurricane
+Avenger
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+Carrack : range 10
+Hurricane : range 3
+Avenger : range 4
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER2 WINS ROUND 13
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+350r
+Hawk
+Hornet
+350r
+Hawk
+Avenger
+Vanguard
+Hurricane
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+
+AI PLAYER3's DECK
+m50
+Constellation
+Idris
+
+AI PLAYER4's DECK
+Avenger
+Merchantman
+Idris
+Idris
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+
+-------------------------
+ROUND 14
+-------------------------
+
+CARDS IN PLAY
+350r
+m50
+Avenger
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+350r : speed 9
+m50 : speed 10
+Avenger : speed 5
+-------------------------
+
+AI PLAYER3 WINS ROUND 14
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hawk
+Hornet
+350r
+Hawk
+Avenger
+Vanguard
+Hurricane
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+
+AI PLAYER3's DECK
+Constellation
+Idris
+350r
+Avenger
+m50
+
+AI PLAYER4's DECK
+Merchantman
+Idris
+Idris
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+
+-------------------------
+ROUND 15
+-------------------------
+
+CARDS IN PLAY
+Hawk
+Constellation
+Merchantman
+
+-------------------------
+
+AI PLAYER2 SELECTS firepower
+
+Hawk : firepower 4
+Constellation : firepower 3
+Merchantman : firepower 6
+-------------------------
+
+AI PLAYER4 WINS ROUND 15
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hornet
+350r
+Hawk
+Avenger
+Vanguard
+Hurricane
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+
+AI PLAYER3's DECK
+Idris
+350r
+Avenger
+m50
+
+AI PLAYER4's DECK
+Idris
+Idris
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+Merchantman
+Constellation
+Hawk
+
+-------------------------
+ROUND 16
+-------------------------
+
+CARDS IN PLAY
+Hornet
+Idris
+Idris
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Hornet : speed 5
+Idris : speed 2
+Idris : speed 2
+-------------------------
+
+AI PLAYER2 WINS ROUND 16
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+350r
+Hawk
+Avenger
+Vanguard
+Hurricane
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+
+AI PLAYER3's DECK
+350r
+Avenger
+m50
+
+AI PLAYER4's DECK
+Idris
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+Merchantman
+Constellation
+Hawk
+
+-------------------------
+ROUND 17
+-------------------------
+
+CARDS IN PLAY
+350r
+350r
+Idris
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+350r : speed 9
+350r : speed 9
+Idris : speed 2
+-------------------------
+ROUND 17 DRAW BETWEEN AI PLAYER2 AI PLAYER3 
+-------------------------
+
+COMMUNAL DECK UPDATED
+350r 350r Idris ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 3 CARDS:
+350r 350r Idris 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hawk
+Avenger
+Vanguard
+Hurricane
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+
+AI PLAYER3's DECK
+Avenger
+m50
+
+AI PLAYER4's DECK
+Hurricane
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+Merchantman
+Constellation
+Hawk
+
+-------------------------
+ROUND 18
+-------------------------
+
+CARDS IN PLAY
+Hawk
+Avenger
+Hurricane
+
+-------------------------
+
+AI PLAYER2 SELECTS firepower
+
+Hawk : firepower 4
+Avenger : firepower 3
+Hurricane : firepower 5
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER4 WINS ROUND 18
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+Vanguard
+Hurricane
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+
+AI PLAYER3's DECK
+m50
+
+AI PLAYER4's DECK
+Carrack
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+Merchantman
+Constellation
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 19
+-------------------------
+
+CARDS IN PLAY
+Avenger
+m50
+Carrack
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Avenger : speed 5
+m50 : speed 10
+Carrack : speed 2
+-------------------------
+
+AI PLAYER3 WINS ROUND 19
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Vanguard
+Hurricane
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+
+AI PLAYER3's DECK
+Carrack
+Avenger
+m50
+
+AI PLAYER4's DECK
+Sabre
+Constellation
+Hurricane
+Vanguard
+Carrack
+Merchantman
+Constellation
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 20
+-------------------------
+
+CARDS IN PLAY
+Vanguard
+Carrack
+Sabre
+
+-------------------------
+
+AI PLAYER3 SELECTS range
+
+Vanguard : range 5
+Carrack : range 10
+Sabre : range 2
+-------------------------
+
+AI PLAYER3 WINS ROUND 20
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hurricane
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+
+AI PLAYER3's DECK
+Avenger
+m50
+Sabre
+Carrack
+Vanguard
+
+AI PLAYER4's DECK
+Constellation
+Hurricane
+Vanguard
+Carrack
+Merchantman
+Constellation
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 21
+-------------------------
+
+CARDS IN PLAY
+Hurricane
+Avenger
+Constellation
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Hurricane : speed 5
+Avenger : speed 5
+Constellation : speed 5
+-------------------------
+ROUND 21 DRAW BETWEEN AI PLAYER2 AI PLAYER3 AI PLAYER4 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Hurricane Avenger Constellation ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 3 CARDS:
+Hurricane Avenger Constellation 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+
+AI PLAYER3's DECK
+m50
+Sabre
+Carrack
+Vanguard
+
+AI PLAYER4's DECK
+Hurricane
+Vanguard
+Carrack
+Merchantman
+Constellation
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 22
+-------------------------
+
+CARDS IN PLAY
+Avenger
+m50
+Hurricane
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Avenger : speed 5
+m50 : speed 10
+Hurricane : speed 5
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER3 WINS ROUND 22
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Carrack
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+
+AI PLAYER3's DECK
+Sabre
+Carrack
+Vanguard
+Hurricane
+m50
+Avenger
+Avenger
+Constellation
+Hurricane
+
+AI PLAYER4's DECK
+Vanguard
+Carrack
+Merchantman
+Constellation
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 23
+-------------------------
+
+CARDS IN PLAY
+Carrack
+Sabre
+Vanguard
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Carrack : speed 2
+Sabre : speed 7
+Vanguard : speed 4
+-------------------------
+
+AI PLAYER3 WINS ROUND 23
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Sabre
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+
+AI PLAYER3's DECK
+Carrack
+Vanguard
+Hurricane
+m50
+Avenger
+Avenger
+Constellation
+Hurricane
+Vanguard
+Carrack
+Sabre
+
+AI PLAYER4's DECK
+Carrack
+Merchantman
+Constellation
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 24
+-------------------------
+
+CARDS IN PLAY
+Sabre
+Carrack
+Carrack
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Sabre : speed 7
+Carrack : speed 2
+Carrack : speed 2
+-------------------------
+
+AI PLAYER2 WINS ROUND 24
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hornet
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+
+AI PLAYER3's DECK
+Vanguard
+Hurricane
+m50
+Avenger
+Avenger
+Constellation
+Hurricane
+Vanguard
+Carrack
+Sabre
+
+AI PLAYER4's DECK
+Merchantman
+Constellation
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 25
+-------------------------
+
+CARDS IN PLAY
+Hornet
+Vanguard
+Merchantman
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Hornet : speed 5
+Vanguard : speed 4
+Merchantman : speed 3
+-------------------------
+
+AI PLAYER2 WINS ROUND 25
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Orion
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+
+AI PLAYER3's DECK
+Hurricane
+m50
+Avenger
+Avenger
+Constellation
+Hurricane
+Vanguard
+Carrack
+Sabre
+
+AI PLAYER4's DECK
+Constellation
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 26
+-------------------------
+
+CARDS IN PLAY
+Orion
+Hurricane
+Constellation
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Orion : speed 1
+Hurricane : speed 5
+Constellation : speed 5
+-------------------------
+ROUND 26 DRAW BETWEEN AI PLAYER3 AI PLAYER4 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Orion Hurricane Constellation ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 3 CARDS:
+Orion Hurricane Constellation 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Sabre
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+
+AI PLAYER3's DECK
+m50
+Avenger
+Avenger
+Constellation
+Hurricane
+Vanguard
+Carrack
+Sabre
+
+AI PLAYER4's DECK
+Hawk
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 27
+-------------------------
+
+CARDS IN PLAY
+Sabre
+m50
+Hawk
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Sabre : speed 7
+m50 : speed 10
+Hawk : speed 3
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER3 WINS ROUND 27
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hornet
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+
+AI PLAYER3's DECK
+Avenger
+Avenger
+Constellation
+Hurricane
+Vanguard
+Carrack
+Sabre
+m50
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+
+AI PLAYER4's DECK
+Hurricane
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 28
+-------------------------
+
+CARDS IN PLAY
+Hornet
+Avenger
+Hurricane
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Hornet : speed 5
+Avenger : speed 5
+Hurricane : speed 5
+-------------------------
+ROUND 28 DRAW BETWEEN AI PLAYER2 AI PLAYER3 AI PLAYER4 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Hornet Avenger Hurricane ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 3 CARDS:
+Hornet Avenger Hurricane 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Vanguard
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+
+AI PLAYER3's DECK
+Avenger
+Constellation
+Hurricane
+Vanguard
+Carrack
+Sabre
+m50
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+
+AI PLAYER4's DECK
+Hawk
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 29
+-------------------------
+
+CARDS IN PLAY
+Vanguard
+Avenger
+Hawk
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Vanguard : speed 4
+Avenger : speed 5
+Hawk : speed 3
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER3 WINS ROUND 29
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Merchantman
+Avenger
+Idris
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+
+AI PLAYER3's DECK
+Constellation
+Hurricane
+Vanguard
+Carrack
+Sabre
+m50
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+
+AI PLAYER4's DECK
+Avenger
+350r
+350r
+Idris
+
+-------------------------
+ROUND 30
+-------------------------
+
+CARDS IN PLAY
+Merchantman
+Constellation
+Avenger
+
+-------------------------
+
+AI PLAYER2 SELECTS cargo
+
+Merchantman : cargo 8
+Constellation : cargo 4
+Avenger : cargo 2
+-------------------------
+
+AI PLAYER2 WINS ROUND 30
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+Idris
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+
+AI PLAYER3's DECK
+Hurricane
+Vanguard
+Carrack
+Sabre
+m50
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+
+AI PLAYER4's DECK
+350r
+350r
+Idris
+
+-------------------------
+ROUND 31
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Hurricane
+350r
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Avenger : speed 5
+Hurricane : speed 5
+350r : speed 9
+-------------------------
+
+AI PLAYER4 WINS ROUND 31
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Idris
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+
+AI PLAYER3's DECK
+Vanguard
+Carrack
+Sabre
+m50
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+
+AI PLAYER4's DECK
+350r
+Idris
+350r
+Hurricane
+Avenger
+
+-------------------------
+ROUND 32
+-------------------------
+
+CARDS IN PLAY
+Idris
+Vanguard
+350r
+
+-------------------------
+
+AI PLAYER3 SELECTS range
+
+Idris : range 7
+Vanguard : range 5
+350r : range 2
+-------------------------
+
+AI PLAYER2 WINS ROUND 32
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hornet
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+
+AI PLAYER3's DECK
+Carrack
+Sabre
+m50
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+
+AI PLAYER4's DECK
+Idris
+350r
+Hurricane
+Avenger
+
+-------------------------
+ROUND 33
+-------------------------
+
+CARDS IN PLAY
+Hornet
+Carrack
+Idris
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Hornet : speed 5
+Carrack : speed 2
+Idris : speed 2
+-------------------------
+
+AI PLAYER2 WINS ROUND 33
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Idris
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+
+AI PLAYER3's DECK
+Sabre
+m50
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+
+AI PLAYER4's DECK
+350r
+Hurricane
+Avenger
+
+-------------------------
+ROUND 34
+-------------------------
+
+CARDS IN PLAY
+Idris
+Sabre
+350r
+
+-------------------------
+
+AI PLAYER2 SELECTS firepower
+
+Idris : firepower 10
+Sabre : firepower 5
+350r : firepower 3
+-------------------------
+
+AI PLAYER2 WINS ROUND 34
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Carrack
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+
+AI PLAYER3's DECK
+m50
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+
+AI PLAYER4's DECK
+Hurricane
+Avenger
+
+-------------------------
+ROUND 35
+-------------------------
+
+CARDS IN PLAY
+Carrack
+m50
+Hurricane
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Carrack : speed 2
+m50 : speed 10
+Hurricane : speed 5
+-------------------------
+
+AI PLAYER3 WINS ROUND 35
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Sabre
+Carrack
+Hornet
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+
+AI PLAYER3's DECK
+Hawk
+Sabre
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+
+AI PLAYER4's DECK
+Avenger
+
+-------------------------
+ROUND 36
+-------------------------
+
+CARDS IN PLAY
+Sabre
+Hawk
+Avenger
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Sabre : speed 7
+Hawk : speed 3
+Avenger : speed 5
+-------------------------
+
+AI PLAYER2 WINS ROUND 36
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Carrack
+Hornet
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+
+AI PLAYER3's DECK
+Sabre
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+
+AI PLAYER4's DECK
+
+-------------------------
+
+AI PLAYER4 ELIMINATED
+-------------------------
+ROUND 37
+-------------------------
+
+CARDS IN PLAY
+Carrack
+Sabre
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+Carrack : range 10
+Sabre : range 2
+-------------------------
+
+AI PLAYER2 WINS ROUND 37
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hornet
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+
+AI PLAYER3's DECK
+Constellation
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+
+-------------------------
+ROUND 38
+-------------------------
+
+CARDS IN PLAY
+Hornet
+Constellation
+
+-------------------------
+
+AI PLAYER3 SELECTS range
+
+Hornet : range 3
+Constellation : range 7
+-------------------------
+
+AI PLAYER3 WINS ROUND 38
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Vanguard
+Merchantman
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+
+AI PLAYER3's DECK
+Hurricane
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+
+-------------------------
+ROUND 39
+-------------------------
+
+CARDS IN PLAY
+Vanguard
+Hurricane
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Vanguard : speed 4
+Hurricane : speed 5
+-------------------------
+
+AI PLAYER3 WINS ROUND 39
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Merchantman
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+
+AI PLAYER3's DECK
+Orion
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+
+-------------------------
+ROUND 40
+-------------------------
+
+CARDS IN PLAY
+Merchantman
+Orion
+
+-------------------------
+
+AI PLAYER2 SELECTS cargo
+
+Merchantman : cargo 8
+Orion : cargo 9
+-------------------------
+
+AI PLAYER3 WINS ROUND 40
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Merchantman
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+
+AI PLAYER3's DECK
+Hawk
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+
+-------------------------
+ROUND 41
+-------------------------
+
+CARDS IN PLAY
+Merchantman
+Hawk
+
+-------------------------
+
+AI PLAYER2 SELECTS cargo
+
+Merchantman : cargo 8
+Hawk : cargo 0
+-------------------------
+
+AI PLAYER2 WINS ROUND 41
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Constellation
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+
+AI PLAYER3's DECK
+Vanguard
+Avenger
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+
+-------------------------
+ROUND 42
+-------------------------
+
+CARDS IN PLAY
+Constellation
+Vanguard
+
+-------------------------
+
+AI PLAYER3 SELECTS range
+
+Constellation : range 7
+Vanguard : range 5
+-------------------------
+
+AI PLAYER2 WINS ROUND 42
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+
+AI PLAYER3's DECK
+Avenger
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+
+-------------------------
+ROUND 43
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Avenger
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Avenger : speed 5
+Avenger : speed 5
+-------------------------
+ROUND 43 DRAW BETWEEN AI PLAYER2 AI PLAYER3 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Avenger Avenger ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 2 CARDS:
+Avenger Avenger 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Idris
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+
+AI PLAYER3's DECK
+Hurricane
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+
+-------------------------
+ROUND 44
+-------------------------
+
+CARDS IN PLAY
+Idris
+Hurricane
+
+-------------------------
+
+AI PLAYER2 SELECTS firepower
+
+Idris : firepower 10
+Hurricane : firepower 5
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER2 WINS ROUND 44
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+350r
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+
+AI PLAYER3's DECK
+Avenger
+Hornet
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+
+-------------------------
+ROUND 45
+-------------------------
+
+CARDS IN PLAY
+350r
+Avenger
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+350r : speed 9
+Avenger : speed 5
+-------------------------
+
+AI PLAYER2 WINS ROUND 45
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Vanguard
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+
+AI PLAYER3's DECK
+Hornet
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+
+-------------------------
+ROUND 46
+-------------------------
+
+CARDS IN PLAY
+Vanguard
+Hornet
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Vanguard : speed 4
+Hornet : speed 5
+-------------------------
+
+AI PLAYER3 WINS ROUND 46
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hornet
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+
+AI PLAYER3's DECK
+Hurricane
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+Hornet
+Vanguard
+
+-------------------------
+ROUND 47
+-------------------------
+
+CARDS IN PLAY
+Hornet
+Hurricane
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Hornet : speed 5
+Hurricane : speed 5
+-------------------------
+ROUND 47 DRAW BETWEEN AI PLAYER2 AI PLAYER3 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Hornet Hurricane ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 2 CARDS:
+Hornet Hurricane 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Carrack
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+
+AI PLAYER3's DECK
+Carrack
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+Hornet
+Vanguard
+
+-------------------------
+ROUND 48
+-------------------------
+
+CARDS IN PLAY
+Carrack
+Carrack
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+Carrack : range 10
+Carrack : range 10
+-------------------------
+ROUND 48 DRAW BETWEEN AI PLAYER2 AI PLAYER3 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Carrack Carrack ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 4 CARDS:
+Hornet Hurricane Carrack Carrack 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Idris
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+
+AI PLAYER3's DECK
+m50
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+Hornet
+Vanguard
+
+-------------------------
+ROUND 49
+-------------------------
+
+CARDS IN PLAY
+Idris
+m50
+
+-------------------------
+
+AI PLAYER2 SELECTS firepower
+
+Idris : firepower 10
+m50 : firepower 2
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER2 WINS ROUND 49
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+350r
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+
+AI PLAYER3's DECK
+Hornet
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+Hornet
+Vanguard
+
+-------------------------
+ROUND 50
+-------------------------
+
+CARDS IN PLAY
+350r
+Hornet
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+350r : speed 9
+Hornet : speed 5
+-------------------------
+
+AI PLAYER2 WINS ROUND 50
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Idris
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+
+AI PLAYER3's DECK
+Constellation
+Vanguard
+Hurricane
+Merchantman
+Orion
+Hornet
+Vanguard
+
+-------------------------
+ROUND 51
+-------------------------
+
+CARDS IN PLAY
+Idris
+Constellation
+
+-------------------------
+
+AI PLAYER3 SELECTS range
+
+Idris : range 7
+Constellation : range 7
+-------------------------
+ROUND 51 DRAW BETWEEN AI PLAYER2 AI PLAYER3 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Idris Constellation ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 2 CARDS:
+Idris Constellation 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Sabre
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+
+AI PLAYER3's DECK
+Vanguard
+Hurricane
+Merchantman
+Orion
+Hornet
+Vanguard
+
+-------------------------
+ROUND 52
+-------------------------
+
+CARDS IN PLAY
+Sabre
+Vanguard
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Sabre : speed 7
+Vanguard : speed 4
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER2 WINS ROUND 52
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Sabre
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+
+AI PLAYER3's DECK
+Hurricane
+Merchantman
+Orion
+Hornet
+Vanguard
+
+-------------------------
+ROUND 53
+-------------------------
+
+CARDS IN PLAY
+Sabre
+Hurricane
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Sabre : speed 7
+Hurricane : speed 5
+-------------------------
+
+AI PLAYER2 WINS ROUND 53
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hawk
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+
+AI PLAYER3's DECK
+Merchantman
+Orion
+Hornet
+Vanguard
+
+-------------------------
+ROUND 54
+-------------------------
+
+CARDS IN PLAY
+Hawk
+Merchantman
+
+-------------------------
+
+AI PLAYER3 SELECTS cargo
+
+Hawk : cargo 0
+Merchantman : cargo 8
+-------------------------
+
+AI PLAYER3 WINS ROUND 54
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+
+AI PLAYER3's DECK
+Orion
+Hornet
+Vanguard
+Merchantman
+Hawk
+
+-------------------------
+ROUND 55
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Orion
+
+-------------------------
+
+AI PLAYER3 SELECTS size
+
+Avenger : size 2
+Orion : size 10
+-------------------------
+
+AI PLAYER3 WINS ROUND 55
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Carrack
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+
+AI PLAYER3's DECK
+Hornet
+Vanguard
+Merchantman
+Hawk
+Avenger
+Orion
+
+-------------------------
+ROUND 56
+-------------------------
+
+CARDS IN PLAY
+Carrack
+Hornet
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+Carrack : range 10
+Hornet : range 3
+-------------------------
+
+AI PLAYER2 WINS ROUND 56
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Sabre
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+
+AI PLAYER3's DECK
+Vanguard
+Merchantman
+Hawk
+Avenger
+Orion
+
+-------------------------
+ROUND 57
+-------------------------
+
+CARDS IN PLAY
+Sabre
+Vanguard
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Sabre : speed 7
+Vanguard : speed 4
+-------------------------
+
+AI PLAYER2 WINS ROUND 57
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hawk
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+
+AI PLAYER3's DECK
+Merchantman
+Hawk
+Avenger
+Orion
+
+-------------------------
+ROUND 58
+-------------------------
+
+CARDS IN PLAY
+Hawk
+Merchantman
+
+-------------------------
+
+AI PLAYER3 SELECTS cargo
+
+Hawk : cargo 0
+Merchantman : cargo 8
+-------------------------
+
+AI PLAYER3 WINS ROUND 58
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Merchantman
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+
+AI PLAYER3's DECK
+Hawk
+Avenger
+Orion
+Hawk
+Merchantman
+
+-------------------------
+ROUND 59
+-------------------------
+
+CARDS IN PLAY
+Merchantman
+Hawk
+
+-------------------------
+
+AI PLAYER3 SELECTS firepower
+
+Merchantman : firepower 6
+Hawk : firepower 4
+-------------------------
+
+AI PLAYER2 WINS ROUND 59
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Constellation
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+
+AI PLAYER3's DECK
+Avenger
+Orion
+Hawk
+Merchantman
+
+-------------------------
+ROUND 60
+-------------------------
+
+CARDS IN PLAY
+Constellation
+Avenger
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+Constellation : range 7
+Avenger : range 4
+-------------------------
+
+AI PLAYER2 WINS ROUND 60
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Vanguard
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+
+AI PLAYER3's DECK
+Orion
+Hawk
+Merchantman
+
+-------------------------
+ROUND 61
+-------------------------
+
+CARDS IN PLAY
+Vanguard
+Orion
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+Vanguard : range 5
+Orion : range 6
+-------------------------
+
+AI PLAYER3 WINS ROUND 61
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hurricane
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+
+AI PLAYER3's DECK
+Hawk
+Merchantman
+Orion
+Vanguard
+
+-------------------------
+ROUND 62
+-------------------------
+
+CARDS IN PLAY
+Hurricane
+Hawk
+
+-------------------------
+
+AI PLAYER3 SELECTS firepower
+
+Hurricane : firepower 5
+Hawk : firepower 4
+-------------------------
+
+AI PLAYER2 WINS ROUND 62
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Idris
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+
+AI PLAYER3's DECK
+Merchantman
+Orion
+Vanguard
+
+-------------------------
+ROUND 63
+-------------------------
+
+CARDS IN PLAY
+Idris
+Merchantman
+
+-------------------------
+
+AI PLAYER3 SELECTS cargo
+
+Idris : cargo 6
+Merchantman : cargo 8
+-------------------------
+
+AI PLAYER3 WINS ROUND 63
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+
+AI PLAYER3's DECK
+Orion
+Vanguard
+Merchantman
+Idris
+
+-------------------------
+ROUND 64
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Orion
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Avenger : speed 5
+Orion : speed 1
+-------------------------
+
+AI PLAYER2 WINS ROUND 64
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+
+AI PLAYER3's DECK
+Vanguard
+Merchantman
+Idris
+
+-------------------------
+ROUND 65
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Vanguard
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+Avenger : speed 5
+Vanguard : speed 4
+-------------------------
+
+AI PLAYER2 WINS ROUND 65
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+350r
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+
+AI PLAYER3's DECK
+Merchantman
+Idris
+
+-------------------------
+ROUND 66
+-------------------------
+
+CARDS IN PLAY
+350r
+Merchantman
+
+-------------------------
+
+AI PLAYER3 SELECTS cargo
+
+350r : cargo 0
+Merchantman : cargo 8
+-------------------------
+
+AI PLAYER3 WINS ROUND 66
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Avenger
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+
+AI PLAYER3's DECK
+Idris
+350r
+Merchantman
+
+-------------------------
+ROUND 67
+-------------------------
+
+CARDS IN PLAY
+Avenger
+Idris
+
+-------------------------
+
+AI PLAYER3 SELECTS firepower
+
+Avenger : firepower 3
+Idris : firepower 10
+-------------------------
+
+AI PLAYER3 WINS ROUND 67
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Idris
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+
+AI PLAYER3's DECK
+350r
+Merchantman
+Idris
+Avenger
+
+-------------------------
+ROUND 68
+-------------------------
+
+CARDS IN PLAY
+Idris
+350r
+
+-------------------------
+
+AI PLAYER2 SELECTS firepower
+
+Idris : firepower 10
+350r : firepower 3
+-------------------------
+
+AI PLAYER2 WINS ROUND 68
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+m50
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+350r
+Idris
+
+AI PLAYER3's DECK
+Merchantman
+Idris
+Avenger
+
+-------------------------
+ROUND 69
+-------------------------
+
+CARDS IN PLAY
+m50
+Merchantman
+
+-------------------------
+
+AI PLAYER2 SELECTS speed
+
+m50 : speed 10
+Merchantman : speed 3
+-------------------------
+
+AI PLAYER2 WINS ROUND 69
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hornet
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+350r
+Idris
+Merchantman
+m50
+
+AI PLAYER3's DECK
+Idris
+Avenger
+
+-------------------------
+ROUND 70
+-------------------------
+
+CARDS IN PLAY
+Hornet
+Idris
+
+-------------------------
+
+AI PLAYER3 SELECTS firepower
+
+Hornet : firepower 4
+Idris : firepower 10
+-------------------------
+
+AI PLAYER3 WINS ROUND 70
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Hurricane
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+350r
+Idris
+Merchantman
+m50
+
+AI PLAYER3's DECK
+Avenger
+Idris
+Hornet
+
+-------------------------
+ROUND 71
+-------------------------
+
+CARDS IN PLAY
+Hurricane
+Avenger
+
+-------------------------
+
+AI PLAYER3 SELECTS speed
+
+Hurricane : speed 5
+Avenger : speed 5
+-------------------------
+ROUND 71 DRAW BETWEEN AI PLAYER2 AI PLAYER3 
+-------------------------
+
+COMMUNAL DECK UPDATED
+Hurricane Avenger ADDED TO COMMUNAL DECK
+COMMUNAL DECK NO CONTAINS 2 CARDS:
+Hurricane Avenger 
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Carrack
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+350r
+Idris
+Merchantman
+m50
+
+AI PLAYER3's DECK
+Idris
+Hornet
+
+-------------------------
+ROUND 72
+-------------------------
+
+CARDS IN PLAY
+Carrack
+Idris
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+Carrack : range 10
+Idris : range 7
+-------------------------
+
+COMMUNAL DECK UPDATED
+COMMUNAL DECK NOW EMPTY
+-------------------------
+
+AI PLAYER2 WINS ROUND 72
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+Carrack
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+350r
+Idris
+Merchantman
+m50
+Carrack
+Idris
+Avenger
+Hurricane
+
+AI PLAYER3's DECK
+Hornet
+
+-------------------------
+ROUND 73
+-------------------------
+
+CARDS IN PLAY
+Carrack
+Hornet
+
+-------------------------
+
+AI PLAYER2 SELECTS range
+
+Carrack : range 10
+Hornet : range 3
+-------------------------
+
+AI PLAYER2 WINS ROUND 73
+-------------------------
+ALLOCATED DECKS
+
+USER DECK
+350r
+Hornet
+Vanguard
+Sabre
+Idris
+Constellation
+Sabre
+Hurricane
+Carrack
+Hornet
+Vanguard
+Sabre
+Hawk
+Merchantman
+Avenger
+Constellation
+Hawk
+Hurricane
+Orion
+Avenger
+Vanguard
+Avenger
+350r
+Idris
+Merchantman
+m50
+Carrack
+Idris
+Avenger
+Hurricane
+Hornet
+Carrack
+
+AI PLAYER3's DECK
+
+-------------------------
+
+AI PLAYER3 ELIMINATED
+-------------------------
+
+AI PLAYER2 WINS GAME
+-------------------------
