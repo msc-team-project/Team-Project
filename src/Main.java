@@ -6,6 +6,10 @@ public class Main {
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to Team 13 Top Trumps");
+		System.out.println("Enter yes to view past game data?");
+		
+			
+		
 		String mode = "";
 		while(!(mode.equals("play") || mode.equals("stats")))
 		{
@@ -18,5 +22,15 @@ public class Main {
 		{
 			new Game().start();;
 		}	
+		else if(mode.equals("stats"))
+		{
+			DataBaseCon.connect();
+			DataBaseCon.numGames();
+			DataBaseCon.humanWins();
+			DataBaseCon.aIWins();
+			DataBaseCon.avgDraws();
+			DataBaseCon.maxDraws();
+			DataBaseCon.close();
+		}
 	}
 }

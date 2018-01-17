@@ -14,11 +14,10 @@ public class Game {
 	//players currently in the game
 	private int numberPlayers;
 	private static ArrayList<Player> players;
-	
 	//for the debug test log
 	private boolean logMode = true;
 	private TestLog log;
-
+	private DataBaseCon db;
 	public void start() {
 		//read in the deck from the txt file
 		deck = buildDeck();
@@ -52,7 +51,8 @@ public class Game {
 		
 		//this uses the Random class to select a number between 0 and the number of players
 		//this random number is allocated to the current player (the starting player)
-		int currentPlayer = new Random().nextInt(numberPlayers);
+		int startPlayer = new Random().nextInt(numberPlayers);
+		Player currentPlayer = players.get(startPlayer);
 		int round = 0;
 		
 		//just did this to simulate ai games by removing the human player from the game
@@ -65,7 +65,8 @@ public class Game {
 			//this will loop through the list of players assigning the next player in the list as
 			//the current player for the round
 			//this is also what's causing the 400 round games
-			currentPlayer = (currentPlayer + round) % numberPlayers;
+			
+			//currentPlayer = (currentPlayer + round) % numberPlayers;
 			round++;
 			
 			System.out.println("Round " + round);
@@ -84,15 +85,15 @@ public class Game {
 			//if it's human, player is prompted, if it's ai attribute is chosen automatically
 			//this also solves the problem with eliminating the human from play
 			String attribute;
-			if (players.get(currentPlayer) instanceof HumanPlayer)
+			if (currentPlayer instanceof HumanPlayer)
 			{
 				System.out.println("Your Turn");
-				HumanPlayer p = (HumanPlayer) players.get(currentPlayer);
+				HumanPlayer p = (HumanPlayer) currentPlayer;
 				attribute = p.playerSelectAttribute(scanner);
 			} else
 			{
 				//have to cast the player to AIPlayer
-				AIPlayer p = (AIPlayer) players.get(currentPlayer);
+				AIPlayer p = (AIPlayer) currentPlayer;
 				attribute = p.pickAttribute();
 				String name = p.getName();
 				System.out.println(name + "'s turn");
@@ -101,7 +102,7 @@ public class Game {
 			
 			//log the selection
 			if(logMode)
-				log.logSelection(players.get(currentPlayer), attribute, cardsInPlay);
+				log.logSelection(currentPlayer, attribute, cardsInPlay);
 				
 			//print out each players selection
 			for(int i = 1; i < players.size(); i++)
@@ -122,6 +123,9 @@ public class Game {
 				winner.addHandToDeck(cardsInPlay);
 				winner.addHandToDeck(communalDeck);
 				
+				currentPlayer = winner;
+					
+				
 				//log changes to communal deck if any
 				if(logMode && communalDeck.size() > 0)
 					log.logCommunalDeck();
@@ -129,20 +133,23 @@ public class Game {
 				//check if winner is human player or ai player
 				if (winner instanceof HumanPlayer)
 				{
+					
 					System.out.println("You win round " + round);
 					System.out.println(newCards + " added to your hand");
 				} 
 				else
 				{
 					AIPlayer w = (AIPlayer) winner;
+					String win = w.getName();
+				
 					System.out.println(w.getName() + " wins round " + round);
 					System.out.println(newCards + " added to " + w.getName() +"'s hand");
 				}
 				
 				//log the winner of the round
-				if(logMode)
+				if(logMode) 
 					log.logRoundWinner(winner, round);
-				
+					//db.round(winner);}
 				//reset the communal deck
 				communalDeck = new ArrayList<Card>();
 			}
@@ -401,7 +408,7 @@ public class Game {
 		//if the game is over, write the log to file
 		if(gameOver && logMode)
 			log.writeLog();
-		
+		//db.test();
 		//return true if game is over, false if multiple players remain
 		return gameOver;
 	}

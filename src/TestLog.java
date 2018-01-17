@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //this is the class for creating a log of the game
 //if you are using it you need to create a new log in the command line game class
@@ -19,6 +20,9 @@ public class TestLog {
 		log = "";
 	}
 	
+	int countRounds=0;
+	int[] roundWins = {0,0,0,0,0};
+	String winName ="";
 	//logs "The contents of the complete deck once it has been read in and constructed"
 	//and "The contents of the complete deck after it has been shuffled"
 	//
@@ -131,12 +135,16 @@ public class TestLog {
 	
 	//log "The winner of the game"
 	public void logGameWinner(Player p){
-		if(p instanceof HumanPlayer)
+		
+		if(p instanceof HumanPlayer) {
 			log += String.format("%nUSER WINS GAME");
+			winName ="Human";
+		}
 		else
 		{
 			AIPlayer ai = (AIPlayer) p;
 			log += String.format("%n%s WINS GAME", ai.getName().toUpperCase());
+			winName = ai.getName();
 		}
 		lineBreak();
 	}
@@ -149,6 +157,24 @@ public class TestLog {
 		{
 			AIPlayer ai = (AIPlayer) player;
 			log += String.format("%n%s WINS ROUND %d", ai.getName().toUpperCase(), round);
+			String win = ai.getName();
+			if(win.equals("ai player1"))
+			{
+				roundWins[1]=roundWins[1]+1;
+			}
+			else if(win.equals("ai player2"))
+			{
+				roundWins[2]=roundWins[2]+1;
+			}
+			else if(win.equals("ai player3"))
+			{
+				roundWins[3]=roundWins[3]+1;
+			}
+			else if(win.equals("ai player4"))
+			{
+				roundWins[4]=roundWins[4]+1;
+			}
+		
 		}
 		lineBreak();
 	}
@@ -179,6 +205,7 @@ public class TestLog {
 	//log each round number
 	//call this at the beginning of each round before the cards are played
 	public void logRound(int round){
+		countRounds++;
 		log += String.format("ROUND %d", round);
 		lineBreak();
 	}
@@ -201,6 +228,10 @@ public class TestLog {
 			writer.write(log);
 			writer.close();
 			System.out.println("log saved to toptrumps.log");
+			
+			DataBaseCon.inputGameInfo(winName, countRounds, roundWins);
+
+			
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
