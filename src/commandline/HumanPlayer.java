@@ -21,7 +21,7 @@ public class HumanPlayer extends Player{
 			{
 				if(att.toLowerCase().equals(s))
 					valid = true;
-				else if (att.toLowerCase().equals("quit") || att.toLowerCase().equals("exit"))
+				else if (att.equals("quit") || att.equals("exit"))
 					System.exit(0);
 			}
 		}		
