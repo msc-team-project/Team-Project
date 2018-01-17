@@ -23,6 +23,7 @@ public class TopTrumpsCLIApplication
 	private static ArrayList<Card> deck, communalDeck;
 	private static int numberPlayers, gamesPlayed;
 	private static ArrayList<Player> players;
+	private static boolean valid;
 	
 	//for the debug test log
 	
@@ -32,9 +33,9 @@ public class TopTrumpsCLIApplication
 	public static void main(String[] args) 
 	{
 
-		//logMode = true;
-		logMode = false; // Should we write game logs to file?
-		if (args[0].equalsIgnoreCase("true")) logMode=true; // Command line selection
+		logMode = true;
+		boolean writeGameLogsToFile = false; // Should we write game logs to file?
+		if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
 		
 		// States
 		
@@ -69,9 +70,6 @@ public class TopTrumpsCLIApplication
 		players = setUpPlayers(scanner);
 		divideDeck();
 		
-		// select a random player to serve as the current player
-		
-		int currentPlayer = new Random().nextInt(numberPlayers);
 		int round = 0;
 		
 		// Loop until the user wants to exit the game (main game loop)
@@ -79,9 +77,13 @@ public class TopTrumpsCLIApplication
 		while (!userWantsToQuit) 
 		{
 			
+			// select a random player to serve as the current player
+			
+			int currentPlayer = new Random().nextInt(numberPlayers);
+			
 			// loop through list of players, assigning next player the current player for the round
 			
-			//currentPlayer = (currentPlayer + round) % numberPlayers;
+			currentPlayer = (currentPlayer + round) % numberPlayers;
 			
 			// increment round counter and display round details
 			
@@ -140,8 +142,6 @@ public class TopTrumpsCLIApplication
 				int newCards = cardsInPlay.size() + communalDeck.size();
 				winner.addHandToDeck(cardsInPlay);
 				winner.addHandToDeck(communalDeck);
-				
-				currentPlayer = players.indexOf(winner);
 				
 				//log changes to communal deck if any
 				if(logMode && communalDeck.size() > 0)
@@ -216,10 +216,18 @@ public class TopTrumpsCLIApplication
 			}
 			else // start a new game
 			{
-				deck = buildDeck(); // build a new deck
-				communalDeck = new ArrayList<Card>(); // make a new communal deck
-				Collections.shuffle(deck); // shuffle the deck
+				// build new deck and shuffle, and make a new communal deck
+				
+				deck = buildDeck();
+				communalDeck = new ArrayList<Card>();
+				Collections.shuffle(deck);				
 				round = 0; // reset round counter (will be incremented to 1 at the start of Round 1)
+				
+				// set up the players and divide deck between them
+
+				players = setUpPlayers(scanner);
+				divideDeck();
+			
 			}
 
 		}
