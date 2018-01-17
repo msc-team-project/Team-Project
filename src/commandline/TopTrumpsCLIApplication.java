@@ -23,7 +23,6 @@ public class TopTrumpsCLIApplication
 	private static ArrayList<Card> deck, communalDeck;
 	private static int numberPlayers, gamesPlayed;
 	private static ArrayList<Player> players;
-	private static boolean valid;
 	
 	//for the debug test log
 	
@@ -33,9 +32,9 @@ public class TopTrumpsCLIApplication
 	public static void main(String[] args) 
 	{
 
-		logMode = true;
-		boolean writeGameLogsToFile = false; // Should we write game logs to file?
-		if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
+		//logMode = true;
+		logMode = false; // Should we write game logs to file?
+		if (args[0].equalsIgnoreCase("true")) logMode=true; // Command line selection
 		
 		// States
 		
@@ -67,7 +66,7 @@ public class TopTrumpsCLIApplication
 		// set up the players and divide deck between them
 		
 		Scanner scanner = new Scanner(System.in);
-		setUpPlayers(scanner);
+		players = setUpPlayers(scanner);
 		divideDeck();
 		
 		// select a random player to serve as the current player
@@ -82,7 +81,7 @@ public class TopTrumpsCLIApplication
 			
 			// loop through list of players, assigning next player the current player for the round
 			
-			currentPlayer = (currentPlayer + round) % numberPlayers;
+			//currentPlayer = (currentPlayer + round) % numberPlayers;
 			
 			// increment round counter and display round details
 			
@@ -104,11 +103,6 @@ public class TopTrumpsCLIApplication
 				System.out.println("Your turn");
 				HumanPlayer p = (HumanPlayer) players.get(currentPlayer);
 				attribute = p.playerSelectAttribute(scanner);
-				while (!valid)
-				{
-					System.out.println("Please enter a valid attribute (or 'quit' to quit)");
-					attribute = p.playerSelectAttribute(scanner);
-				}
 			} 
 			else
 			{
@@ -146,6 +140,8 @@ public class TopTrumpsCLIApplication
 				int newCards = cardsInPlay.size() + communalDeck.size();
 				winner.addHandToDeck(cardsInPlay);
 				winner.addHandToDeck(communalDeck);
+				
+				currentPlayer = players.indexOf(winner);
 				
 				//log changes to communal deck if any
 				if(logMode && communalDeck.size() > 0)
