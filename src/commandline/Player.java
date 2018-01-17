@@ -1,11 +1,12 @@
 package commandline;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Player {
 	
 	private ArrayList<Card> deck;
-	private Card cardInPlay;
+	protected Card cardInPlay;
 	
 	public Player(){
 		deck = new ArrayList<Card>();
@@ -16,20 +17,29 @@ public class Player {
 		deck.add(card);
 	}
 	
+	//decided to shuffle hands when adding them to the players deck after
+	//a round win so that the order of a players cards cannot be determined
 	public void addHandToDeck(ArrayList<Card> hand)
 	{
+		Collections.shuffle(hand);
 		deck.addAll(hand);
 	}
 	
+	//removes the first card from the player's deck and returns it
+	//to Game.cardsInPlay
 	public Card playCard()
 	{
 		cardInPlay = deck.remove(0);
 		return cardInPlay;
 	}
 	
+	//TODO
+	//this will be moved to the AIPlayer class as there is no need for
+	//HumanPlayer to inherit this behaviour
+	//just was too lazy and didn't want to change the code
 	public String pickAttribute()
 	{
-		String[] atts = {"size", "speed", "range", "firepower", "cargo"};
+		String[] atts = cardInPlay.getAttributes();
 		int[] values = {cardInPlay.getSize(), cardInPlay.getSpeed(), cardInPlay.getRange(), cardInPlay.getFirepower(), cardInPlay.getCargo()};
 		String att = "";
 		
@@ -45,8 +55,11 @@ public class Player {
 		}
 		return att;		
 	}
-
 	
+	//TODO
+	//this has been moved to the Card class
+	//should be accessed with Player.getCardInPlay().getValueOfAtt()
+	//will remove this and update code
 	public int getValueOfAtt(String att)
 	{
 		switch(att)
@@ -70,13 +83,40 @@ public class Player {
 		return deck.size();
 	}
 	
+	public ArrayList<Card> getDeck() {
+		return deck;
+	}
+
+	public void printCardInPlay()
+	{
+		System.out.println(cardInPlay.getDescription() + " [" + 
+							"size: " + cardInPlay.getSize() + 
+							" speed: " + cardInPlay.getSpeed() +
+							" range: " + cardInPlay.getRange() +
+							" firepower: " + cardInPlay.getFirepower() +
+							" cargo: " + cardInPlay.getCargo() + "]");
+	}
+	
 	public void printDeck()
 	{
 		for(Card c : deck)
+			System.out.println(c.getDescription());
+	}
+	
+	//creates a log entry for the players current deck
+	public String logDeck()
+	{
+		String log = "";
+		for(Card c : deck)
 		{
-			String playtext = String.format("%s (Size: %d Speed: %d Range: %d Firepower: %d Cargo: %d)", c.getDescription(), c.getSize(), c.getSpeed(), c.getRange(), c.getFirepower(), c.getCargo());
-			System.out.println(playtext);
+			log += c.getDescription() + " [" + 
+					"size:" + c.getSize() + 
+					" speed:" + c.getSpeed() +
+					" range:" + c.getRange() +
+					" firepower:" + c.getFirepower() +
+					" cargo:" + c.getCargo() + "]\n";
 		}
+		return log;
 	}
 	
 }
