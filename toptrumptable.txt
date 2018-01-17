@@ -1,0 +1,22 @@
+-- Table: toptrumps.gamedata
+
+-- DROP TABLE toptrumps.gamedata;
+
+CREATE TABLE toptrumps.gamedata
+(
+    gamenumber integer NOT NULL DEFAULT nextval('toptrumps.gamedata_gamenumber_seq'::regclass),
+    gamewinner character varying(15) COLLATE pg_catalog."default",
+    numberrounds integer,
+    humanroundwins integer,
+    ai1wins integer,
+    ai2wins integer,
+    ai3wins integer,
+    ai4wins integer
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE toptrumps.gamedata
+    OWNER to m_17_1102401d;
