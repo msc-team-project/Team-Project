@@ -74,16 +74,18 @@ public class TopTrumpsCLIApplication
 		
 		// Loop until the user wants to exit the game (main game loop)
 		
+		// select a random player to serve as the current player
+		
+//		int currentPlayer = new Random().nextInt(numberPlayers);
+		int startPlayer = new Random().nextInt(numberPlayers);
+		
+		// loop through list of players, assigning next player the current player for the round
+		
+//		currentPlayer = (currentPlayer + round) % numberPlayers;
+		Player currentPlayer = players.get(startPlayer);
+		
 		while (!userWantsToQuit) 
 		{
-			
-			// select a random player to serve as the current player
-			
-			int currentPlayer = new Random().nextInt(numberPlayers);
-			
-			// loop through list of players, assigning next player the current player for the round
-			
-			currentPlayer = (currentPlayer + round) % numberPlayers;
 			
 			// increment round counter and display round details
 			
@@ -100,16 +102,16 @@ public class TopTrumpsCLIApplication
 			ArrayList<Card> cardsInPlay = playNextHand();
 			
 			String attribute;
-			if (players.get(currentPlayer) instanceof HumanPlayer)
+			if (currentPlayer instanceof HumanPlayer)
 			{
 				System.out.println("Your Turn");
-				HumanPlayer p = (HumanPlayer) players.get(currentPlayer);
+				HumanPlayer p = (HumanPlayer) currentPlayer;
 				attribute = p.playerSelectAttribute(scanner);
 			} 
 			else
 			{
 				//have to cast the player to AIPlayer
-				AIPlayer p = (AIPlayer) players.get(currentPlayer);
+				AIPlayer p = (AIPlayer) currentPlayer;
 				attribute = p.pickAttribute();
 				String name = p.getName();
 				System.out.println(name + "'s Turn");
@@ -119,7 +121,7 @@ public class TopTrumpsCLIApplication
 			//log the selection
 			
 			if(logMode)
-				log.logSelection(players.get(currentPlayer), attribute, cardsInPlay);
+				log.logSelection(currentPlayer, attribute, cardsInPlay);
 			
 			//print out each players selection
 			
@@ -139,6 +141,7 @@ public class TopTrumpsCLIApplication
 			if (winners.size() == 1)
 			{
 				Player winner = winners.get(0);
+				currentPlayer = winner;
 				int newCards = cardsInPlay.size() + communalDeck.size();
 				winner.addHandToDeck(cardsInPlay);
 				winner.addHandToDeck(communalDeck);
