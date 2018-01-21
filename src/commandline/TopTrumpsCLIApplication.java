@@ -22,23 +22,43 @@ public class TopTrumpsCLIApplication
 	
 	private static ArrayList<Card> deck, communalDeck;
 	private static int numberPlayers, gamesPlayed;
-	private static ArrayList<Player> players;
+	private static ArrayList<Player> players, allPlayers;
 	private static boolean valid;
 	
-	//for the debug test log
+	private static Scanner scanner;
 	
+	//for the debug test log
 	private static boolean logMode;
 	private static TestLog log;
+	
+	private static int round;
+	private static int draws;
+	
+	//name of winner
+	private static String winner;
 	
 	public static void main(String[] args) 
 	{
 
-		logMode = true;
+		logMode = false;
 		boolean writeGameLogsToFile = false; // Should we write game logs to file?
-		if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
+		//if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
 		
+		scanner = new Scanner(System.in);
+		while(true)
+		{
+			System.out.println("type 'play' to play, 'stats' for stats");
+			String s = scanner.nextLine();
+			if(s.equals("play"))
+				playGame();
+			if(s.equals("stats"))
+				printStats();
+		}
+	}
+	
+	private static void playGame()
+	{
 		// States
-		
 		boolean userWantsToQuit = false; // flag to check whether the user wants to quit the application
 		boolean gameOver = false; // flag to check whether the current game has finished (only one player left)
 		
@@ -66,11 +86,15 @@ public class TopTrumpsCLIApplication
 		
 		// set up the players and divide deck between them
 		
-		Scanner scanner = new Scanner(System.in);
-		players = setUpPlayers(scanner);
+		
+		players = setUpPlayers();
+		//create a second array of players for reference to players after game ends
+		allPlayers = new ArrayList<Player>(players);
 		divideDeck();
 		
-		int round = 0;
+		round = 0;
+		draws = 0;
+		
 		
 		// Loop until the user wants to exit the game (main game loop)
 		
@@ -146,6 +170,8 @@ public class TopTrumpsCLIApplication
 				winner.addHandToDeck(cardsInPlay);
 				winner.addHandToDeck(communalDeck);
 				
+				winner.roundsWon++;
+				
 				//log changes to communal deck if any
 				if(logMode && communalDeck.size() > 0)
 					log.logCommunalDeck();
@@ -173,6 +199,7 @@ public class TopTrumpsCLIApplication
 			//if the round is a draw
 			else
 			{
+				draws++;
 				communalDeck.addAll(cardsInPlay);
 				
 				//log draw and changes to communal deck
@@ -210,6 +237,7 @@ public class TopTrumpsCLIApplication
 			
 		if ((gameOver) || checkWinConditions())
 		{
+			DataBaseCon.inputGameInfo(round, draws, allPlayers, winner);
 			System.out.println("Do you want to play again?");
 			String response = scanner.next();
 			if (response.equals("no") || response.equals("exit"))
@@ -225,10 +253,12 @@ public class TopTrumpsCLIApplication
 				communalDeck = new ArrayList<Card>();
 				Collections.shuffle(deck);				
 				round = 0; // reset round counter (will be incremented to 1 at the start of Round 1)
+				draws = 0; // reset draw counter
 				
 				// set up the players and divide deck between them
 
-				players = setUpPlayers(scanner);
+				players = setUpPlayers();
+				//allPlayers = players;
 				divideDeck();
 			
 			}
@@ -237,10 +267,7 @@ public class TopTrumpsCLIApplication
 			
 
 		}
-
-
 	}
-	
 	
 	private static ArrayList<Card> buildDeck() {
 		//reads in the deck from the txt file
@@ -275,7 +302,7 @@ public class TopTrumpsCLIApplication
 		}
 	}
 
-	private static ArrayList<Player> setUpPlayers(Scanner scanner) {
+	private static ArrayList<Player> setUpPlayers() {
 		//create an arraylist for players and add a human player
 		ArrayList<Player> players = new ArrayList<Player>();
 		Player player = new HumanPlayer();
@@ -377,12 +404,14 @@ public class TopTrumpsCLIApplication
 			if(players.get(0) instanceof HumanPlayer)
 			{
 				System.out.println("You Win!!!");
+				winner = "Player";
 			}
 			else
 			{
 				//cast to ai player and get player name
 				AIPlayer p = (AIPlayer) players.get(0);
-				System.out.println(p.getName() + " Wins");
+				winner = p.getName();
+				System.out.println(winner + " Wins");				
 			}
 		}
 		if(players.size() == 0)
@@ -457,4 +486,14 @@ public class TopTrumpsCLIApplication
 		return winners;
 	}
 
+	public static void printStats(){
+		DataBaseCon.connect();
+		System.out.println(String.format("Number of games played overall: %d", DataBaseCon.numGames()));
+		System.out.println(String.format("How many times the computer has won: %s", DataBaseCon.aiWins()));
+		System.out.println(String.format("How many times the human has won: %s", DataBaseCon.humanWins()));
+		System.out.println(String.format("The average number of draws: %.1f ", DataBaseCon.avgDraws()));
+		System.out.println(String.format("The largest number of rounds played in a single game: %d", DataBaseCon.maxRounds()));
+		DataBaseCon.close();
+	}
+	
 }

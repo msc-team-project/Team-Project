@@ -7,9 +7,11 @@ public class Player {
 	
 	private ArrayList<Card> deck;
 	protected Card cardInPlay;
+	public int roundsWon;
 	
 	public Player(){
 		deck = new ArrayList<Card>();
+		roundsWon = 0;
 	}
 	
 	public void addCardToDeck(Card card)
