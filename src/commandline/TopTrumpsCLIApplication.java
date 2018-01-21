@@ -258,7 +258,7 @@ public class TopTrumpsCLIApplication
 				// set up the players and divide deck between them
 
 				players = setUpPlayers();
-				//allPlayers = players;
+				allPlayers = new ArrayList<Player>(players);
 				divideDeck();
 			
 			}
