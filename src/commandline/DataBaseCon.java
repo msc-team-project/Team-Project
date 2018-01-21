@@ -60,7 +60,7 @@ public class DataBaseCon
 		String url = "jdbc:postgresql://localhost:5432/ITTP";
 		Properties props = new Properties();
 		props.setProperty("user", "postgres");
-		props.setProperty("password", "ex0dus");
+		props.setProperty("password", "postgres");
 
 		try {
 			connection = DriverManager.getConnection(url, props);
