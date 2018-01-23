@@ -34,10 +34,10 @@ public class DataBaseCon
 		if(players.size() > 4)
 			ai4wins = Integer.toString(players.get(4).roundsWon);
 		
-		String query = String.format("INSERT INTO gamedata (gamewinner, numberrounds, humanroundwins, ai1wins, ai2wins, ai3wins, ai4wins, numberdraws) "
+		String query = String.format("INSERT INTO toptrumps.gamedata (gamewinner, numberrounds, humanroundwins, ai1wins, ai2wins, ai3wins, ai4wins, numberdraws) "
 				+ "VALUES ('%s', %d, %d, %d, %s, %s, %s, %d)", winner, rounds, playerWins, ai1Wins, ai2wins, ai3wins, ai4wins, draws);
 		
-//		String query = "INSERT into gamedata (gamewinner, numberrounds, humanroundwins, ai1wins,ai2wins,ai3wins,ai4wins)"
+//		String query = "INSERT into toptrumps.gamedata (gamewinner, numberrounds, humanroundwins, ai1wins,ai2wins,ai3wins,ai4wins)"
 //				+ "Values('"+winName+"', "+countRounds+", "+roundWins[0]+", "+roundWins[1]+", "+roundWins[2]+", "+roundWins[3]+", "+roundWins[4]+");";
 		try 
 		{
@@ -57,13 +57,15 @@ public class DataBaseCon
 	//connect
 	public static void connect()
 	{
-		String url = "jdbc:postgresql://localhost:5432/ITTP";
-		Properties props = new Properties();
-		props.setProperty("user", "postgres");
-		props.setProperty("password", "postgres");
-
-		try {
-			connection = DriverManager.getConnection(url, props);
+		String dbname ="m_17_1102401d";
+		String username = "m_17_1102401d";
+		String password = "1102401d";
+		
+		try 
+		{
+			connection =
+					DriverManager.getConnection("jdbc:postgresql://yacata.dcs.gla.ac.uk:5432/" + 
+							dbname,username, password);
 		}
 		catch (SQLException e) 
 		{
@@ -101,7 +103,7 @@ public class DataBaseCon
 			
 			int gamesPlayed = 0;
 			Statement stmt = null;
-			String query = "SELECT COUNT (gamenumber) FROM gamedata;";
+			String query = "SELECT COUNT (gamenumber) FROM toptrumps.gamedata;";
 			try 
 			{
 				stmt = connection.createStatement();
@@ -131,7 +133,7 @@ public class DataBaseCon
 			
 			int wins = 0;
 			Statement stmt = null;
-			String query = "SELECT COUNT(gamenumber) FROM gamedata WHERE gamewinner = 'human';";
+			String query = "SELECT COUNT(gamenumber) FROM toptrumps.gamedata WHERE gamewinner = 'human';";
 			try 
 			{
 				stmt = connection.createStatement();
@@ -161,7 +163,7 @@ public class DataBaseCon
 			
 			int wins = 0;
 			Statement stmt = null;
-			String query = "SELECT COUNT(gamenumber) FROM gamedata WHERE gamewinner = 'AI Player 1' "
+			String query = "SELECT COUNT(gamenumber) FROM toptrumps.gamedata WHERE gamewinner = 'AI Player 1' "
 					+ "OR gamewinner = 'AI Player 2' OR gamewinner = 'AI Player 3' OR gamewinner = 'AI Player 4';";
 			try 
 			{
@@ -192,7 +194,7 @@ public class DataBaseCon
 			
 			double avg=0.0;
 			Statement stmt = null;
-			String query = "SELECT AVG(numberdraws) FROM gamedata;";
+			String query = "SELECT AVG(numberdraws) FROM toptrumps.gamedata;";
 			try 
 			{
 				stmt = connection.createStatement();
@@ -224,7 +226,7 @@ public class DataBaseCon
 			
 			int max = 0;
 			Statement stmt = null;
-			String query = "SELECT MAX(numberrounds) FROM gamedata;";
+			String query = "SELECT MAX(numberrounds) FROM toptrumps.gamedata;";
 			try 
 			{
 				stmt = connection.createStatement();
