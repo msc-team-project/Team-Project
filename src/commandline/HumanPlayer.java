@@ -12,11 +12,10 @@ public class HumanPlayer extends Player{
 		String att = "";
 		String[] atts = cardInPlay.getAttributes();
 		boolean valid = false;
-		String message = "Select attribute: ";
 		while(!valid)
 		{
 			//checks that the input is one of the card's attribute names
-			System.out.println(message);
+			System.out.println("Select attribute: ");
 			att = scanner.next();
 			for(String s : atts)
 			{
@@ -25,7 +24,6 @@ public class HumanPlayer extends Player{
 				else if (att.equals("quit") || att.equals("exit"))
 					System.exit(0);
 			}
-			message = "Please enter a valid attribute (or 'quit' to quit)";
 		}		
 		//returns the attribute as a String
 		return att;
