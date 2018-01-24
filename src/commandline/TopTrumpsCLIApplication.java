@@ -47,12 +47,14 @@ public class TopTrumpsCLIApplication
 		scanner = new Scanner(System.in);
 		while(true)
 		{
-			System.out.println("type 'play' to play, 'stats' for stats");
+			System.out.println("type 'play' to play, 'stats' for stats, 'exit' to exit");
 			String s = scanner.nextLine();
 			if(s.equals("play"))
 				playGame();
 			if(s.equals("stats"))
 				printStats();
+			if(s.equals("exit"))
+				System.exit(0);
 		}
 	}
 	
@@ -85,7 +87,6 @@ public class TopTrumpsCLIApplication
 			log.logDeck(deck, true);
 		
 		// set up the players and divide deck between them
-		
 		
 		players = setUpPlayers();
 		//create a second array of players for reference to players after game ends
@@ -242,24 +243,24 @@ public class TopTrumpsCLIApplication
 			String response = scanner.next();
 			if (response.equals("no") || response.equals("exit"))
 			{
-				scanner.close();
 				userWantsToQuit=true; // quit the game 
 			}
 			else // start a new game
 			{
 				// build new deck and shuffle, and make a new communal deck
 				
-				deck = buildDeck();
-				communalDeck = new ArrayList<Card>();
-				Collections.shuffle(deck);				
+//				deck = buildDeck();
+//				communalDeck = new ArrayList<Card>();
+//				Collections.shuffle(deck);				
 				round = 0; // reset round counter (will be incremented to 1 at the start of Round 1)
 				draws = 0; // reset draw counter
 				
 				// set up the players and divide deck between them
 
-				players = setUpPlayers();
-				allPlayers = new ArrayList<Player>(players);
-				divideDeck();
+//				players = setUpPlayers();
+//				allPlayers = new ArrayList<Player>(players);
+//				divideDeck();
+				playGame();
 			
 			}
 
@@ -314,7 +315,7 @@ public class TopTrumpsCLIApplication
 			try
 			{
 				System.out.println("How many opponents (1-4)");
-				int aiplayers = Integer.parseInt(scanner.nextLine());
+				int aiplayers = scanner.nextInt();
 				numberPlayers = 1 + aiplayers;
 			} catch (Exception e)
 			{
