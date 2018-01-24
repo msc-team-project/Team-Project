@@ -194,7 +194,7 @@ public class DataBaseCon
 			
 			double avg=0.0;
 			Statement stmt = null;
-			String query = "SELECT AVG(numberdraws) FROM toptrumps.gamedata;";
+			String query = "SELECT AVG(numberrounds) FROM toptrumps.gamedata;";
 			try 
 			{
 				stmt = connection.createStatement();

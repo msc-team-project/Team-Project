@@ -1,8 +1,11 @@
 package online.dwResources;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -15,6 +18,11 @@ import online.configuration.TopTrumpsJSONConfiguration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+
+import commandline.AIPlayer;
+import commandline.Card;
+import commandline.HumanPlayer;
+import commandline.Player;
 
 @Path("/toptrumps") // Resources specified here should be hosted at http://localhost:7777/toptrumps
 @Produces(MediaType.APPLICATION_JSON) // This resource returns JSON content
@@ -70,6 +78,82 @@ public class TopTrumpsRESTAPI {
 		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
 		
 		return listAsJSONString;
+	}
+	
+	@GET
+	@Path("/buildDeckJSON")
+	public String buildDeckJSON() {
+		System.out.println("buildDeck method reached");
+		//reads in the deck from the txt file
+		ArrayList<Card> deck = new ArrayList<Card>();
+		try
+		{
+			//I had to give the absolute path for this to work in command prompt
+			// eg "C:\\Users\\Roddy\\workspace\\Trumps\\StarCitizenDeck.txt"
+			BufferedReader reader = new BufferedReader(new FileReader("StarCitizenDeck.txt"));
+		
+			
+			String line = reader.readLine();
+			//skip the first line because it is just the names of attributes
+			//will maybe read this line in and change card constructor
+			//so decks with more/less/different attributes can be used
+			line = reader.readLine();
+			while (line != null)
+			{
+				//read each line in and create new card
+				Card card = new Card(line);
+				deck.add(card);
+				line = reader.readLine();
+			}
+			reader.close();
+			//return the built deck as and arraylist of cards
+			String deckString = oWriter.writeValueAsString(deck);
+			return deckString;
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@GET
+	@Path("/addAIPlayers")
+	public ArrayList<Player> addAIPlayers()
+	{
+		Scanner scanner = new Scanner(System.in);
+		
+		//create an arraylist for players and add a human player
+		ArrayList<Player> players = new ArrayList<Player>();
+		Player player = new HumanPlayer();
+		players.add(player);
+		int numberPlayers = players.size();
+		//prompt the user to enter number of ai players
+		while (numberPlayers < 2 || numberPlayers > 5)
+		{
+			try
+			{
+				System.out.println("How many opponents (1-4)");
+				int aiplayers = Integer.parseInt(scanner.nextLine());
+				numberPlayers = 1 + aiplayers;
+			} catch (Exception e)
+			{
+				//this catch handles any integer parsing errors (eg user enters "two" instead of 2 etc)
+				//by re-prompting the user
+				//probably not good practice to handle any and all exceptions by ignoring them
+				//but this can be fixed later
+				continue;
+			}
+		}
+		for (int i = 1; i < numberPlayers; i++)
+		{
+			//create new ai players with the names ai player1, ai player2, etc
+			//and adds to players list
+			String name = String.format("AI Player %d", i);
+			AIPlayer aiPlayer = new AIPlayer(name);
+			players.add(aiPlayer);
+		}
+		return players;
 	}
 	
 	@GET
