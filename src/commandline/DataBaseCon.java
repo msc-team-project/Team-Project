@@ -188,13 +188,13 @@ public class DataBaseCon
 			return wins;
 		}
 		
-		//method to return average number of rounds
+		//method to return average number of  draws in a round
 		public static double avgDraws()
 		{
 			
 			double avg=0.0;
 			Statement stmt = null;
-			String query = "SELECT AVG(numberrounds) FROM toptrumps.gamedata;";
+			String query = "SELECT AVG(numberdraws) FROM toptrumps.gamedata;";
 			try 
 			{
 				stmt = connection.createStatement();
