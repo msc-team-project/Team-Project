@@ -58,15 +58,19 @@ public class TopTrumpsRESTAPI {
 	// ----------------------------------------------------
 	// Add relevant API methods here
 	// ----------------------------------------------------
+
 	
-	@GET
-	@Path("/helloJSONList")
+	
 	/**
 	 * Here is an example of a simple REST get request that returns a String.
 	 * We also illustrate here how we can convert Java objects to JSON strings.
 	 * @return - List of words as JSON
 	 * @throws IOException
 	 */
+	
+	/*
+	@GET
+	@Path("/helloJSONList")
 	public String helloJSONList() throws IOException {
 		
 		List<String> listOfWords = new ArrayList<String>();
@@ -78,11 +82,27 @@ public class TopTrumpsRESTAPI {
 		String listAsJSONString = oWriter.writeValueAsString(listOfWords);
 		
 		return listAsJSONString;
+	}*/
+	
+	@GET
+	@Path("/playGame")
+	public void playGame() 
+	{
+		
 	}
 	
 	@GET
-	@Path("/buildDeckJSON")
-	public String buildDeckJSON() {
+	@Path("/quitGame")
+	public String quitGame() 
+	{
+		String quitMessage = "You have ended the game.";
+		return quitMessage;
+	}
+	
+	//Will be called from playGame(), rather than being called directly from GameScreen
+	@GET
+	@Path("/buildDeck")
+	public ArrayList<Card> buildDeck() {
 		//reads in the deck from the txt file
 		ArrayList<Card> deck = new ArrayList<Card>();
 		try
@@ -91,7 +111,6 @@ public class TopTrumpsRESTAPI {
 			// eg "C:\\Users\\Roddy\\workspace\\Trumps\\StarCitizenDeck.txt"
 			BufferedReader reader = new BufferedReader(new FileReader("StarCitizenDeck.txt"));
 		
-			
 			String line = reader.readLine();
 			//skip the first line because it is just the names of attributes
 			//will maybe read this line in and change card constructor
@@ -106,8 +125,8 @@ public class TopTrumpsRESTAPI {
 			}
 			reader.close();
 			//return the built deck as and arraylist of cards
-			String deckString = oWriter.writeValueAsString(deck);
-			return deckString;
+			//String deckString = oWriter.writeValueAsString(deck);
+			return deck;
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -116,47 +135,15 @@ public class TopTrumpsRESTAPI {
 		}
 	}
 	
+	//Method to divide the deck based on number of players
 	@GET
-	@Path("/addPlayers")
-	public int addPlayers()
+	@Path("/splitDeck")
+	public void splitDeck(@QueryParam("numPlayers") int numPlayers) 
 	{
-		Scanner scanner = new Scanner(System.in);
 		
-		//create an arraylist for players and add a human player
-		ArrayList<Player> players = new ArrayList<Player>();
-		Player player = new HumanPlayer();
-		players.add(player);
-		int numberPlayers = players.size();
-		
-		//prompt the user to enter number of ai players
-		while (numberPlayers < 2 || numberPlayers > 5)
-		{
-			try
-			{
-				System.out.println("How many opponents (1-4)");
-				int aiplayers = Integer.parseInt(scanner.nextLine());
-				numberPlayers = 1 + aiplayers;
-			} catch (Exception e)
-			{
-				//this catch handles any integer parsing errors (eg user enters "two" instead of 2 etc)
-				//by re-prompting the user
-				//probably not good practice to handle any and all exceptions by ignoring them
-				//but this can be fixed later
-				continue;
-			}
-		}
-		for (int i = 1; i < numberPlayers; i++)
-		{
-			//create new ai players with the names ai player1, ai player2, etc
-			//and adds to players list
-			String name = String.format("AI Player %d", i);
-			AIPlayer aiPlayer = new AIPlayer(name);
-			players.add(aiPlayer);
-		}
-		
-		int noPlayers = 0;
-		return noPlayers;
 	}
+	
+	
 	
 	@GET
 	@Path("/helloWord")

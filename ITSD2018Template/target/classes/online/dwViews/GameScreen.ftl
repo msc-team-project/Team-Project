@@ -128,20 +128,10 @@
     }
     </style>
     
-      
-<button class="button">Button</button>
-<button class="button">Button</button>
-<button class="button">Button</button>
-<button class="button">Button</button>
-
-
 </div >
-
-  
 
 <!-- End Page Content -->
 </div>
-
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-large" >
@@ -182,22 +172,23 @@ function myFunction() {
     }
 }
 
-function askPlayerQuantity(){
-
-}
-
 function selection() {
    //document.getElementsByClassName("button gamebutton");
    var opponents = prompt("How many opponents would you like to play against (1-4)?");
    
    if (opponents != null && opponents >= 1 && opponents < 5){
-   		document.getElementById("test").innerHTML = "You have added " + opponents + " AI players.";
+   		//document.getElementById("test").innerHTML = "You have added " + opponents + " AI players.";
    		alert("You have added " + opponents + " AI players.");
+   		
+   		//total players = AI players + one human player.
+   		var numPlayers = opponents + 1;
+   		
+   		playGame(numPlayers); //begins game
+		
    } else{
    		alert("You must add between 1 and 4 opponents to play the game.");
    }
 }
-
 
 </script>
 
@@ -211,13 +202,8 @@ function selection() {
 		
 			// Method that is called on page load
 			function initalize() {
-			
-				// --------------------------------------------------------------------------
+
 				// You can call other methods you want to run when the page first loads here
-				// --------------------------------------------------------------------------
-				
-				// For example, lets call our sample methods
-				printDeck();
 				
 			}
 			
@@ -225,17 +211,36 @@ function selection() {
 			// Add your other Javascript methods Here
 			// -----------------------------------------
 			
+			function playGame(numPlayers){
+				var deck = buildDeck(numPlayers);
+			}
+			
+			function setDeck(numPlayers) {
+
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/splitDeck?numPlayers="+opponents);
+							
+				if (!xhr) {
+					alert("CORS not supported");
+				}
+				
+				xhr.onload = function(e) {
+					//do something with 
+				};
+				
+				xhr.send();
+	
+			}
+			
 			//Calls method to build deck in REST API class
-			function printDeck() {
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeckJSON");
+			function buildDeck() {
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
 				
 				if (!xhr) {
   					alert("CORS not supported");
 				}
 				
 				xhr.onload = function(e) {
- 					var gameDeck = xhr.response; // the text of the response
-					document.getElementById("deck").innerHTML = gameDeck;
+ 					var gameDeck = xhr.response;
 				};
 				
 				xhr.send();

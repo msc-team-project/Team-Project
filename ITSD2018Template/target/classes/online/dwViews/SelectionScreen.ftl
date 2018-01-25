@@ -151,10 +151,6 @@ window.onclick = function(event) {
 				// You can call other methods you want to run when the page first loads here
 				// --------------------------------------------------------------------------
 				
-				// For example, lets call our sample methods
-				helloJSONList();
-				helloWord("Student");
-				
 			}
 			
 			// -----------------------------------------
