@@ -135,6 +135,27 @@ public class TopTrumpsRESTAPI {
 		}
 	}
 	
+	@GET
+	@Path("/setUpPlayers")
+	public Player[] setUpPlayers(@QueryParam("numPlayers") int numPlayers) 
+	{
+		Player [] players = new Player [numPlayers];
+		
+		HumanPlayer roddy = new HumanPlayer();
+		players[0] = roddy;
+		
+		int opponents = numPlayers - 1;
+		
+		for (int i = 1; i <= opponents; i++) 
+		{
+			String name = String.format("AI Player %d", i);
+			AIPlayer ai = new AIPlayer(name);
+			players[i] = ai;
+		}
+		
+		return players;
+	}
+	
 	//Method to divide the deck based on number of players
 	@GET
 	@Path("/splitDeck")

@@ -174,7 +174,8 @@ function myFunction() {
 
 function selection() {
    //document.getElementsByClassName("button gamebutton");
-   var opponents = prompt("How many opponents would you like to play against (1-4)?");
+   var opponents = parseInt(prompt("How many opponents would you like to play against (1-4)?"));
+   
    
    if (opponents != null && opponents >= 1 && opponents < 5){
    		//document.getElementById("test").innerHTML = "You have added " + opponents + " AI players.";
@@ -182,8 +183,22 @@ function selection() {
    		
    		//total players = AI players + one human player.
    		var numPlayers = opponents + 1;
+   		alert("Total number of players (inc. human): " + numPlayers)
    		
-   		playGame(numPlayers); //begins game
+   		var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/setUpPlayers?numPlayers="+numPlayers);
+							
+		if (!xhr) {
+			alert("CORS not supported");
+		}
+		
+		xhr.onload = function(e) {
+			var playerArray = xhr.response;
+			alert(playerArray); //for some reason, there are 19 players. Probably need to fix this.
+		};
+		
+		xhr.send();
+   		
+   		//decide what to do next
 		
    } else{
    		alert("You must add between 1 and 4 opponents to play the game.");
@@ -215,7 +230,8 @@ function selection() {
 				var deck = buildDeck(numPlayers);
 			}
 			
-			function setDeck(numPlayers) {
+			//not sure if this is necessary
+			function splitDeck(numPlayers, gameDeck) {
 
 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/splitDeck?numPlayers="+opponents);
 							
@@ -232,7 +248,7 @@ function selection() {
 			}
 			
 			//Calls method to build deck in REST API class
-			function buildDeck() {
+			function buildAndSplit(numPlayers) {
 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
 				
 				if (!xhr) {
@@ -241,6 +257,8 @@ function selection() {
 				
 				xhr.onload = function(e) {
  					var gameDeck = xhr.response;
+ 					
+ 					//split deck?
 				};
 				
 				xhr.send();
