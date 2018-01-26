@@ -40,7 +40,7 @@ public class TopTrumpsCLIApplication
 	public static void main(String[] args) 
 	{
 
-		logMode = false;
+		logMode = true;
 		boolean writeGameLogsToFile = false; // Should we write game logs to file?
 		//if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
 		
@@ -235,6 +235,10 @@ public class TopTrumpsCLIApplication
 			
 			printRemainingCards();
 			
+			//if the round is over, write the log to file
+			if(logMode)
+				log.writeLog();
+			
 			
 		if ((gameOver) || checkWinConditions())
 		{
@@ -425,9 +429,9 @@ public class TopTrumpsCLIApplication
 				log.logWinner();
 		}
 		
-		//if the game is over, write the log to file
-		if(gameOver && logMode)
-			log.writeLog();
+//		//if the game is over, write the log to file
+//		if(gameOver && logMode)
+//			log.writeLog();
 		
 		//return true if game is over, false if multiple players remain
 		return gameOver;

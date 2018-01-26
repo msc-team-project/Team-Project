@@ -16,7 +16,7 @@ public class TopTrumps {
 		// command line switches
 		boolean onlineMode = false;
 		boolean commandLineMode = true;
-		boolean printTestLog = false;
+		boolean printTestLog = true;
 		
 		// check the command line for what switches are active
 		for (String arg : args) {

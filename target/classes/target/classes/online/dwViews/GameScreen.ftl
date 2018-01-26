@@ -25,6 +25,10 @@
     	<div class="container">
 
 			<!-- Add your HTML Here -->
+			<h1>Top Trumps (Game Page)</h1>
+			
+			<p id = "deck"></p>
+		
 		
 		</div>
 		
@@ -37,6 +41,8 @@
 				// You can call other methods you want to run when the page first loads here
 				// --------------------------------------------------------------------------
 				
+				playGame();
+				
 				// For example, lets call our sample methods
 				helloJSONList();
 				helloWord("Student");
@@ -46,6 +52,26 @@
 			// -----------------------------------------
 			// Add your other Javascript methods Here
 			// -----------------------------------------
+			
+			function playGame() {
+				printDeck();
+			}
+			
+			//Calls method to build deck in REST API class
+			function printDeck() {
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeckJSON");
+				
+				if (!xhr) {
+  					alert("CORS not supported");
+				}
+				
+				xhr.onload = function(e) {
+ 					var gameDeck = xhr.response; // the text of the response
+					document.getElementById("deck").innerHTML = gameDeck;
+				};
+				
+				xhr.send();
+			}
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {

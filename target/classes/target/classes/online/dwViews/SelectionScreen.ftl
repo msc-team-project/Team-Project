@@ -25,6 +25,11 @@
     	<div class="container">
 
 			<!-- Add your HTML Here -->
+			<h1>Top Trumps</h1>
+			<button type = "button" onclick="location.href='http://localhost:7777/toptrumps/resources/online.dwViews/GameScreen';" value="game screen link">Play Top Trumps</button>
+			
+			
+				
 		
 		</div>
 		
@@ -46,6 +51,14 @@
 			// -----------------------------------------
 			// Add your other Javascript methods Here
 			// -----------------------------------------
+			
+			//This function will lead to GameScreen
+			function openGameScreen(){
+ 				
+			}
+			
+		
+			
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
@@ -76,6 +89,8 @@
 		
 		<!-- Here are examples of how to call REST API Methods -->
 		<script type="text/javascript">
+		
+			
 		
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
 			function helloJSONList() {
