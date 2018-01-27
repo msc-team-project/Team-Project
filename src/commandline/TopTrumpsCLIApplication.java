@@ -25,7 +25,7 @@ public class TopTrumpsCLIApplication
 	private static ArrayList<Player> players, allPlayers;
 	private static boolean valid;
 	
-	private static Scanner scanner;
+	protected static Scanner scanner;
 	
 	//for the debug test log
 	private static boolean logMode;
@@ -127,18 +127,16 @@ public class TopTrumpsCLIApplication
 			ArrayList<Card> cardsInPlay = playNextHand();
 			
 			String attribute;
+			
 			if (currentPlayer instanceof HumanPlayer)
 			{
 				System.out.println("Your Turn");
-				HumanPlayer p = (HumanPlayer) currentPlayer;
-				attribute = p.playerSelectAttribute(scanner);
+				attribute = currentPlayer.pickAttribute();
 			} 
 			else
 			{
-				//have to cast the player to AIPlayer
-				AIPlayer p = (AIPlayer) currentPlayer;
-				attribute = p.pickAttribute();
-				String name = p.getName();
+				attribute = currentPlayer.pickAttribute();
+				String name = currentPlayer.getName();
 				System.out.println(name + "'s Turn");
 				System.out.println(name + " picked " + attribute);
 			}
@@ -152,7 +150,7 @@ public class TopTrumpsCLIApplication
 			
 			for(int i = 1; i < players.size(); i++)
 			{
-				AIPlayer p = (AIPlayer) players.get(i);
+				Player p = players.get(i);
 				System.out.print(p.getName() + " plays ");
 				p.printCardInPlay();
 			}
@@ -185,9 +183,8 @@ public class TopTrumpsCLIApplication
 				} 
 				else
 				{
-					AIPlayer w = (AIPlayer) winner;
-					System.out.println(w.getName() + " wins round " + round);
-					System.out.println(newCards + " added to " + w.getName() +"'s hand");
+					System.out.println(winner.getName() + " wins round " + round);
+					System.out.println(newCards + " added to " + winner.getName() +"'s hand");
 				}
 				
 				//log the winner of the round
@@ -222,8 +219,7 @@ public class TopTrumpsCLIApplication
 				}
 				for (; i < winners.size(); i++)
 				{
-					AIPlayer p = (AIPlayer) winners.get(i);
-					System.out.print(p.getName() + " ");
+					System.out.print(winners.get(i).getName() + " ");
 				}
 				System.out.println("\n" + communalDeck.size() + " cards in communal deck");
 			}
@@ -385,8 +381,7 @@ public class TopTrumpsCLIApplication
 				}
 				else
 				{
-					AIPlayer player = (AIPlayer) p;
-					System.out.println(player.getName() + " has no cards remaining");
+					System.out.println(p.getName() + " has no cards remaining");
 				}
 				
 				//remove players with no cards and decrement number of players
@@ -414,8 +409,7 @@ public class TopTrumpsCLIApplication
 			else
 			{
 				//cast to ai player and get player name
-				AIPlayer p = (AIPlayer) players.get(0);
-				winner = p.getName();
+				winner = players.get(0).getName();
 				System.out.println(winner + " Wins");				
 			}
 		}
@@ -445,9 +439,7 @@ public class TopTrumpsCLIApplication
 				System.out.println("You have " + p.getDeckSize() + " cards remaining");
 			} else
 			{
-				//have to cast to ai player
-				AIPlayer q = (AIPlayer) p;
-				System.out.println(q.getName() + " has " + p.getDeckSize() + " cards remaining");
+				System.out.println(p.getName() + " has " + p.getDeckSize() + " cards remaining");
 			}
 		}
 	}
@@ -477,14 +469,14 @@ public class TopTrumpsCLIApplication
 		//find the max value for the chosen attribute for all cards in play
 		for (Player p : players)
 		{
-			if (p.getValueOfAtt(attribute) > max)
-				max = p.getValueOfAtt(attribute);
+			if (p.getCardInPlay().getValueOfAtt(attribute) > max)
+				max = p.getCardInPlay().getValueOfAtt(attribute);
 		}
 		//get all players whose card has that value for the attribute
 		//and add them to the list of winners
 		for (Player p : players)
 		{
-			if (p.getValueOfAtt(attribute) == max)
+			if (p.getCardInPlay().getValueOfAtt(attribute) == max)
 				winners.add(p);
 		}
 		//return the winners as an arraylist of players

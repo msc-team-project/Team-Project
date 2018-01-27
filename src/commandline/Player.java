@@ -3,11 +3,12 @@ package commandline;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Player {
+public abstract class Player {
 	
 	private ArrayList<Card> deck;
 	protected Card cardInPlay;
 	public int roundsWon;
+	public String name;
 	
 	public Player(){
 		deck = new ArrayList<Card>();
@@ -35,49 +36,15 @@ public class Player {
 		return cardInPlay;
 	}
 	
-	//TODO
-	//this will be moved to the AIPlayer class as there is no need for
-	//HumanPlayer to inherit this behaviour
-	//just was too lazy and didn't want to change the code
-	public String pickAttribute()
-	{
-		String[] atts = cardInPlay.getAttributes();
-		int[] values = {cardInPlay.getSize(), cardInPlay.getSpeed(), cardInPlay.getRange(), cardInPlay.getFirepower(), cardInPlay.getCargo()};
-		String att = "";
-		
-		int max = 0;
-		for(int i = 0; i < 5; i++)
-		{
-			int value = values[i];
-			if(value > max)
-			{
-				max = value;
-				att = atts[i];
-			}
-		}
-		return att;		
-	}
+	public abstract String pickAttribute();
 	
-	//TODO
-	//this has been moved to the Card class
-	//should be accessed with Player.getCardInPlay().getValueOfAtt()
-	//will remove this and update code
-	public int getValueOfAtt(String att)
+	public Card getCardInPlay(){
+		return cardInPlay;
+	}
+		
+	public String getName()
 	{
-		switch(att)
-		{
-		case "size":
-			return cardInPlay.getSize();
-		case "speed":
-			return cardInPlay.getSpeed();
-		case "range":
-			return cardInPlay.getRange();
-		case "firepower":
-			return cardInPlay.getFirepower();
-		case "cargo":
-			return cardInPlay.getCargo();
-		}
-		return -1;
+		return name;
 	}
 	
 	public int getDeckSize()
