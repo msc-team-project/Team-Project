@@ -172,38 +172,65 @@ function myFunction() {
     }
 }
 
+//main game function
 function selection() {
-   //document.getElementsByClassName("button gamebutton");
+
    var opponents = parseInt(prompt("How many opponents would you like to play against (1-4)?"));
    
-   
+   //Check that user selected between 1 and 4 opponents
    if (opponents != null && opponents >= 1 && opponents < 5){
    		//document.getElementById("test").innerHTML = "You have added " + opponents + " AI players.";
    		alert("You have added " + opponents + " AI players.");
    		
    		//total players = AI players + one human player.
-   		var numPlayers = opponents + 1;
+   		numPlayers = opponents + 1;
    		alert("Total number of players (inc. human): " + numPlayers)
    		
-   		var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/setUpPlayers?numPlayers="+numPlayers);
-							
-		if (!xhr) {
-			alert("CORS not supported");
-		}
-		
-		xhr.onload = function(e) {
-			var playerArray = xhr.response;
-			alert(playerArray); //for some reason, there are 19 players. Probably need to fix this.
-		};
-		
-		xhr.send();
-   		
-   		//decide what to do next
+   		//Start game
+   		playGame(numPlayers);
 		
    } else{
    		alert("You must add between 1 and 4 opponents to play the game.");
    }
+   
 }
+
+//CURRENT PROBLEM: arrays/arraylists created in Java methods seem to be treated as a string and divided into array slots character
+// by character
+function playGame(numPlayers){
+			
+	var playerArray = []; //stores info for each player
+	var deck = []; //stores all cards
+	
+	//populate playerArray by calling setUpPlayer method in REST API class
+	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/setUpPlayers?numPlayers="+numPlayers);
+						
+	if (!xhr1) {
+		alert("CORS not supported");
+	}
+	
+	xhr1.onload = function(e) {
+		playerArray = xhr1.response;
+		alert(playerArray)
+	};
+	
+	xhr1.send();
+	
+	//build deck by calling relevant REST API method
+	var xhr2 = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
+	
+	if (!xhr2) {
+		alert("CORS not supported");
+	}
+	
+	xhr2.onload = function(e) {
+		deck = xhr2.response;
+		alert(deck);
+	};
+	
+	xhr2.send();
+		
+   }
 
 </script>
 
@@ -226,9 +253,7 @@ function selection() {
 			// Add your other Javascript methods Here
 			// -----------------------------------------
 			
-			function playGame(numPlayers){
-				var deck = buildDeck(numPlayers);
-			}
+			
 			
 			//not sure if this is necessary
 			function splitDeck(numPlayers, gameDeck) {
@@ -245,23 +270,6 @@ function selection() {
 				
 				xhr.send();
 	
-			}
-			
-			//Calls method to build deck in REST API class
-			function buildAndSplit(numPlayers) {
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
-				
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-				
-				xhr.onload = function(e) {
- 					var gameDeck = xhr.response;
- 					
- 					//split deck?
-				};
-				
-				xhr.send();
 			}
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
