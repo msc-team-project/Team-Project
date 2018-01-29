@@ -238,7 +238,7 @@ public class TopTrumpsCLIApplication
 			
 		if ((gameOver) || checkWinConditions())
 		{
-			DataBaseCon.inputGameInfo(round, draws, allPlayers, winner);
+			//DataBaseCon.inputGameInfo(round, draws, allPlayers, winner);
 			System.out.println("Do you want to play again?");
 			String response = scanner.next();
 			if (response.equals("no") || response.equals("exit"))
@@ -369,10 +369,8 @@ public class TopTrumpsCLIApplication
 		//if there are no players left game is over and results in a draw
 		//should be called at the end of each round
 		boolean gameOver = false;
-		
-		for(int i = 0; i < numberPlayers; i++)
+		for(Player p : allPlayers)
 		{
-			Player p = players.get(i);
 			if(p.getDeckSize() == 0)
 			{
 				if(p instanceof HumanPlayer)
