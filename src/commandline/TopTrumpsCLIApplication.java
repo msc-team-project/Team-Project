@@ -40,7 +40,7 @@ public class TopTrumpsCLIApplication
 	public static void main(String[] args) 
 	{
 
-		boolean writeGameLogsToFile = false; // Should we write game logs to file?
+		writeGameLogsToFile = false; // Should we write game logs to file?
 		//if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
 		
 		scanner = new Scanner(System.in);
