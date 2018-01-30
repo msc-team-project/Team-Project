@@ -28,7 +28,7 @@ public class TopTrumpsCLIApplication
 	protected static Scanner scanner;
 	
 	//for the debug test log
-	private static boolean logMode;
+	private static boolean writeGameLogsToFile;
 	private static TestLog log;
 	
 	private static int round;
@@ -40,7 +40,6 @@ public class TopTrumpsCLIApplication
 	public static void main(String[] args) 
 	{
 
-		logMode = true;
 		boolean writeGameLogsToFile = false; // Should we write game logs to file?
 		//if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
 		
@@ -68,7 +67,7 @@ public class TopTrumpsCLIApplication
 		
 		deck = buildDeck();
 		
-		if (logMode)
+		if (writeGameLogsToFile)
 		{
 			// create a new log and log the deck in its current state
 			log = new TestLog();
@@ -83,7 +82,7 @@ public class TopTrumpsCLIApplication
 		// shuffle the deck and log its contents
 		
 		Collections.shuffle(deck);
-		if(logMode)
+		if(writeGameLogsToFile)
 			log.logDeck(deck, true);
 		
 		// set up the players and divide deck between them
@@ -119,7 +118,7 @@ public class TopTrumpsCLIApplication
 			
 			//log the current round
 			
-			if(logMode)
+			if(writeGameLogsToFile)
 				log.logRound(round);
 			
 			//each player plays their top card
@@ -143,7 +142,7 @@ public class TopTrumpsCLIApplication
 			
 			//log the selection
 			
-			if(logMode)
+			if(writeGameLogsToFile)
 				log.logSelection(currentPlayer, attribute, cardsInPlay);
 			
 			//print out each players selection
@@ -172,7 +171,7 @@ public class TopTrumpsCLIApplication
 				winner.roundsWon++;
 				
 				//log changes to communal deck if any
-				if(logMode && communalDeck.size() > 0)
+				if(writeGameLogsToFile && communalDeck.size() > 0)
 					log.logCommunalDeck();
 				
 				//check if winner is human player or ai player
@@ -188,7 +187,7 @@ public class TopTrumpsCLIApplication
 				}
 				
 				//log the winner of the round
-				if(logMode)
+				if(writeGameLogsToFile)
 					log.logRoundWinner(winner, round);
 				
 				//reset the communal deck
@@ -201,7 +200,7 @@ public class TopTrumpsCLIApplication
 				communalDeck.addAll(cardsInPlay);
 				
 				//log draw and changes to communal deck
-				if(logMode)
+				if(writeGameLogsToFile)
 				{
 					log.logRoundDraw(winners, round);
 					log.logCommnalDeck(cardsInPlay, communalDeck);
@@ -226,13 +225,13 @@ public class TopTrumpsCLIApplication
 			
 			//log the updated decks
 			
-			if(logMode)
+			if(writeGameLogsToFile)
 				log.logAllocatedDecks(players);
 			
 			printRemainingCards();
 			
 			//if the round is over, write the log to file
-			if(logMode)
+			if(writeGameLogsToFile)
 				log.writeLog();
 			
 			
@@ -387,7 +386,7 @@ public class TopTrumpsCLIApplication
 				numberPlayers--;
 
 				//log player eliminations
-				if(logMode)
+				if(writeGameLogsToFile)
 					log.logEliminatedPlayer(p);
 			}
 		}		
@@ -397,7 +396,7 @@ public class TopTrumpsCLIApplication
 			gameOver = true;
 			System.out.println("Game Over");
 			//log game winner
-			if(logMode)
+			if(writeGameLogsToFile)
 				log.logGameWinner(players.get(0));
 			if(players.get(0) instanceof HumanPlayer)
 			{
@@ -417,12 +416,12 @@ public class TopTrumpsCLIApplication
 			System.out.println("Draw");
 			//log game draw
 			//calling logWinner with no arguments logs a draw
-			if(logMode)
+			if(writeGameLogsToFile)
 				log.logWinner();
 		}
 		
 //		//if the game is over, write the log to file
-//		if(gameOver && logMode)
+//		if(gameOver && writeGameLogsToFile)
 //			log.writeLog();
 		
 		//return true if game is over, false if multiple players remain
@@ -456,7 +455,7 @@ public class TopTrumpsCLIApplication
 			System.out.println("Your Card:");
 			players.get(0).printCardInPlay();
 		}
-		if(logMode)
+		if(writeGameLogsToFile)
 			log.logCardsInPlay(cards);
 		return cards;
 	}
