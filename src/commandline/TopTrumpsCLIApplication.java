@@ -40,7 +40,7 @@ public class TopTrumpsCLIApplication
 	public static void main(String[] args) 
 	{
 
-		writeGameLogsToFile = false; // Should we write game logs to file?
+		writeGameLogsToFile = true; // Should we write game logs to file?
 		//if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
 		
 		scanner = new Scanner(System.in);
@@ -388,13 +388,13 @@ public class TopTrumpsCLIApplication
 					System.out.println(p.getName() + " has no cards remaining");
 				}
 				
+				//log player eliminations
+				if(writeGameLogsToFile && players.contains(p))
+					log.logEliminatedPlayer(p);
+				
 				//remove players with no cards and decrement number of players
 				players.remove(p);
 				numberPlayers--;
-
-				//log player eliminations
-				if(writeGameLogsToFile)
-					log.logEliminatedPlayer(p);
 			}
 		}		
 		
@@ -428,8 +428,8 @@ public class TopTrumpsCLIApplication
 		}
 		
 //		//if the game is over, write the log to file
-//		if(gameOver && writeGameLogsToFile)
-//			log.writeLog();
+		if(gameOver && writeGameLogsToFile)
+			log.writeLog();
 		
 		//return true if game is over, false if multiple players remain
 		return gameOver;
