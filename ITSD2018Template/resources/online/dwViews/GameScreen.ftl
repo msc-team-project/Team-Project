@@ -64,8 +64,6 @@
     transition-duration: 0.4s;
     cursor: pointer;
 }
-
-
 .gamebutton {
   background-color: #555555;
     color: white;}
@@ -74,7 +72,6 @@
     color: black;
     border: 2px solid #555555;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-
 }
 </style>
 
@@ -104,7 +101,6 @@
 
 <div id="panel" display="none";>
 <style>
-
     .SelectionButtons .button2 {
         background-color: #4CAF50; /* Green */
         border: 1px solid green;
@@ -149,7 +145,6 @@
 // Automatic Slideshow - change image every 4 seconds
 var myIndex = 0;
 carousel();
-
 function carousel() {
     var i;
     var x = document.getElementsByClassName("mySlides");
@@ -161,7 +156,6 @@ function carousel() {
     x[myIndex-1].style.display = "block";  
     setTimeout(carousel, 4000);    
 }
-
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
     var x = document.getElementById("navDemo");
@@ -171,15 +165,12 @@ function myFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-
 //main game function
 function selection() {
-
    var opponents = parseInt(prompt("How many opponents would you like to play against (1-4)?"));
    
    //Check that user selected between 1 and 4 opponents
    if (opponents != null && opponents >= 1 && opponents < 5){
-   		//document.getElementById("test").innerHTML = "You have added " + opponents + " AI players.";
    		alert("You have added " + opponents + " AI players.");
    		
    		//total players = AI players + one human player.
@@ -194,7 +185,6 @@ function selection() {
    }
    
 }
-
 //CURRENT PROBLEM: arrays/arraylists created in Java methods seem to be treated as a string and divided into array slots character
 // by character
 function playGame(numPlayers){
@@ -202,7 +192,7 @@ function playGame(numPlayers){
 	var playerArray = []; //stores info for each player
 	var deck = []; //stores all cards
 	
-	//populate playerArray by calling setUpPlayer method in REST API class
+	//populate playerArray by calling setUpPlayers method in REST API class
 	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/setUpPlayers?numPlayers="+numPlayers);
 						
 	if (!xhr1) {
@@ -211,7 +201,10 @@ function playGame(numPlayers){
 	
 	xhr1.onload = function(e) {
 		playerArray = xhr1.response;
-		alert(playerArray)
+		var jsonObj = JSON.parse(playerArray);
+		var str = jsonObj[0].deckSize;
+		
+		alert(str)
 	};
 	
 	xhr1.send();
@@ -225,13 +218,51 @@ function playGame(numPlayers){
 	
 	xhr2.onload = function(e) {
 		deck = xhr2.response;
-		alert(deck);
-	};
+		var jsonObj2 = JSON.parse(deck);
+		
+		console.log(jsonObj2);
+		
+		var str = jsonObj2.length;
+		
+		alert(str);
+		
+		
+		//Split deck based on number of players
+		var arrayOfHands = [];
+		
+		for (var i = 0; i < numPlayers; i++); {
+			arrayOfHands[i] = []; //array of arrays: each array is a player's hand
+		}
+		
+		var max = jsonObj2.length/numPlayers; //max = the maximum hand size
+		var count = 0; //will keep track of when to increment to next player's hand
+		
+		for (var i = 0; i < numPlayers; i++){
+			for (var j = 0; j < jsonObj2.length; j++){
+				arrayOfHands[i][j] = jsonObj2[j];
+				count++;
+				
+				if (count = max){
+					i++;
+					count = 0;
+				}
+			}
+		}
+
+//		for (var i = 0; i < jsonObj2.length; i++){
+//			arrayOfHands[i%numPlayers][i-(i%numPlayers)] = jsonObj2[i];
+//		}
+		
+		console.log(arrayOfHands[0]);
+
+	}
 	
 	xhr2.send();
-		
-   }
-
+	
+}
+   
+   
+   
 </script>
 
     	<div class="container">
@@ -244,7 +275,6 @@ function playGame(numPlayers){
 		
 			// Method that is called on page load
 			function initalize() {
-
 				// You can call other methods you want to run when the page first loads here
 				
 			}
@@ -257,7 +287,6 @@ function playGame(numPlayers){
 			
 			//not sure if this is necessary
 			function splitDeck(numPlayers, gameDeck) {
-
 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/splitDeck?numPlayers="+opponents);
 							
 				if (!xhr) {
@@ -276,23 +305,17 @@ function playGame(numPlayers){
 			function createCORSRequest(method, url) {
   				var xhr = new XMLHttpRequest();
   				if ("withCredentials" in xhr) {
-
     				// Check if the XMLHttpRequest object has a "withCredentials" property.
     				// "withCredentials" only exists on XMLHTTPRequest2 objects.
     				xhr.open(method, url, true);
-
   				} else if (typeof XDomainRequest != "undefined") {
-
     				// Otherwise, check if XDomainRequest.
     				// XDomainRequest only exists in IE, and is IE's way of making CORS requests.
     				xhr = new XDomainRequest();
     				xhr.open(method, url);
-
  				 } else {
-
     				// Otherwise, CORS is not supported by the browser.
     				xhr = null;
-
   				 }
   				 return xhr;
 			}
@@ -312,7 +335,6 @@ function playGame(numPlayers){
 				if (!xhr) {
   					alert("CORS not supported");
 				}
-
 				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
 				// to do when the response arrives 
 				xhr.onload = function(e) {
@@ -334,7 +356,6 @@ function playGame(numPlayers){
 				if (!xhr) {
   					alert("CORS not supported");
 				}
-
 				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
 				// to do when the response arrives 
 				xhr.onload = function(e) {
@@ -345,7 +366,6 @@ function playGame(numPlayers){
 				// We have done everything we need to prepare the CORS request, so send it
 				xhr.send();		
 			}
-
 		</script>
 		
 		</body>

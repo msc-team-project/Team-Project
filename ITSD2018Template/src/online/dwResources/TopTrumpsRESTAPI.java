@@ -58,19 +58,17 @@ public class TopTrumpsRESTAPI {
 	// ----------------------------------------------------
 	// Add relevant API methods here
 	// ----------------------------------------------------
-
 	
-	
+	/*
+	@GET
+	@Path("/helloJSONList")
 	/**
 	 * Here is an example of a simple REST get request that returns a String.
 	 * We also illustrate here how we can convert Java objects to JSON strings.
 	 * @return - List of words as JSON
 	 * @throws IOException
 	 */
-	
 	/*
-	@GET
-	@Path("/helloJSONList")
 	public String helloJSONList() throws IOException {
 		
 		List<String> listOfWords = new ArrayList<String>();
@@ -83,21 +81,6 @@ public class TopTrumpsRESTAPI {
 		
 		return listAsJSONString;
 	}*/
-	
-	@GET
-	@Path("/playGame")
-	public void playGame() 
-	{
-		
-	}
-	
-	@GET
-	@Path("/quitGame")
-	public String quitGame() 
-	{
-		String quitMessage = "You have ended the game.";
-		return quitMessage;
-	}
 	
 	//Will be called from playGame(), rather than being called directly from GameScreen
 	@GET
@@ -156,16 +139,8 @@ public class TopTrumpsRESTAPI {
 		return players;
 	}
 	
-	//Method to divide the deck based on number of players
-	@GET
-	@Path("/splitDeck")
-	public void splitDeck(@QueryParam("numPlayers") int numPlayers) 
-	{
-		
-	}
 	
-	
-	
+	/*
 	@GET
 	@Path("/helloWord")
 	/**
@@ -174,8 +149,8 @@ public class TopTrumpsRESTAPI {
 	 * @return - A String
 	 * @throws IOException
 	 */
+	/*
 	public String helloWord(@QueryParam("Word") String Word) throws IOException {
 		return "Hello "+Word;
-	}
-	
+	}*/
 }
