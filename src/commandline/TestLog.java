@@ -194,6 +194,13 @@ public class TestLog {
 		log += String.format("%n");
 	}
 	
+
+	
+	public void logUserQuit(){
+		log += "USER QUITS";
+		lineBreak();
+	}
+	
 	//writes the log to file
 	//call this at the end of the game
 	public void writeLog(){

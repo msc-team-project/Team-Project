@@ -16,13 +16,13 @@ public class HumanPlayer extends Player{
 		{
 			//checks that the input is one of the card's attribute names
 			System.out.println(message);
-			att = TopTrumpsCLIApplication.scanner.next();
+			att = TopTrumpsCLIApplication.scanner.nextLine();
 			for(String s : atts)
 			{
 				if(att.toLowerCase().equals(s))
 					valid = true;
 				else if (att.equals("quit") || att.equals("exit"))
-					System.exit(0);
+					return "exit";
 			}
 			message = "Select an attribute or type \'quit\' to quit";
 		}		

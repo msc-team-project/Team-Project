@@ -131,6 +131,16 @@ public class TopTrumpsCLIApplication
 			{
 				System.out.println("Your Turn");
 				attribute = currentPlayer.pickAttribute();
+				if(attribute.equals("exit"))
+				{
+					if(writeGameLogsToFile)
+					{
+						log.logUserQuit();
+						log.writeLog();
+					}
+					userWantsToQuit = true;
+					continue;
+				}
 			} 
 			else
 			{
@@ -246,11 +256,8 @@ public class TopTrumpsCLIApplication
 			}
 			else // start a new game
 			{
-				// build new deck and shuffle, and make a new communal deck
-				
-//				deck = buildDeck();
-//				communalDeck = new ArrayList<Card>();
-//				Collections.shuffle(deck);				
+				//reset the communal deck
+				communalDeck = new ArrayList<Card>();			
 				round = 0; // reset round counter (will be incremented to 1 at the start of Round 1)
 				draws = 0; // reset draw counter
 				
