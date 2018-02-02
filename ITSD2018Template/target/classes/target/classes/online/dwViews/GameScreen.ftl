@@ -1,46 +1,29 @@
 <html>
+<title>Game of Top Trumps</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+body {font-family: "Lato", sans-serif}
 
-	<head>
-		<!-- Web page title -->
-    	<title>Top Trumps</title>
-    	
-    	<!-- Import JQuery, as it provides functions you will probably find useful (see https://jquery.com/) -->
-    	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
-    	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-    	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/flick/jquery-ui.css">
+</style>
+<body>/
 
-
-		<!-- Optional Styling of the Website, for the demo I used Bootstrap (see https://getbootstrap.com/docs/4.0/getting-started/introduction/) -->
-		<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/TREC_IS/bootstrap.min.css">
-    	<script src="http://dcs.gla.ac.uk/~richardm/vex.combined.min.js"></script>
-    	<script>vex.defaultOptions.className = 'vex-theme-os';</script>
-    	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex.css"/>
-    	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<style>
-	body {font-family: "Lato", sans-serif}
-	.mySlides {display: none}
-	</style>
-
-	</head>
-
-    <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
-	<!-- Navbar -->
-	<div class="w3-top">
-  	<div class="w3-bar w3-black w3-card">
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"  onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="http://localhost:7777/toptrumps/" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SELECTION SCREEN</a>
+    <a href="http://localhost:7777/toptrumps" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SELECTION SCREEN</a>
     <a href="#statistics" class="w3-bar-item w3-button w3-padding-large w3-hide-small">GAME STATISTICS</a>
- 	</div>
-	</div>
-	<!-- Navbar on small screens -->
+    
+   
+  </div>
+</div>
+
+<!-- Navbar on small screens -->
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
   <a href="#about" class="w3-bar-item w3-button w3-padding-large">ABOUT</a>
   <a href="#statistics" class="w3-bar-item w3-button w3-padding-large">GAME STATISTICS</a>
@@ -58,7 +41,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 25px;
     margin: 4px 2px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -69,7 +52,7 @@
 .gamebutton {
   background-color: #555555;
     color: white;}
- 	.gamebutton:hover {
+.gamebutton:hover {
     background-color: white;
     color: black;
     border: 2px solid #555555;
@@ -77,63 +60,150 @@
 
 }
 </style>
-
+	
 <!-- Page content -->
-<div class="w3-content" style="max-width:2000px;margin-top:46px">
+<div class="w3-content" style="max-width:2000px;margin-top:46px" >
 
-  <!-- Automatic Slideshow Images + Play Game Buttons -->
-  <div class="mySlides w3-display-container w3-center">
-    <img src="https://static.gamespot.com/uploads/original/536/5360430/3141756-screenshot0034.jpg" style="width:100%">
-    <div class="w3-display-middle w3-container w3-text-white w3-padding-32 w3-hide-small">
-        <button onClick="selection()"class="button gamebutton" id = "test"> PLAY GAME</button>
+  <!-- GameScreen Image + Play Game Button -->
+  <div class="w3-display-container w3-center" id="main" >
+    <img src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" id="first" style="width:100%">
+    <div class="w3-display-middle w3-container w3-text-white w3-padding-32 w3-hide-medium">
+        <button class="button gamebutton"  id = "gamebutton" style="position:relative; bottom:50px">PLAY GAME</a> </button>
     </div>
   </div>
-  <div class="mySlides w3-display-container w3-center">
-    <img src="http://cdn.player.one/sites/player.one/files/2017/07/29/star-citizen.jpg" style="width:100%">
-    <div class="w3-display-middle w3-container w3-text-white w3-padding-32 w3-hide-small">
-        <button onClick="selection()"class="button gamebutton" id = "test">PLAY GAME</button>
-    </div>
+    
+<div class="w3-display-container w3-center" id="second" style="display: none" >
+    <img src="https://cdn4.dualshockers.com/wp-content/uploads/2017/07/StarCitizen.jpg" style="width:100%">
   </div>
-  <div class="mySlides w3-display-container w3-center">
-    <img src="https://pbs.twimg.com/profile_background_images/465902012693880832/689CCtW2.jpeg" style="width:100%">
-    <div class="w3-display-middle w3-container w3-text-white w3-padding-32 w3-hide-small">
-        <button onClick="selection()" class="button gamebutton" id = "test" > PLAY GAME </button>
-    </div>
-  </div>
-
-
-<div id="panel" display="none";>
-<style>
-
-    .SelectionButtons .button2 {
-        background-color: #4CAF50; /* Green */
-        border: 1px solid green;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        cursor: pointer;
-        width: 150px;
-        display: block;
-    }
-    
-    .SelectionButtons .button2:not(:last-child) {
-        border-bottom: none; /* Prevent double borders */
-    }
-    
-    .SelectionButtons.button2:hover {
-        background-color: #3e8e41;
-    }
-    </style>
-    
-</div >
-
-<!-- End Page Content -->
 </div>
 
+
+
+    <!-- GameCard Section -->
+<style>
+.wrapper.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 450px;
+  max-width: 300px;
+  border: 20px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+#ship{
+min-height:33%;
+
+}
+
+.btn-group button {
+	border: none;
+  	outline: 0;
+	display: inline-block;
+  	color: white;
+  	background-color: #000;
+  	text-align: center;
+  	cursor: pointer;
+  	width: 100%;
+  	min-height:10.5%;
+  	font-size: 18px;
+    
+  } 
+  
+.btn-group button:not(:last-child) {
+    border-bottom: none; 
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+    
+</style>
+
+<div class="w3-display-container w3-center" id="card" style="display: none">
+    <h2 style="text-align:center">Your Top Card</h2>
+<div class="wrapper card">
+  <img id= "ship" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="John" style="width:100%">
+  <h2 id="shipname"></h2>
+ <div class="btn-group">
+    <button  id="size" onclick="attributeSelected(id)">	</button>
+     <button  id="speed"></button>
+     <button  id="range"></button>
+     <button  id="firepower"></button>
+     <button  id="cargo"> </button>	 
+   </div>
+</div>
+</div>
+
+
+// Testing next card function
+
+<div>
+<div id="theCount"></div>
+//initialize variable i
+
+<button onclick="ButtonClick()"  id="next" > 0 </button>
+<input type="hidden" id="hiddenVal" value="0">
+</div>
+
+
+<script>
+var i = 0;
+var newDeck = [];
+function ButtonClick(){
+	i++; 	
+	topcard(newDeck, i);
+}
+
+</script>
+	
+
+
+	
+
+
+
+
+
+ $(document).ready(function(){
+    $(".btn-group").click(function(){
+    		$('#card').hide()
+        });
+       });
+    
+    		
+            
+</script>
+
+<!-- Selection buttons -->
+<div id="selection buttons">
+<div class="w3-display-topmiddle w3-container w3-text-white w3-padding-32 w3-hide-small" style="display: none" id="title">
+    <h1 style="position: relative; top: 300px" >Select Number of AI Opponents</h1>
+</div>
+
+<div class="w3-display-middle w3-container w3-text-white w3-padding-32 w3-hide-small" style="display: none" id="panel">
+ 
+    <button id="click1" onclick="selection1()" class="button gamebutton select" >1</button>
+    <button id="click2" onclick="selection2()" class="button gamebutton select" >2</button>
+    <button id="click3" onclick="selection3()" class="button gamebutton select" >3</button>
+    <button id="click4" onclick="selection4()" class="button gamebutton select" >4</button>
+    
+</div >
+</div>
+
+
+
+
+
+
+
+
+
+<!-- End Page Content -->
+
+
 <!-- Footer -->
+<div>
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-large" >
 <p> Game created by Team 13:</p> 
 <ul class="w3-ul w3-center">
@@ -144,23 +214,9 @@
     <li> Jaroslav Sak <em>(StudentID)</em></li>
 </ul>
 </footer>
+</div>
 
 <script>
-// Automatic Slideshow - change image every 4 seconds
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 4000);    
-}
 
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
@@ -171,40 +227,171 @@ function myFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+//to remove intro image 
+ 	   $(document).ready(function(){
+        $('#gamebutton').click(function(){
+            $(this).replaceWith($('#panel'))
+          $("#first").replaceWith($('#second'))
+            $('#second').show()
+           $('#title').show()
+            $('#panel').show()
+     });
+  });
 
-function selection() {
-   //document.getElementsByClassName("button gamebutton");
-   var opponents = parseInt(prompt("How many opponents would you like to play against (1-4)?"));
+
+   $(document).ready(function(){
+    $("button.button.gamebutton.select").click(function(){
+    		$('#main' ).hide()
+            $('#title' ).hide()
+            $('#card').show()
+            $('.ship').show()
+
+    }); 
+   });
+
+
+
+
+//main game function
+function selection1() {
+    var opp  = parseInt(document.getElementById("click1").innerHTML);
+	select_opponents(opp);
+}
+function selection2() {
+    var opp  = parseInt(document.getElementById("click2").innerHTML);
+	select_opponents(opp);
+}
+function selection3() {
+    var opp  = parseInt(document.getElementById("click3").innerHTML);
+	select_opponents(opp);
+}
+function selection4() {
+    var opp  = parseInt(document.getElementById("click4").innerHTML);
+	select_opponents(opp);
+}
    
-   
-   if (opponents != null && opponents >= 1 && opponents < 5){
+   //Check that user selected between 1 and 4 opponents
+
+var numPlayers = 0;
+      
+function select_opponents(opp){
+var opponents = opp;
+  if (opponents != null && opponents >= 1 && opponents < 5){
    		//document.getElementById("test").innerHTML = "You have added " + opponents + " AI players.";
-   		alert("You have added " + opponents + " AI players.");
+   		//alert("You have added " + opponents + " AI players.");
    		
    		//total players = AI players + one human player.
-   		var numPlayers = opponents + 1;
-   		alert("Total number of players (inc. human): " + numPlayers)
+   		numPlayers = opponents + 1;
+   		//alert("Total number of players (inc. human): " + numPlayers)
    		
-   		var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/setUpPlayers?numPlayers="+numPlayers);
-							
-		if (!xhr) {
-			alert("CORS not supported");
-		}
-		
-		xhr.onload = function(e) {
-			var playerArray = xhr.response;
-			alert(playerArray); //for some reason, there are 19 players. Probably need to fix this.
-		};
-		
-		xhr.send();
-   		
-   		//decide what to do next
+   		//Start game
+   		playGame(numPlayers);
 		
    } else{
    		alert("You must add between 1 and 4 opponents to play the game.");
    }
 }
 
+
+function playGame(numPlayers){
+			
+	var playerArray = []; //stores info for each player
+	var deck = []; //stores all cards
+	
+	//populate playerArray by calling setUpPlayer method in REST API class
+	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/setUpPlayers?numPlayers="+numPlayers);
+						
+	if (!xhr1) {
+		alert("CORS not supported");
+	}
+	
+
+	xhr1.onload = function(e) {
+		playerArray = xhr1.response;
+		var jsonObj = JSON.parse(playerArray);
+		console.log(jsonObj[0]);
+	}
+	
+	
+	xhr1.send();
+	deckArray(deck, i);
+	}
+
+
+
+function deckArray(deck, i){
+	
+	//build deck by calling relevant REST API method
+	var xhr2 = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
+	
+	
+	
+	
+	if (!xhr2) {
+		alert("CORS not supported");
+	}
+
+	xhr2.onload = function(e) {
+		
+		deck = xhr2.response;
+		newDeck = JSON.parse(deck);
+		console.log(newDeck);
+		topcard(newDeck, i);
+		deckSplit();
+	};
+	
+	
+	
+	xhr2.send();
+	}
+	
+var arrayOfHands;
+
+function deckSplit(){
+arrayOfHands = new Array();
+	for (var j = 0; j < numPlayers; j++) {
+	   arrayOfHands.push(new Array()); //array of arrays: each array is a player's hand
+	}
+	var cardCount = newDeck.length;
+	var player = 0;
+	console.log(arrayOfHands);
+	for (var j = 0; j < cardCount; j++) {
+	    arrayOfHands[player].push(newDeck[j]);
+	    player++;
+	    if (player == numPlayers) {
+	        player = 0;
+	    }
+	}
+	console.log(arrayOfHands);
+}
+
+	
+ 
+
+function topcard(deck, i){
+			console.log(i);
+			var card = newDeck[i];
+			var shipname = (JSON.stringify(card.description)).slice(1,-1);
+			var size = JSON.stringify(card.size);
+			var speed = JSON.stringify(card.speed);
+			var range = JSON.stringify(card.range);
+		 	var firepower = JSON.stringify(card.firepower);
+			var cargo = JSON.stringify(card.cargo);
+			document.getElementById("ship").src="http://dcs.gla.ac.uk/~richardm/TopTrumps/"+shipname+".jpg";
+			document.getElementById("shipname").innerHTML=shipname;
+			document.getElementById("size").innerHTML="Size_________________________"+size;
+			document.getElementById("speed").innerHTML="Speed____________________"+speed;
+			document.getElementById("range").innerHTML="Range____________________"+range;
+			document.getElementById("firepower").innerHTML="Firepower________________"+firepower;
+			document.getElementById("cargo").innerHTML="Cargo_______________________"+cargo;
+			}
+		
+
+function attributeSelected(id){
+	alert(id);
+}
+  
+   
 </script>
 
     	<div class="container">
@@ -217,7 +404,6 @@ function selection() {
 		
 			// Method that is called on page load
 			function initalize() {
-
 				// You can call other methods you want to run when the page first loads here
 				
 			}
@@ -226,13 +412,10 @@ function selection() {
 			// Add your other Javascript methods Here
 			// -----------------------------------------
 			
-			function playGame(numPlayers){
-				var deck = buildDeck(numPlayers);
-			}
+			
 			
 			//not sure if this is necessary
 			function splitDeck(numPlayers, gameDeck) {
-
 				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/splitDeck?numPlayers="+opponents);
 							
 				if (!xhr) {
@@ -246,45 +429,22 @@ function selection() {
 				xhr.send();
 	
 			}
-			
-			//Calls method to build deck in REST API class
-			function buildAndSplit(numPlayers) {
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
-				
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-				
-				xhr.onload = function(e) {
- 					var gameDeck = xhr.response;
- 					
- 					//split deck?
-				};
-				
-				xhr.send();
-			}
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
   				var xhr = new XMLHttpRequest();
   				if ("withCredentials" in xhr) {
-
     				// Check if the XMLHttpRequest object has a "withCredentials" property.
     				// "withCredentials" only exists on XMLHTTPRequest2 objects.
     				xhr.open(method, url, true);
-
   				} else if (typeof XDomainRequest != "undefined") {
-
     				// Otherwise, check if XDomainRequest.
     				// XDomainRequest only exists in IE, and is IE's way of making CORS requests.
     				xhr = new XDomainRequest();
     				xhr.open(method, url);
-
  				 } else {
-
     				// Otherwise, CORS is not supported by the browser.
     				xhr = null;
-
   				 }
   				 return xhr;
 			}
@@ -304,7 +464,6 @@ function selection() {
 				if (!xhr) {
   					alert("CORS not supported");
 				}
-
 				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
 				// to do when the response arrives 
 				xhr.onload = function(e) {
@@ -326,7 +485,6 @@ function selection() {
 				if (!xhr) {
   					alert("CORS not supported");
 				}
-
 				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
 				// to do when the response arrives 
 				xhr.onload = function(e) {
@@ -337,8 +495,8 @@ function selection() {
 				// We have done everything we need to prepare the CORS request, so send it
 				xhr.send();		
 			}
-
 		</script>
 		
 		</body>
+
 </html>
