@@ -281,12 +281,9 @@ var numPlayers = 0;
 function select_opponents(opp){
 var opponents = opp;
   if (opponents != null && opponents >= 1 && opponents < 5){
-   		//document.getElementById("test").innerHTML = "You have added " + opponents + " AI players.";
-   		//alert("You have added " + opponents + " AI players.");
-   		
+ 
    		//total players = AI players + one human player.
    		numPlayers = opponents + 1;
-   		//alert("Total number of players (inc. human): " + numPlayers)
    		
    		//Start game
    		playGame(numPlayers);
@@ -296,6 +293,7 @@ var opponents = opp;
    }
 }
 
+var allPlayers; //stores players
 
 function playGame(numPlayers){
 			
@@ -312,13 +310,14 @@ function playGame(numPlayers){
 
 	xhr1.onload = function(e) {
 		playerArray = xhr1.response;
-		var jsonObj = JSON.parse(playerArray);
-		console.log(jsonObj[0]);
+		allPlayers = JSON.parse(playerArray);
+		console.log(allPlayers[0]);
 	}
 	
 	
 	xhr1.send();
-	deckArray(deck, i);
+	
+	deckArray(deck, i); //call function to populate deck array
 	}
 
 
@@ -327,9 +326,6 @@ function deckArray(deck, i){
 	
 	//build deck by calling relevant REST API method
 	var xhr2 = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
-	
-	
-	
 	
 	if (!xhr2) {
 		alert("CORS not supported");
@@ -392,8 +388,6 @@ function topcard(deck, i){
   
   
   function processSelection(id, i, deck){
-  
-  		alert(id);
   		
   		var card = deck[i];
  
@@ -406,11 +400,46 @@ function topcard(deck, i){
 		var attributes = [size, speed, range, firepower, cargo];
 		var stringAttributes = ["size", "speed", "range", "firepower", "cargo"];
 		
+		var humanChoice; //will store the value of the attribute chosen by the human player
+		
 		for (var i = 0; i < 5; i++){
 			if (id == stringAttributes[i]){
-				alert(attributes[i]); //WILL STORE ATTRIBUTES[I] AS A VARIABLE, TO BE COMPARED TO AI PLAYER CARDS
+				humanChoice = attributes[i]; //human player's choice = value of item in array which matches button id
+				alert(humanChoice);
 			} 
 		}
+		
+		aiChoice(arrayOfHands, allPlayers);
+		compareAttributes(humanChoice, allPlayers);
+  }
+  
+  //will generate attribute choice of each AI player
+  function aiChoice(arrayOfHands, allPlayers){
+  
+  	var xhr3 = createCORSRequest('GET', "http://localhost:7777/toptrumps/aiChoice");
+	
+	if (!xhr3) {
+		alert("CORS not supported");
+	}
+
+	xhr3.onload = function(e) {
+		
+	};
+	
+	
+	
+	xhr3.send();
+  }
+  
+  //will generate AI's choices and compare them to human player's choice
+  function compareAttributes(humanChoice, allPlayers){
+  
+  		//generate AI player's choice
+  		
+  
+  		alert(humanChoice);
+  		alert(allPlayers);
+  
   }
    
 </script>

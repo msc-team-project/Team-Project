@@ -145,30 +145,28 @@ public class TopTrumpsRESTAPI {
 		
 		return players;
 	}
+	
 	/*
-	public String pickAttribute() {
-		String att = "";
+	@GET
+	@Path("/aiChoice")
+	public String aiChoice() {
 		String[] atts = cardInPlay.getAttributes();
-		boolean valid = false;
-		String message = "Select attribute: ";
-		while(!valid)
+		int[] values = {cardInPlay.getSize(), cardInPlay.getSpeed(), cardInPlay.getRange(), cardInPlay.getFirepower(), cardInPlay.getCargo()};
+		String att = "";
+	
+		int max = 0;
+		for(int i = 0; i < 5; i++)
 		{
-			//checks that the input is one of the card's attribute names
-			System.out.println(message);
-			att = TopTrumpsCLIApplication.scanner.next();
-			for(String s : atts)
+			int value = values[i];
+			if(value > max)
 			{
-				if(att.toLowerCase().equals(s))
-					valid = true;
-				else if (att.equals("quit") || att.equals("exit"))
-					System.exit(0);
+				max = value;
+				att = atts[i];
 			}
-			message = "Select an attribute or type \'quit\' to quit";
-		}		
-		//returns the attribute as a String
+		}
 		return att;
-	}
-	*/
+	}*/
+	
 	
 	/*
 	@GET
