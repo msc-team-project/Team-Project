@@ -146,12 +146,12 @@ public class TopTrumpsRESTAPI {
 		return players;
 	}
 	
-	/*
+	//Will alter to take attribute chosen by player, and just return that (side issue: method not successfully returning anything)
 	@GET
 	@Path("/aiChoice")
-	public String aiChoice() {
-		String[] atts = cardInPlay.getAttributes();
-		int[] values = {cardInPlay.getSize(), cardInPlay.getSpeed(), cardInPlay.getRange(), cardInPlay.getFirepower(), cardInPlay.getCargo()};
+	public String aiChoice(@QueryParam("aiCard") Card aiCard) {
+		String[] atts = aiCard.getAttributes();
+		int[] values = {aiCard.getSize(), aiCard.getSpeed(), aiCard.getRange(), aiCard.getFirepower(), aiCard.getCargo()};
 		String att = "";
 	
 		int max = 0;
@@ -165,7 +165,7 @@ public class TopTrumpsRESTAPI {
 			}
 		}
 		return att;
-	}*/
+	}
 	
 	
 	/*
