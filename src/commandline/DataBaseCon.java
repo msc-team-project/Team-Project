@@ -20,19 +20,19 @@ public class DataBaseCon
 		connect();
 		Statement stmt = null;
 		
-		int playerWins = players.get(0).roundsWon;
-		int ai1Wins = players.get(1).roundsWon;
+		int playerWins = players.get(0).getRoundsWon();
+		int ai1Wins = players.get(1).getRoundsWon();
 		
 		String ai2wins = "NULL";
 		String ai3wins = "NULL";
 		String ai4wins = "NULL";
 		
 		if(players.size() > 2)
-			ai2wins = Integer.toString(players.get(2).roundsWon);
+			ai2wins = Integer.toString(players.get(2).getRoundsWon());
 		if(players.size() > 3)
-			ai3wins = Integer.toString(players.get(3).roundsWon);
+			ai3wins = Integer.toString(players.get(3).getRoundsWon());
 		if(players.size() > 4)
-			ai4wins = Integer.toString(players.get(4).roundsWon);
+			ai4wins = Integer.toString(players.get(4).getRoundsWon());
 		
 		String query = String.format("INSERT INTO toptrumps.gamedata (gamewinner, numberrounds, humanroundwins, ai1wins, ai2wins, ai3wins, ai4wins, numberdraws) "
 				+ "VALUES ('%s', %d, %d, %d, %s, %s, %s, %d)", winner, rounds, playerWins, ai1Wins, ai2wins, ai3wins, ai4wins, draws);
