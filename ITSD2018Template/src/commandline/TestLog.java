@@ -21,11 +21,12 @@ public class TestLog {
 		log = "";
 	}
 	
-	//logs "The contents of the complete deck once it has been read in and constructed"
-	//and "The contents of the complete deck after it has been shuffled"
-	//
-	//call this with the deck and shuffled = false after the deck has been read from file
-	//call this with the deck and shuffled = true after the deck has been shuffled
+	/**
+	 * logs "The contents of the complete deck once it has been read in and constructed"
+	 * and "The contents of the complete deck after it has been shuffled"
+	 * @param deck the complete game deck
+	 * @param shuffled whether the deck has been shuffled
+	 */
 	public void logDeck(ArrayList<Card> deck, boolean shuffled)
 	{
 		if(!shuffled)
@@ -39,13 +40,12 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//"The contents of the user’s deck and the computer’s deck(s) once they have been allocated. Be sure to
-	//indicate which the user’s deck is and which the computer’s deck(s) is."
-	//and
-	//"The contents of each deck after a round"
-	//
-	//call this after divideDeck() and at the end of each round
-	//the arraylist of players should be given as the parameter
+	/**
+	 * logs "The contents of the user’s deck and the computer’s deck(s) once they have been allocated."
+	 * and "which the user’s deck is and which the computer’s deck(s) is."<br>
+	 * Should be called after divideDeck() and at the end of each round
+	 * @param players the arraylist of players
+	 */
 	public void logAllocatedDecks(ArrayList<Player> players)
 	{
 		log += String.format("ALLOCATED DECKS%n%n");
@@ -65,9 +65,12 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//"The contents of the communal pile when cards are added or removed from it"
-	//when cards are added
-	//call this after a round draw
+	/**
+	 * Logs "The contents of the communal pile when cards are added"
+	 * <br> Call this after a round draw
+	 * @param cardsInPlay
+	 * @param communalDeck
+	 */
 	public void logCommnalDeck(ArrayList<Card> cardsInPlay, ArrayList<Card> communalDeck){
 		log += String.format("%nCOMMUNAL DECK UPDATED%n");
 		for(Card c : cardsInPlay)
@@ -79,17 +82,21 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//"The contents of the communal pile when cards are added or removed from it"
-	//when cards are removed
-	//call this after a round won if there are cards in the communal deck
+	/**
+	 * Logs "The contents of the communal pile when cards are removed"
+	 * <br> Call this after a round won if there are cards in the communal deck
+	 */
 	public void logCommunalDeck()
 	{
 			log += String.format("%nCOMMUNAL DECK UPDATED%nCOMMUNAL DECK NOW EMPTY");
 			lineBreak();
 	}
 	
-	//"The contents of the current cards in play"
-	//call this after playNextHand()
+	/**
+	 * Logs "The contents of the current cards in play"
+	 * <br> Call this after playNextHand()
+	 * @param cardsInPlay
+	 */
 	public void logCardsInPlay(ArrayList<Card> cardsInPlay)
 	{
 		log += String.format("%nCARDS IN PLAY%n");
@@ -102,6 +109,13 @@ public class TestLog {
 	
 	//"The category selected and corresponding values when a user or computer selects a category"
 	//call this after a player selects an attribute
+	/**
+	 * Logs "The category selected and corresponding values when a user or computer selects a category"
+	 * <br> Call this after a player selects an attribute
+	 * @param player
+	 * @param attribute
+	 * @param cardsInPlay
+	 */
 	public void logSelection(Player player, String attribute, ArrayList<Card> cardsInPlay)
 	{
 		if(player instanceof HumanPlayer)
@@ -118,7 +132,10 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//logs when a player is eliminated from the game
+	/**
+	 * Logs when a player is eliminated from the game
+	 * @param p The eliminated player
+	 */
 	public void logEliminatedPlayer(Player p)
 	{
 		if(p instanceof HumanPlayer)
@@ -131,7 +148,7 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//log "The winner of the game"
+	/** Logs the winner of the game */
 	public void logGameWinner(Player p){
 		if(p instanceof HumanPlayer)
 			log += String.format("%nUSER WINS GAME");
@@ -143,7 +160,7 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//log the winner of a round
+	/** Logs the winner of a round */
 	public void logRoundWinner(Player player, int round){
 		if(player instanceof HumanPlayer)
 			log += String.format("%nUSER WINS ROUND %d", round);
@@ -155,7 +172,7 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//logs a round draw
+	/** Logs a round draw */
 	public void logRoundDraw(ArrayList<Player> winners, int round){
 		log += String.format("ROUND %d DRAW BETWEEN ", round);
 		int i = 0;
@@ -172,20 +189,23 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//logs a game draw if there are no winners
+	/** Logs a game draw if there are no winners */
 	public void logWinner(){
 		log += String.format("%nDRAW");
 		lineBreak();
 	}
 	
-	//log each round number
-	//call this at the beginning of each round before the cards are played
+
+	/** Logs each round number
+	 * <br> Call this at the beginning of each round before the cards are played
+	 * @param round the round number
+	 */
 	public void logRound(int round){
 		log += String.format("ROUND %d", round);
 		lineBreak();
 	}
 	
-	//separates log entries with dashed line
+	/** separates log entries with dashed line */
 	private void lineBreak()
 	{
 		log += String.format("%n");
@@ -194,15 +214,21 @@ public class TestLog {
 		log += String.format("%n");
 	}
 	
-	//writes the log to file
-	//call this at the end of the game
+
+	/** Logs a user quit */
+	public void logUserQuit(){
+		log += "USER QUITS";
+		lineBreak();
+	}
+	
+	/** writes the log to file */
 	public void writeLog(){
 		try
 		{
 			FileWriter writer = new FileWriter("toptrumps.log");
 			writer.write(log);
 			writer.close();
-			System.out.println("log saved to toptrumps.log");
+			System.out.println("toptrumps.log updated");
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block

@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 import javax.ws.rs.Consumes;
@@ -18,6 +16,8 @@ import javax.ws.rs.core.MediaType;
 
 import online.configuration.TopTrumpsJSONConfiguration;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
@@ -25,7 +25,6 @@ import commandline.AIPlayer;
 import commandline.Card;
 import commandline.HumanPlayer;
 import commandline.Player;
-import commandline.TopTrumpsCLIApplication;
 
 @Path("/toptrumps") // Resources specified here should be hosted at http://localhost:7777/toptrumps
 @Produces(MediaType.APPLICATION_JSON) // This resource returns JSON content
@@ -88,7 +87,7 @@ public class TopTrumpsRESTAPI {
 	//Will be called from playGame(), rather than being called directly from GameScreen
 	@GET
 	@Path("/buildDeck")
-	public ArrayList<Card> buildDeck() {
+	public String buildDeck() {
 		//reads in the deck from the txt file
 		ArrayList<Card> deck = new ArrayList<Card>();
 		try
@@ -111,12 +110,11 @@ public class TopTrumpsRESTAPI {
 			}
 			reader.close();
 			//return the built deck as and arraylist of cards
-			//String deckString = oWriter.writeValueAsString(deck);
+			String deckString = oWriter.writeValueAsString(deck);
 			
-			//shuffle deck
-			Collections.shuffle(deck);
+			System.err.println(deckString);
 			
-			return deck;
+			return deckString;
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -149,9 +147,15 @@ public class TopTrumpsRESTAPI {
 	//Will alter to take attribute chosen by player, and just return that (side issue: method not successfully returning anything)
 	@GET
 	@Path("/aiChoice")
-	public String aiChoice(@QueryParam("aiCard") Card aiCard) {
-		String[] atts = aiCard.getAttributes();
-		int[] values = {aiCard.getSize(), aiCard.getSpeed(), aiCard.getRange(), aiCard.getFirepower(), aiCard.getCargo()};
+	public String aiChoice(@QueryParam("aiCard") String aiCard) throws JsonParseException, JsonMappingException, IOException {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonInString = aiCard;
+		
+		Card card = mapper.readValue(jsonInString, Card.class);
+		
+		String[] atts = card.getAttributes();
+		int[] values = {card.getSize(), card.getSpeed(), card.getRange(), card.getFirepower(), card.getCargo()};
 		String att = "";
 	
 		int max = 0;

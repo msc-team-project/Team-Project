@@ -8,7 +8,11 @@ public class Card {
 	private String description;
 	private int size, speed, range, firepower, cargo;
 	private String[] attributes;
-
+	
+	public Card()
+	{
+	}
+	
 	public Card(String parameters)
 	{
 		String[] params = parameters.split(" ");
@@ -70,5 +74,5 @@ public class Card {
 			return cargo;
 		}
 		return -1;
-	}
+	}	
 }

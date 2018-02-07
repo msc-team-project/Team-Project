@@ -220,8 +220,83 @@ $(document).ready(function(){
 	     });
 	    });
 	    
+//called when the human player selects an attribute
+function processSelection(id, i){
+	var trueID = id.slice(0, -1); //removes digit from end of ID
+  		
+  	var humanCard = arrayOfHands[0][i];
+ 
+	var size = JSON.stringify(humanCard.size);
+	var speed = JSON.stringify(humanCard.speed);
+	var range = JSON.stringify(humanCard.range);
+	var firepower = JSON.stringify(humanCard.firepower);
+	var cargo = JSON.stringify(humanCard.cargo);
+		
+	var attributes = [size, speed, range, firepower, cargo];
+	var stringAttributes = ["size", "speed", "range", "firepower", "cargo"];
+		
+	var humanChoice; //will store the value of the attribute chosen by the human player
+	var position; //sent to aiChoice method to indicate which attribute must be selected
+		
+	for (var i = 0; i < 5; i++){
+		if (trueID == stringAttributes[i]){
+			humanChoice = attributes[i]; //human player's choice = value of item in array which matches button id
+			position = i;
+			alert(humanChoice);
+		} 
+	}
+	
+	for (var j = 1; j < numPlayers; j++){
+		var k = i;
+		aiChoice(position, j, k);
+		k++;
+
+	}	
+	
+}	    
+	    
+//will generate attribute choice of each AI player, based on attribute selected by human player or another AI player
+function aiChoice(position, j, k){
+  
+  	var aiChoice; //will store the attribute value chosen by the AI player
+  	
+	var aiCard = getCurrentCard(j, i); //j specifies which player's hand will be drawn from, i specifies the card
+	console.log(aiCard);
+	
+	//Attributes of aiCard
+	var size = JSON.stringify(aiCard.size);
+	var speed = JSON.stringify(aiCard.speed);
+	var range = JSON.stringify(aiCard.range);
+ 	var firepower = JSON.stringify(aiCard.firepower);
+	var cargo = JSON.stringify(aiCard.cargo);
+	
+	//Array of attributes in same order as for human player
+	var aiAttributes = [size, speed, range, firepower, cargo];
+	
+	aiChoice = aiAttributes[position]; //position of ai choice must be same as that of human choice (because human has chosen first)
+   
+   
+   	alert(aiChoice);
+   
+  }	   
+  
+//gets card of a specified player
+function getCurrentCard(j, k){
+	
+		//j is the player, i is the card
+		var card = arrayOfHands[j][k];
+		return card;
+} 
+	    
 function attributeSelected(id){
-	processSelection(id, i, newDeck);
+	processSelection(id, i);
+}
+
+//will generate AI's choices and compare them to human player's choice
+function compareAttributes(humanChoice, aiChoice){
+
+
+
 }
 	        
 </script>
@@ -368,13 +443,11 @@ var opponents = opp;
    		alert("You must add between 1 and 4 opponents to play the game.");
    }
 }
-
 var finalPlayerList;
-
 function playGame(numPlayers){
 			
 	var playerArray = []; //stores info for each player
-	var deck = []; //stores all cards
+	var deck = [];
 	
 	//populate playerArray by calling setUpPlayer method in REST API class
 	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/setUpPlayers?numPlayers="+numPlayers);
@@ -386,6 +459,9 @@ function playGame(numPlayers){
 	xhr1.onload = function(e) {
 		playerArray = xhr1.response;
 		var jsonObj = JSON.parse(playerArray);
+		
+		//SHOULD CHOOSE FIRST PLAYER HERE-------------------------------
+		
 		finalPlayerList = jsonObj;
 		console.log(jsonObj[0].name);
 	}
@@ -451,6 +527,8 @@ function topcard(arrayOfHands){
 				var range = JSON.stringify(card.range);
 			 	var firepower = JSON.stringify(card.firepower);
 				var cargo = JSON.stringify(card.cargo);
+				
+				//Put in GUI
 				document.getElementById("ship"+j).src="http://dcs.gla.ac.uk/~richardm/TopTrumps/"+shipname+".jpg";
 				document.getElementById("shipname"+j).innerHTML=shipname;
 				document.getElementById("size"+j).innerHTML="Size "+size;
@@ -461,73 +539,38 @@ function topcard(arrayOfHands){
 		
 			}
 		}
-	
-function processSelection(id, i, deck){
+		
 
-	var trueID = id.slice(0, -1); //removes digit from end of ID
-  		
-  	var card = deck[i];
- 
-	var size = JSON.stringify(card.size);
-	var speed = JSON.stringify(card.speed);
-	var range = JSON.stringify(card.range);
-	var firepower = JSON.stringify(card.firepower);
-	var cargo = JSON.stringify(card.cargo);
-		
-	var attributes = [size, speed, range, firepower, cargo];
-	var stringAttributes = ["size", "speed", "range", "firepower", "cargo"];
-		
-	var humanChoice; //will store the value of the attribute chosen by the human player
-		
-	for (var i = 0; i < 5; i++){
-		if (trueID == stringAttributes[i]){
-			humanChoice = attributes[i]; //human player's choice = value of item in array which matches button id
-			alert(humanChoice);
-		} 
-	}
-		
-	aiChoice(arrayOfHands, finalPlayerList, i);
-	//compareAttributes(humanChoice, allPlayers);
-}	
 
-  //will generate attribute choice of each AI player
-  function aiChoice(arrayOfHands, finalPlayerList, i){
+
+
+
+  
+  //When AI chooses first, it will always choose the highest attribute available (not finished)
+  function aiFirstPick(){
   
   	for (var j = 1; j < finalPlayerList.length; j++)
   	{
 		var aiCard = arrayOfHands[j][i];
+		var aiChoice;
 		
 		var xhr3 = createCORSRequest('GET', "http://localhost:7777/toptrumps/aiChoice?aiCard" + aiCard);
-
 		if (!xhr3) {
 			alert("CORS not supported");
 		}
 		xhr3.onload = function(e) {
-			var aiChoice = xhr3.response;
-			var k = 1;
-			alert("AI player " + k + " has chosen:" + aiChoice);
-			k++;
+			var aiCardString = xhr3.response;
+			aiChoice = JSON.parse(aiCardString);
+			
+			console.log(aiChoice);
 		}
 		
 		xhr3.send();
   	}
   	
-  }
   
-  function aiFirstPick(){
-  
-  }
-  
-  //will generate AI's choices and compare them to human player's choice
-  function compareAttributes(humanChoice, allPlayers){
-  
-  		//generate AI player's choice
-  		
-  
-  		alert(humanChoice);
-  		alert(allPlayers);
-  
-  }
+ 
+ 
   
    
 </script>

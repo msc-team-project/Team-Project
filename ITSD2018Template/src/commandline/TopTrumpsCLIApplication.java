@@ -12,41 +12,53 @@ import java.util.Scanner;
  * Top Trumps command line application
  */
 public class TopTrumpsCLIApplication 
-{
-
-	/**
-	 * This main method is called by TopTrumps.java when the user specifies that they want to run in
-	 * command line mode. The contents of args[0] is whether we should write game logs to a file.
- 	 * @param args
-	 */
-	
+{	
 	private static ArrayList<Card> deck, communalDeck;
-	private static int numberPlayers, gamesPlayed;
-	private static ArrayList<Player> players, allPlayers;
-	private static boolean valid;
+	/** maintains a count of the number of players currently active in the game */
+	private static int numberPlayers;
+	
+	/** list of all players added at the beginning of the game */
+	private static ArrayList<Player> allPlayers;
+	/** list of all players not yet eliminated from play */
+	private static ArrayList<Player> players;
 	
 	protected static Scanner scanner;
 	
-	//for the debug test log
+	/** whether the user is in debug mode */
 	private static boolean writeGameLogsToFile;
+	
 	private static TestLog log;
 	
+	/** the current round */
 	private static int round;
+	/** maintains a count of the draws in a single game */
 	private static int draws;
 	
-	//name of winner
+	/** the name of the overall winner */
 	private static String winner;
 	
+	private static boolean skip;
+
+	/**
+	 * This main method is called by TopTrumps.java when the user specifies that they want to run in
+	 * command line mode. 
+ 	 * @param args The contents of args[0] is whether we should write game logs to a file.
+	 */
 	public static void main(String[] args) 
 	{
 
-		writeGameLogsToFile = false; // Should we write game logs to file?
+		writeGameLogsToFile = true; // Should we write game logs to file?
 		//if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
 		
 		scanner = new Scanner(System.in);
+		
+		//prompt the user to either play the game, view stats or exit the game
 		while(true)
 		{
-			System.out.println("type 'play' to play, 'stats' for stats, 'exit' to exit");
+			String message = "";
+			if(round > 0)
+				message = " again";
+			System.out.println("type 'play' to play" + message + ", 'stats' for stats, 'exit' to exit");
 			String s = scanner.nextLine();
 			if(s.equals("play"))
 				playGame();
@@ -62,9 +74,8 @@ public class TopTrumpsCLIApplication
 		// States
 		boolean userWantsToQuit = false; // flag to check whether the user wants to quit the application
 		boolean gameOver = false; // flag to check whether the current game has finished (only one player left)
-		
+		skip = false;
 		// build the deck from the text file
-		
 		deck = buildDeck();
 		
 		if (writeGameLogsToFile)
@@ -98,40 +109,50 @@ public class TopTrumpsCLIApplication
 		
 		// Loop until the user wants to exit the game (main game loop)
 		
-		// select a random player to serve as the current player
 		
-//		int currentPlayer = new Random().nextInt(numberPlayers);
+		// select a random player to begin the game
 		int startPlayer = new Random().nextInt(numberPlayers);
 		
-		// loop through list of players, assigning next player the current player for the round
-		
-//		currentPlayer = (currentPlayer + round) % numberPlayers;
 		Player currentPlayer = players.get(startPlayer);
 		
 		while (!userWantsToQuit) 
 		{
 			
 			// increment round counter and display round details
-			
 			round++;
 			System.out.println("\nRound " + round);
 			
 			//log the current round
-			
 			if(writeGameLogsToFile)
 				log.logRound(round);
 			
 			//each player plays their top card
-			
 			ArrayList<Card> cardsInPlay = playNextHand();
 			
 			String attribute;
 			
+			//if current player is the human player
+			//inform them and prompt them to pick and attribute
+			//user can quit the game by entering 'exit'
 			if (currentPlayer instanceof HumanPlayer)
 			{
+				skip = false;
 				System.out.println("Your Turn");
 				attribute = currentPlayer.pickAttribute();
-			} 
+				//if the user quits in debug mode invoke TestLog to make a log entry
+				if(attribute.equals("exit"))
+				{
+					if(writeGameLogsToFile)
+					{
+						log.logUserQuit();
+						log.writeLog();
+					}
+					userWantsToQuit = true;
+					continue;
+				}
+			}
+			//if the current player is AI invoke AIPlayer.pickAttribute() on the current
+			//player and print the selection to screen
 			else
 			{
 				attribute = currentPlayer.pickAttribute();
@@ -141,12 +162,10 @@ public class TopTrumpsCLIApplication
 			}
 			
 			//log the selection
-			
 			if(writeGameLogsToFile)
 				log.logSelection(currentPlayer, attribute, cardsInPlay);
 			
-			//print out each players selection
-			
+			//print each player's selection to standard out
 			for(int i = 1; i < players.size(); i++)
 			{
 				Player p = players.get(i);
@@ -155,11 +174,9 @@ public class TopTrumpsCLIApplication
 			}
 			
 			//create a list of the winners of that round
-			
 			ArrayList<Player> winners = compareCards(attribute);
 			
 			//if there is only 1 winner, they win that round and get all cards in play + in communal deck
-			
 			if (winners.size() == 1)
 			{
 				Player winner = winners.get(0);
@@ -168,7 +185,7 @@ public class TopTrumpsCLIApplication
 				winner.addHandToDeck(cardsInPlay);
 				winner.addHandToDeck(communalDeck);
 				
-				winner.roundsWon++;
+				winner.incrementRoundsWon();
 				
 				//log changes to communal deck if any
 				if(writeGameLogsToFile && communalDeck.size() > 0)
@@ -230,42 +247,22 @@ public class TopTrumpsCLIApplication
 			
 			printRemainingCards();
 			
+			if(!skip)
+			{
+				String response = waitForUser();
+				if(response.equals("skip"))
+					skip = true;
+				else if(response.equals("quit"))
+					break;
+			}
+				
+			
 			//if the round is over, write the log to file
 			if(writeGameLogsToFile)
 				log.writeLog();
 			
-			
 		if ((gameOver) || checkWinConditions())
-		{
-			//DataBaseCon.inputGameInfo(round, draws, allPlayers, winner);
-			System.out.println("Do you want to play again?");
-			String response = scanner.next();
-			if (response.equals("no") || response.equals("exit"))
-			{
-				userWantsToQuit=true; // quit the game 
-			}
-			else // start a new game
-			{
-				// build new deck and shuffle, and make a new communal deck
-				
-//				deck = buildDeck();
-//				communalDeck = new ArrayList<Card>();
-//				Collections.shuffle(deck);				
-				round = 0; // reset round counter (will be incremented to 1 at the start of Round 1)
-				draws = 0; // reset draw counter
-				
-				// set up the players and divide deck between them
-
-//				players = setUpPlayers();
-//				allPlayers = new ArrayList<Player>(players);
-//				divideDeck();
-				playGame();
-			
-			}
-
-		}
-			
-
+			break;
 		}
 	}
 	
@@ -314,14 +311,11 @@ public class TopTrumpsCLIApplication
 			try
 			{
 				System.out.println("How many opponents (1-4)");
-				int aiplayers = scanner.nextInt();
+				int aiplayers = Integer.parseInt(scanner.nextLine());
 				numberPlayers = 1 + aiplayers;
-			} catch (Exception e)
+			} catch (NumberFormatException e)
 			{
-				//this catch handles any integer parsing errors (eg user enters "two" instead of 2 etc)
-				//by re-prompting the user
-				//probably not good practice to handle any and all exceptions by ignoring them
-				//but this can be fixed later
+				//this catch handles integer parsing errors by re-prompting the user
 				continue;
 			}
 		}
@@ -381,13 +375,13 @@ public class TopTrumpsCLIApplication
 					System.out.println(p.getName() + " has no cards remaining");
 				}
 				
+				//log player eliminations
+				if(writeGameLogsToFile && players.contains(p))
+					log.logEliminatedPlayer(p);
+				
 				//remove players with no cards and decrement number of players
 				players.remove(p);
 				numberPlayers--;
-
-				//log player eliminations
-				if(writeGameLogsToFile)
-					log.logEliminatedPlayer(p);
 			}
 		}		
 		
@@ -421,11 +415,20 @@ public class TopTrumpsCLIApplication
 		}
 		
 //		//if the game is over, write the log to file
-//		if(gameOver && writeGameLogsToFile)
-//			log.writeLog();
+		if(gameOver && writeGameLogsToFile)
+			log.writeLog();
 		
 		//return true if game is over, false if multiple players remain
 		return gameOver;
+	}
+	
+	public static String waitForUser(){
+		String message = "Press \"ENTER\" to continue";
+		if(skip == false)
+			message += " or type 'skip' to skip to your next turn";
+		System.out.println(message);
+		return scanner.nextLine();
+			   		   
 	}
 	
 	private static void printRemainingCards() {
