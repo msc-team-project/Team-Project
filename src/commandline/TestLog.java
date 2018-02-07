@@ -228,7 +228,7 @@ public class TestLog {
 			FileWriter writer = new FileWriter("toptrumps.log");
 			writer.write(log);
 			writer.close();
-			System.out.println("log saved to toptrumps.log");
+			System.out.println("toptrumps.log updated");
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block

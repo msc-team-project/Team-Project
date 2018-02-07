@@ -248,7 +248,14 @@ public class TopTrumpsCLIApplication
 			printRemainingCards();
 			
 			if(!skip)
-				waitForUser();
+			{
+				String response = waitForUser();
+				if(response.equals("skip"))
+					skip = true;
+				else if(response.equals("quit"))
+					break;
+			}
+				
 			
 			//if the round is over, write the log to file
 			if(writeGameLogsToFile)
@@ -415,13 +422,13 @@ public class TopTrumpsCLIApplication
 		return gameOver;
 	}
 	
-	public static void waitForUser(){
+	public static String waitForUser(){
 		String message = "Press \"ENTER\" to continue";
 		if(skip == false)
 			message += " or type 'skip' to skip to your next turn";
 		System.out.println(message);
-		   if(scanner.nextLine().equals("skip"))
-			   skip = true;		   
+		return scanner.nextLine();
+			   		   
 	}
 	
 	private static void printRemainingCards() {
