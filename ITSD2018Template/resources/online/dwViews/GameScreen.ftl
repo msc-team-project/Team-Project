@@ -220,8 +220,13 @@ $(document).ready(function(){
 	     });
 	    });
 	    
+var aiCardArray; //stores all AI cards so that they can be passed to Java method
+	    
 //called when the human player selects an attribute
 function processSelection(id, i){
+	
+	aiCardArray = [];
+	
 	var trueID = id.slice(0, -1); //removes digit from end of ID
   		
   	var humanCard = arrayOfHands[0][i];
@@ -253,7 +258,11 @@ function processSelection(id, i){
 
 	}	
 	
+	compareAttributes(humanCard, aiCardArray, trueID);
+	
 }	    
+
+
 	    
 //will generate attribute choice of each AI player, based on attribute selected by human player or another AI player
 function aiChoice(position, j, k){
@@ -273,10 +282,10 @@ function aiChoice(position, j, k){
 	//Array of attributes in same order as for human player
 	var aiAttributes = [size, speed, range, firepower, cargo];
 	
-	aiChoice = aiAttributes[position]; //position of ai choice must be same as that of human choice (because human has chosen first)
+	//aiChoice = aiAttributes[position]; //position of ai choice must be same as that of human choice (because human has chosen first)
    
    
-   	alert(aiChoice);
+   //alert(aiChoice);
    
   }	   
   
@@ -285,6 +294,7 @@ function getCurrentCard(j, k){
 	
 		//j is the player, i is the card
 		var card = arrayOfHands[j][k];
+		aiCardArray.push(card); //add card to array
 		return card;
 } 
 	    
@@ -293,9 +303,22 @@ function attributeSelected(id){
 }
 
 //will generate AI's choices and compare them to human player's choice
-function compareAttributes(humanChoice, aiChoice){
+function compareAttributes(humanCard, aiCardArray, trueID){
 
-
+	//populate playerArray by calling setUpPlayer method in REST API class
+	var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/compareCards?attribute?aiCards?humanCard="+trueID+aiCardArray+trueID);
+						
+	if (!xhr) {
+		alert("CORS not supported");
+	}
+	
+	xhr.onload = function(e) {
+		var winString = xhr.response;
+		alert(winString);
+	}
+	
+	
+	xhr.send();
 
 }
 	        

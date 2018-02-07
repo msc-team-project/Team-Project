@@ -171,7 +171,89 @@ public class TopTrumpsRESTAPI {
 		return att;
 	}
 	
+	@GET
+	@Path("/compareCards")
+	public String compareCards(@QueryParam("attribute")String attribute, @QueryParam("aiCards") String [] aiCards, @QueryParam("humanCard") String humanCard) throws JsonParseException, JsonMappingException, IOException {
+		
+		//Make first AI card object
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonInString = aiCards[0];
+		Card cardAI = mapper.readValue(jsonInString, Card.class);
 	
+		//Make human card object
+		ObjectMapper mapper2 = new ObjectMapper();
+		String jsonInString2 = humanCard;
+		Card cardH = mapper.readValue(jsonInString2, Card.class);
+		
+		//Get string arrays and value arrays of ai and human cards
+		String [] aiAtts = cardAI.getAttributes();
+		String [] humanAtts = cardH.getAttributes();
+		int [] aiAttValues = {cardAI.getSize(), cardAI.getSpeed(), cardAI.getRange(), cardAI.getFirepower(), cardAI.getCargo()};
+		int [] humanAttValues = {cardH.getSize(), cardH.getSpeed(), cardH.getRange(), cardH.getFirepower(), cardH.getCargo()};
+		
+		int position = 0;
+		
+		for (int i = 0; i < humanAtts.length; i++) {
+			if (humanAtts[i] == attribute) {
+				position = i;
+			}
+		}
+		
+		Card bestAICard = cardAI;
+		int [] bestAIAttArray = {bestAICard.getSize(), bestAICard.getSpeed(), bestAICard.getRange(), bestAICard.getFirepower(), bestAICard.getCargo()};
+		
+		for (int i = 1; i < aiCards.length; i++) {
+			String jsonInString3 = aiCards[i];
+			Card currentAICard = mapper.readValue(jsonInString3, Card.class);
+			
+			int [] aiAttValues2 = {currentAICard.getSize(), currentAICard.getSpeed(), currentAICard.getRange(), currentAICard.getFirepower(), currentAICard.getCargo()};
+			
+			if (aiAttValues2[position] > bestAIAttArray[position]) 
+			{
+				bestAICard = currentAICard;
+			}
+			else if (aiAttValues2[position] == bestAIAttArray[position] && i == aiCards.length - 1) {
+				System.err.println("A draw has occurred between two AI players");
+				break;
+			}
+			else {
+				System.err.println("A draw has occurred between two AI players");
+			}
+		}
+		
+		
+		
+		
+		int humanChoice = 0;
+		int aiChoice = bestAIAttArray[position];
+		
+		//find chosen attribute in string array
+		for (int i = 0; i < humanAtts.length; i++) {
+			if (humanAtts[i] == attribute) {
+				position = i;
+				humanChoice = humanAttValues[i];
+				break;
+			}
+		}
+		
+		
+		String winString = "";
+		
+		//compare the attributes and determine winner, or if the round is a draw
+		if (humanChoice > aiChoice) {
+			winString = "You have won this round";
+		}
+		else if (aiChoice > humanChoice) {
+			winString = "The AI has won this round";
+			
+		}
+		else {
+			winString = "Something weird happened";
+		}
+		
+		return winString;
+	
+	}
 	/*
 	@GET
 	@Path("/helloWord")
