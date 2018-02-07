@@ -17,22 +17,23 @@ public class DataBaseCon
 	//input gameinfo to database
 	public static void inputGameInfo(int rounds, int draws, ArrayList<Player> players, String winner){
 		
+		System.err.println("DATABASE CALLED");
 		connect();
 		Statement stmt = null;
 		
-		int playerWins = players.get(0).roundsWon;
-		int ai1Wins = players.get(1).roundsWon;
+		int playerWins = players.get(0).getRoundsWon();
+		int ai1Wins = players.get(1).getRoundsWon();
 		
 		String ai2wins = "NULL";
 		String ai3wins = "NULL";
 		String ai4wins = "NULL";
 		
 		if(players.size() > 2)
-			ai2wins = Integer.toString(players.get(2).roundsWon);
+			ai2wins = Integer.toString(players.get(2).getRoundsWon());
 		if(players.size() > 3)
-			ai3wins = Integer.toString(players.get(3).roundsWon);
+			ai3wins = Integer.toString(players.get(3).getRoundsWon());
 		if(players.size() > 4)
-			ai4wins = Integer.toString(players.get(4).roundsWon);
+			ai4wins = Integer.toString(players.get(4).getRoundsWon());
 		
 		String query = String.format("INSERT INTO toptrumps.gamedata (gamewinner, numberrounds, humanroundwins, ai1wins, ai2wins, ai3wins, ai4wins, numberdraws) "
 				+ "VALUES ('%s', %d, %d, %d, %s, %s, %s, %d)", winner, rounds, playerWins, ai1Wins, ai2wins, ai3wins, ai4wins, draws);
@@ -188,13 +189,13 @@ public class DataBaseCon
 			return wins;
 		}
 		
-		//method to return average number of rounds
+		//method to return average number of  draws in a round
 		public static double avgDraws()
 		{
 			
 			double avg=0.0;
 			Statement stmt = null;
-			String query = "SELECT AVG(numberrounds) FROM toptrumps.gamedata;";
+			String query = "SELECT AVG(numberdraws) FROM toptrumps.gamedata;";
 			try 
 			{
 				stmt = connection.createStatement();

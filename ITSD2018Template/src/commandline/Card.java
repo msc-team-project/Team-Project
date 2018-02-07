@@ -9,6 +9,10 @@ public class Card {
 	private int size, speed, range, firepower, cargo;
 	private String[] attributes;
 	
+	public Card()
+	{
+	}
+	
 	public Card(String parameters)
 	{
 		String[] params = parameters.split(" ");
@@ -70,13 +74,5 @@ public class Card {
 			return cargo;
 		}
 		return -1;
-	}
-
-	//this returns all of the attribute names as an arraylist
-	//needed it for the player select attribute to check that valid attribute is entered
-	public ArrayList<String> getAttributesAsList() {
-		ArrayList<String> atts = new ArrayList<String>(Arrays.asList(attributes));
-		return atts;
-	}
-	
+	}	
 }
