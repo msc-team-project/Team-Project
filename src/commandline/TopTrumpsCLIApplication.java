@@ -262,7 +262,10 @@ public class TopTrumpsCLIApplication
 				log.writeLog();
 			
 		if ((gameOver) || checkWinConditions())
-			break;
+		{
+		DataBaseCon.inputGameInfo(round, draws, allPlayers, winner);
+		break;
+		}
 		}
 	}
 	

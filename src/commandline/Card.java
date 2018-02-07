@@ -9,6 +9,10 @@ public class Card {
 	private int size, speed, range, firepower, cargo;
 	private String[] attributes;
 	
+	public Card()
+	{
+	}
+	
 	public Card(String parameters)
 	{
 		String[] params = parameters.split(" ");

@@ -17,6 +17,7 @@ public class DataBaseCon
 	//input gameinfo to database
 	public static void inputGameInfo(int rounds, int draws, ArrayList<Player> players, String winner){
 		
+		System.err.println("DATABASE CALLED");
 		connect();
 		Statement stmt = null;
 		
