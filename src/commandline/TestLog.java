@@ -4,17 +4,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//this is the class for creating a log of the game
-//if you are using it you need to create a new log in the command line game class
-//create a new log with: new TestLog(); - no parameters required
 
-//you need to call the writeLog() function at the end of the game for the log to be written to file
-//you should only call writeLog once
-
-
-
+/** This class is for creating a log of the game  */
 public class TestLog {
 
+	/** The game log */
 	private String log;
 	
 	public TestLog(){
@@ -88,8 +82,8 @@ public class TestLog {
 	 */
 	public void logCommunalDeck()
 	{
-			log += String.format("%nCOMMUNAL DECK UPDATED%nCOMMUNAL DECK NOW EMPTY");
-			lineBreak();
+		log += String.format("%nCOMMUNAL DECK UPDATED%nCOMMUNAL DECK NOW EMPTY");
+		lineBreak();
 	}
 	
 	/**
@@ -107,14 +101,12 @@ public class TestLog {
 		lineBreak();
 	}
 	
-	//"The category selected and corresponding values when a user or computer selects a category"
-	//call this after a player selects an attribute
 	/**
 	 * Logs "The category selected and corresponding values when a user or computer selects a category"
 	 * <br> Call this after a player selects an attribute
-	 * @param player
-	 * @param attribute
-	 * @param cardsInPlay
+	 * @param player the player who made the selection
+	 * @param attribute the chosen attribute
+	 * @param cardsInPlay all cards currently in play
 	 */
 	public void logSelection(Player player, String attribute, ArrayList<Card> cardsInPlay)
 	{
@@ -231,8 +223,7 @@ public class TestLog {
 			System.out.println("toptrumps.log updated");
 		} catch (IOException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Error updating toptrumps.log");
 		}
 	}
 }

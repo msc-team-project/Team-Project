@@ -1,11 +1,12 @@
 package commandline;
 
+/** Class representing a human player */
 public class HumanPlayer extends Player{
 
-	//prompts player to select an attribute
-	//takes a scanner as an argument so that the main scanner can be reused
-	//having multiple scanners open at once seems to cause errors
-	
+	/**
+	 * Prompts the user to select an attribute <br>
+	 * If the user enters an invalid attribute they are re-prompted
+	 */
 	@Override
 	public String pickAttribute() {
 		String att = "";

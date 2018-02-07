@@ -3,12 +3,18 @@ package commandline;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/** Abstract class representing a player */
 public abstract class Player {
 	
+	/** The player's own deck of cards */
 	private ArrayList<Card> deck;
+	/** The player's current card in play */
 	protected Card cardInPlay;
+	/** the number of rounds won by this player */
 	private int roundsWon;
+	/** the name of the player */
 	public String name;
+	
 	
 	public Player(){
 		deck = new ArrayList<Card>();
@@ -49,8 +55,6 @@ public abstract class Player {
 	
 	/**
 	 * Abstract method for selecting a Card attribute
-	 * @see
-	 * @see
 	 */
 	public abstract String pickAttribute();
 	

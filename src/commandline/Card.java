@@ -1,18 +1,30 @@
 package commandline;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * This class represents a single card  in the top trumps game
+ * and holds all associated information
+ */
 public class Card {
 
+	/** The name of the card **/
 	private String description;
+	/** The card attributes */
 	private int size, speed, range, firepower, cargo;
+	/** Array of the names of all attributes */
 	private String[] attributes;
 	
-	public Card()
-	{
-	}
+	/**
+	 * Empty constructor used by the online version
+	 */
+	public Card() {}
 	
+	/**
+	 * Main constructor used by the command line version
+	 * @param parameters A single line from the deck text file
+	 * containing the card attributes
+	 */
 	public Card(String parameters)
 	{
 		String[] params = parameters.split(" ");
@@ -53,11 +65,12 @@ public class Card {
 		return attributes;
 	}
 	
-	//this was originally in the player class but i needed it here for the log file
-	//it is still in the player class
-	//probably good practice to remove it from player and access it with player.cardinplay.getvalueofatt()
-	//so we are not duplicating code unnecessarily
-	//tbh i couldn't be bothered having to change the code but can maybe do it later
+	/**
+	 * Returns the corresponding integer value of an attribute
+	 * @param att the name of the attribute
+	 * @return the value associated with the attribute <br>
+	 * or -1 in the case of an invalid attribute parameter
+	 */
 	public int getValueOfAtt(String att)
 	{
 		switch(att)

@@ -10,6 +10,10 @@ public class AIPlayer extends Player{
 		this.name = name;
 	}
 
+	/**
+	 * Selects and returns the first occurrence of the attribute with 
+	 * the highest value for the player's current card
+	 */
 	@Override
 	public String pickAttribute() {
 		String[] atts = cardInPlay.getAttributes();
