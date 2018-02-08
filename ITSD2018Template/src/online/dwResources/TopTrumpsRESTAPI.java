@@ -68,7 +68,7 @@ public class TopTrumpsRESTAPI {
 		// ----------------------------------------------------
 		// Add relevant initalization here
 		// ----------------------------------------------------
-		
+		/*
 		numberPlayers = conf.getNumAIPlayers()+1;
 		System.err.println(numberPlayers);
 		
@@ -90,7 +90,7 @@ public class TopTrumpsRESTAPI {
 		
 		currentPlayer = players.get(startPlayer);
 		
-			
+			*/
 		
 		
 	}
@@ -142,11 +142,11 @@ public class TopTrumpsRESTAPI {
 	
 	
 	
-	/*problems with this method
+
 	
 	@GET
 	@Path("/playGame")
-	public int playGame(@QueryParam("numPlayers") int numPlayers) 
+	public void playGame(@QueryParam("numPlayers") int numPlayers) 
 	{
 		numberPlayers = numPlayers;
 		System.err.println(numPlayers);
@@ -166,12 +166,12 @@ public class TopTrumpsRESTAPI {
 		round=0;
 		draws=0;
 		int startPlayer = new Random().nextInt(numberPlayers);
-		
-		Player currentPlayer = players.get(startPlayer);
-		return numberPlayers;
+		//System.err.println(players);
+		 currentPlayer = players.get(startPlayer);
+		//return numberPlayers;
 	}
 	
-	*/
+	
 	
 	@GET
 	@Path("/playRound")
@@ -268,12 +268,14 @@ public class TopTrumpsRESTAPI {
 		for (Card card : deck)
 		{
 			players.get(i % numPlayers).addCardToDeck(card);
+			card.setOwner(players.get(i % numPlayers).getName());
 			i++;
 		}
 	}
 	
 	
 	public static ArrayList<Card> playNextHand() {
+		//System.err.println(players);
 		ArrayList<Card> cards = new ArrayList<Card>();
 		for (Player p : players)
 		{
@@ -282,7 +284,7 @@ public class TopTrumpsRESTAPI {
 
 		if (players.get(0) instanceof HumanPlayer)
 		{
-			System.out.println("Your Card:");
+			//System.out.println("Your Card:");
 			players.get(0).printCardInPlay();
 		}
 
@@ -303,6 +305,14 @@ public class TopTrumpsRESTAPI {
 			int newCards = cardsInPlay.size() + communalDeck.size();
 			winner.addHandToDeck(cardsInPlay);
 			winner.addHandToDeck(communalDeck);
+			
+			for(Card c : cardsInPlay) {
+				c.setOwner(winner.getName());
+			}
+			for(Card c : communalDeck) {
+				c.setOwner(winner.getName());
+			}
+			
 			winner.incrementRoundsWon();
 			currentPlayer = winner;
 			if (winner instanceof HumanPlayer)
@@ -353,7 +363,7 @@ public class TopTrumpsRESTAPI {
 	public static int[] deckLeft() {
 		
 		int[] deckLeft= new int[5];
-			for(int i =0; i<5 ;i++) {
+			for(int i =0; i<allPlayers.size() ;i++) {
 			deckLeft[i]=allPlayers.get(i).getDeckSize();	
 		}
 		

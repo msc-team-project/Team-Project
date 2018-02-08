@@ -8,7 +8,16 @@ public class Card {
 	private String description;
 	private int size, speed, range, firepower, cargo;
 	private String[] attributes;
+	private String owner;
 	
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
 	public Card()
 	{
 	}
