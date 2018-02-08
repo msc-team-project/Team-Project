@@ -74,6 +74,8 @@ body {font-family: "Lato", sans-serif}
 </div>
 
 
+    	
+    <h3 id="pick"><b></b></h3>
 
     <!-- GameCard Section -->
 <style>
@@ -143,6 +145,7 @@ button:hover, a:hover {
 		
 		<!--- Testing next card function ----->
 		<button onclick="ButtonClick()"  class="center button gamebutton" > Next Card </button>
+		<button onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
 		</div>
 	
 		
@@ -212,7 +215,7 @@ var i = 0;
 var newDeck = [];
 function ButtonClick(){
 	i++; 	
-	playGame;
+	playRound();
 }
 $(document).ready(function(){
 	  $(".btn-group").click(function(){
@@ -349,7 +352,7 @@ function selection4() {
 }
    
    //Check that user selected between 1 and 4 opponents
-var numPlayers = 0;
+var numPlayers=0;
       
 function select_opponents(opp){
 var opponents = opp;
@@ -362,20 +365,63 @@ var opponents = opp;
    		alert("Total number of players (inc. human): " + numPlayers)
    		
    		//Start game
-   		playGame(numPlayers);
+   		//playGame(numPlayers);
+   		turn();
+   		playRound();
 		//deckArray();
    } else{
    		alert("You must add between 1 and 4 opponents to play the game.");
    }
 }
 var finalPlayerList;
-function playGame(){
+
+//currently not used
+function playGame(numPlayers){
+	
+
+	var xhr5 = createCORSRequest('GET', "http://localhost:7777/toptrumps/playGame?numPlayers="+numPlayers);
+						
+	if (!xhr5) {
+		alert("CORS not supported");
+	}
+	
+	xhr5.onload = function(e) {
+		var num = xhr5.response;
+		alert(num);
+		
+	};
+	
+	
+	xhr5.send();
+	//deckArray();
+	}
+
+function turn(){
+	var xhr7 = createCORSRequest('GET', "http://localhost:7777/toptrumps/turn");
+						
+	if (!xhr7) {
+		alert("CORS not supported");
+	}
+	
+	xhr7.onload = function(e) {
+		var turn = xhr7.response;
+		pick.innerText=turn+" turn to pick";
+	}
+	
+	
+	xhr7.send();
+	
+
+
+}
+
+function playRound(){
 			
 	var playerArray = []; //stores info for each player
 	var deck = []; //stores all cards
 	
 	//populate playerArray by calling setUpPlayer method in REST API class
-	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/playGame");
+	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/playRound");
 						
 	if (!xhr1) {
 		alert("CORS not supported");
@@ -421,25 +467,7 @@ function deckArray(){
 	xhr2.send();
 	}
 	
-var arrayOfHands;
-function deckSplit(){
-arrayOfHands = new Array();
-	for (var j = 0; j < numPlayers; j++) {
-	   arrayOfHands.push(new Array()); //array of arrays: each array is a player's hand
-	}
-	var cardCount = newDeck.length;
-	var player = 0;
-	console.log(arrayOfHands);
-	for (var j = 0; j < cardCount; j++) {
-	    arrayOfHands[player].push(newDeck[j]);
-	    player++;
-	    if (player == numPlayers) {
-	        player = 0;
-	    }
-	}
-	console.log(arrayOfHands);
-	topcard(playerArray);
-}
+
 	
 function topcard(finalPlayerList){
 			console.log(i);
@@ -509,20 +537,140 @@ function getRoundWinner(att){
 		
 		var roundWinner = xhr4.response;
 		alert(roundWinner);
+		deckLeft();
+		checkConditions();
+		turn();
 	};
 	
 	xhr4.send();
 	}
   
   
+
+function checkConditions(){
+	var xhr6 = createCORSRequest('GET', "http://localhost:7777/toptrumps/checkConditions");
+  
+  if (!xhr6) {
+		alert("CORS not supported");
+	}
+	xhr6.onload = function(e) {
+		
+		var remaining = xhr6.response;
+		alert(remaining);
+		if(remaining==1)
+		{
+		winner()
+		}
+		numPlayers=remaining;
+		console.log(numPlayers);
+	};
+	
+	xhr6.send();
+	}
+  
+
+  
+  
+  
+  function AIPick(){
+  			var xhr7 = createCORSRequest('GET', "http://localhost:7777/toptrumps/AIPick");
+  
+  if (!xhr7) {
+		alert("CORS not supported");
+	}
+	xhr7.onload = function(e) {
+		
+		var att = xhr7.response;
+		alert(att);
+		getRoundWinner(att);
+	};
+	
+	xhr7.send();
+	}
+  
+  
+function winner(){
+			var xhr8 = createCORSRequest('GET', "http://localhost:7777/toptrumps/winner");
+  
+  if (!xhr8) {
+		alert("CORS not supported");
+	}
+	xhr8.onload = function(e) {
+		
+		var win = xhr8.response;
+		pick.innerText=win+" wins!";
+	};
+	
+	xhr8.send();
+}
+var cardsLeft = [];
+  function deckLeft(){
+	var xhr9 = createCORSRequest('GET', "http://localhost:7777/toptrumps/deckLeft");
+  
+  if (!xhr9) {
+		alert("CORS not supported");
+	}
+	xhr9.onload = function(e) {
+		
+		cardsLeft = xhr9.response;
+		alert(cardsLeft);
+	};
+	
+	xhr9.send();
+	}
+	
+ function deckArray(deck, i){
+	
+	//build deck by calling relevant REST API method
+	var xhr8 = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
+	
+	
+	
+	
+	if (!xhr8) {
+		alert("CORS not supported");
+	}
+	xhr8.onload = function(e) {
+		
+		deck = xhr8.response;
+		newDeck = JSON.parse(deck);
+		console.log(newDeck);
+		deckSplit();
+	};
+	
+	
+	
+	xhr8.send();
+	}
+ 
+ 
+ 
+ 
+  
+  
+  var arrayOfHands;
+function deckSplit(){
+arrayOfHands = new Array();
+	for (var j = 0; j < numPlayers; j++) {
+	   arrayOfHands.push(new Array()); //array of arrays: each array is a player's hand
+	}
+	var cardCount = newDeck.length;
+	var player = 0;
+	console.log(arrayOfHands);
+	for (var j = 0; j < cardCount; j++) {
+	    arrayOfHands[player].push(newDeck[j]);
+	    player++;
+	    if (player == numPlayers) {
+	        player = 0;
+	    }
+	}
+	console.log(arrayOfHands);
+	topcard(arrayOfHands);
+}
   
   
   
   
-  
-  function aiFirstPick(){
-  
-  }
   
   //will generate AI's choices and compare them to human player's choice
   function compareAttributes(humanChoice, allPlayers){

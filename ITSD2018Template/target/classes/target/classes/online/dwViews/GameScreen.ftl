@@ -128,16 +128,16 @@ button:hover, a:hover {
 
 	<div id="cards" style="display: none; width 100%; position: relative; height: 800px">
 		<div id="card0" class="cards">
-				<h2 style="text-align:center" >Your Top Card</h2>    
+				<h2 style="text-align:center" >Your Card</h2>    
 				<div class="container card"  >
 					<img id= "ship0" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname0"></h3>
 		 				<div class="btn-group">
-		    				<button id="size0"> </button>
-		     				<button  id="speed0"></button>
-		     				<button  id="range0"></button>
-		     				<button  id="firepower0"></button>
-		     				<button  id="cargo0"> </button>	 
+		    				<button id="size0" onclick="attributeSelected(id)"></button>
+		     				<button  id="speed0" onclick="attributeSelected(id)"></button>
+		     				<button  id="range0" onclick="attributeSelected(id)"></button>
+		     				<button  id="firepower0" onclick="attributeSelected(id)"></button>
+		     				<button  id="cargo0" onclick="attributeSelected(id)"> </button>	 
 		   				</div>
 				</div>
 		
@@ -147,7 +147,7 @@ button:hover, a:hover {
 	
 		
 		<div id="card_1" class="cards" >
-				<h2 style="text-align:center"  >AI Player 1's Top Card</h2>    
+				<h2 style="text-align:center"  >AI Player 1</h2>    
 				<div class="container card"  >
 					<img id= "ship1" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname1"></h3>
@@ -162,7 +162,7 @@ button:hover, a:hover {
 		</div>
 		
 		<div id="card_2" class="cards">
-				<h2 style="text-align:center"  >AI Player 2's Top Card</h2>    
+				<h2 style="text-align:center"  >AI Player 2</h2>    
 				<div class="container card center"  >
 					<img id= "ship2" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname2"></h3>
@@ -177,7 +177,7 @@ button:hover, a:hover {
 		</div>
 		
 		<div id="card_3" class="cards">
-				<h2 style="text-align:center"  >AI Player 3's Top Card</h2>    
+				<h2 style="text-align:center"  >AI Player 3</h2>    
 				<div class="container card center"  >
 					<img id= "ship3" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname3"></h3>
@@ -192,7 +192,7 @@ button:hover, a:hover {
 		</div>
 		
 <div id="card_4" class="cards">
-		<h2 style="text-align:center"  >AI Player 4's Top Card</h2>    
+		<h2 style="text-align:center"  >AI Player 4</h2>    
 				<div class="container card center"  >
 					<img id= "ship4" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname4"></h3>
@@ -212,13 +212,17 @@ var i = 0;
 var newDeck = [];
 function ButtonClick(){
 	i++; 	
-	topcard(arrayOfHands);
+	playGame;
 }
 $(document).ready(function(){
 	  $(".btn-group").click(function(){
 	    $('#card').hide()
 	     });
 	    });
+	    
+function attributeSelected(id){
+	processSelection(id, i, newDeck);
+}
 	        
 </script>
 	
@@ -359,20 +363,19 @@ var opponents = opp;
    		
    		//Start game
    		playGame(numPlayers);
-		
+		//deckArray();
    } else{
    		alert("You must add between 1 and 4 opponents to play the game.");
    }
 }
-//CURRENT PROBLEM: arrays/arraylists created in Java methods seem to be treated as a string and divided into array slots character
-// by character
-function playGame(numPlayers){
+var finalPlayerList;
+function playGame(){
 			
 	var playerArray = []; //stores info for each player
 	var deck = []; //stores all cards
 	
 	//populate playerArray by calling setUpPlayer method in REST API class
-	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/setUpPlayers?numPlayers="+numPlayers);
+	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/playGame");
 						
 	if (!xhr1) {
 		alert("CORS not supported");
@@ -381,17 +384,23 @@ function playGame(numPlayers){
 	xhr1.onload = function(e) {
 		playerArray = xhr1.response;
 		var jsonObj = JSON.parse(playerArray);
-		console.log(jsonObj[0].name);
+		finalPlayerList = jsonObj;
+		//var firstPick = Math.floor(Math.random() * (numPlayers));
+		//var firstPlayerPick = finalPlayerList[firstPick];
+		//var fPick = firstPlayerPick.name;
+		//alert(finalPlayer);
+		console.log(finalPlayerList);
+		topcard(finalPlayerList);
 	}
 	
 	
 	xhr1.send();
-	deckArray(deck, i);
+	//deckArray();
 	}
-function deckArray(deck, i){
-	
+function deckArray(){
+	var deck = []; //stores all cards
 	//build deck by calling relevant REST API method
-	var xhr2 = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
+	var xhr2 = createCORSRequest('GET', "http://localhost:7777/toptrumps/playGame?numPlayers="+numPlayers); 
 	
 	
 	
@@ -429,32 +438,102 @@ arrayOfHands = new Array();
 	    }
 	}
 	console.log(arrayOfHands);
-	topcard(arrayOfHands);
+	topcard(playerArray);
 }
 	
-function topcard(arrayOfHands){
+function topcard(finalPlayerList){
 			console.log(i);
-			for (j=0; j<numPlayers; j++){		
-			var card = arrayOfHands[j][i];
-			console.log(card);
-			var shipname = (JSON.stringify(card.description)).slice(1,-1);
-			var size = JSON.stringify(card.size);
-			var speed = JSON.stringify(card.speed);
-			var range = JSON.stringify(card.range);
-		 	var firepower = JSON.stringify(card.firepower);
-			var cargo = JSON.stringify(card.cargo);
-			document.getElementById("ship"+j).src="http://dcs.gla.ac.uk/~richardm/TopTrumps/"+shipname+".jpg";
-			document.getElementById("shipname"+j).innerHTML=shipname;
-			document.getElementById("size"+j).innerHTML="Size "+size;
-			document.getElementById("speed"+j).innerHTML="Speed "+speed;
-			document.getElementById("range"+j).innerHTML="Range  "+range;
-			document.getElementById("firepower"+j).innerHTML="Firepower "+firepower;
-			document.getElementById("cargo"+j).innerHTML="Cargo "+cargo;
+			for (j=0; j<numPlayers; j++){	
+				
+				var card = finalPlayerList[j];
+				console.log(card);
+				var shipname = (JSON.stringify(card.description)).slice(1,-1);
+				var size = JSON.stringify(card.size);
+				var speed = JSON.stringify(card.speed);
+				var range = JSON.stringify(card.range);
+			 	var firepower = JSON.stringify(card.firepower);
+				var cargo = JSON.stringify(card.cargo);
+				console.log(size);
+				document.getElementById("ship"+j).src="http://dcs.gla.ac.uk/~richardm/TopTrumps/"+shipname+".jpg";
+				document.getElementById("shipname"+j).innerHTML=shipname;
+				document.getElementById("size"+j).innerHTML="Size "+size;
+				document.getElementById("speed"+j).innerHTML="Speed "+speed;
+				document.getElementById("range"+j).innerHTML="Range  "+range;
+				document.getElementById("firepower"+j).innerHTML="Firepower "+firepower;
+				document.getElementById("cargo"+j).innerHTML="Cargo "+cargo;
 		
 			}
 		}
 	
+function processSelection(id, i){
+	var trueID = id.slice(0, -1); //removes digit from end of ID
+  		
+  	var humanCard = finalPlayerList[0];
+ 
+	var size = JSON.stringify(humanCard.size);
+	var speed = JSON.stringify(humanCard.speed);
+	var range = JSON.stringify(humanCard.range);
+	var firepower = JSON.stringify(humanCard.firepower);
+	var cargo = JSON.stringify(humanCard.cargo);
 		
+	var attributes = [size, speed, range, firepower, cargo];
+	var stringAttributes = ["size", "speed", "range", "firepower", "cargo"];
+		
+	var humanChoice; //will store the value of the attribute chosen by the human player
+	var position; //sent to aiChoice method to indicate which attribute must be selected
+		
+	for (var i = 0; i < 5; i++){
+		if (trueID == stringAttributes[i]){
+			humanChoice = attributes[i]; //human player's choice = value of item in array which matches button id
+			position = i;
+			alert(humanChoice);
+			var att = stringAttributes[i];
+			alert(att);
+		} 
+	}
+	
+	getRoundWinner(att);
+	
+	
+	
+}
+
+  
+function getRoundWinner(att){
+  	var xhr4 = createCORSRequest('GET', "http://localhost:7777/toptrumps/getRoundWinner?getRoundWinner="+att); 
+	
+	if (!xhr4) {
+		alert("CORS not supported");
+	}
+	xhr4.onload = function(e) {
+		
+		var roundWinner = xhr4.response;
+		alert(roundWinner);
+	};
+	
+	xhr4.send();
+	}
+  
+  
+  
+  
+  
+  
+  
+  function aiFirstPick(){
+  
+  }
+  
+  //will generate AI's choices and compare them to human player's choice
+  function compareAttributes(humanChoice, allPlayers){
+  
+  		//generate AI player's choice
+  		
+  
+  		alert(humanChoice);
+  		alert(allPlayers);
+  
+  }
   
    
 </script>

@@ -53,6 +53,7 @@ public class TopTrumpsRESTAPI {
 	private static ArrayList<Player> allPlayers;
 	private static ArrayList<Player> players;
 	private static ArrayList<Card> deck, communalDeck, cardsInPlay;
+	private static Player currentPlayer;
 	/** A Jackson Object writer. It allows us to turn Java objects
 	 * into JSON strings easily. */
 	ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
@@ -67,8 +68,10 @@ public class TopTrumpsRESTAPI {
 		// ----------------------------------------------------
 		// Add relevant initalization here
 		// ----------------------------------------------------
+		
 		numberPlayers = conf.getNumAIPlayers()+1;
 		System.err.println(numberPlayers);
+		
 		
 		deck = buildDeck();
 		Collections.shuffle(deck);
@@ -85,9 +88,32 @@ public class TopTrumpsRESTAPI {
 		draws=0;
 		int startPlayer = new Random().nextInt(numberPlayers);
 		
-		Player currentPlayer = players.get(startPlayer);
+		currentPlayer = players.get(startPlayer);
+		
+			
+		
+		
 	}
 
+	
+	@GET
+	@Path("/turn")
+	public String turn() {
+		String turn="";
+		if (currentPlayer instanceof HumanPlayer)
+		{
+			turn = "Your";
+		}
+		else
+		{
+			turn = currentPlayer.getName();
+		}
+		
+		return turn;
+	}
+	
+	
+	
 	// ----------------------------------------------------
 	// Add relevant API methods here
 	// ----------------------------------------------------
@@ -113,15 +139,62 @@ public class TopTrumpsRESTAPI {
 		return listAsJSONString;
 	}
 
+	
+	
+	
+	/*problems with this method
+	
 	@GET
 	@Path("/playGame")
-	public ArrayList<Card> playGame() 
+	public int playGame(@QueryParam("numPlayers") int numPlayers) 
+	{
+		numberPlayers = numPlayers;
+		System.err.println(numPlayers);
+		System.err.println(numberPlayers);
+		
+		deck = buildDeck();
+		Collections.shuffle(deck);
+		//create a new empty ArrayList for the communal deck
+
+		communalDeck = new ArrayList<Card>();
+		// set up the players and divide deck between them
+
+		players = setUpPlayers(numberPlayers);
+		//create a second array of players for reference to players after game ends
+		allPlayers = new ArrayList<Player>(players);
+		divideDeck(numberPlayers);
+		round=0;
+		draws=0;
+		int startPlayer = new Random().nextInt(numberPlayers);
+		
+		Player currentPlayer = players.get(startPlayer);
+		return numberPlayers;
+	}
+	
+	*/
+	
+	@GET
+	@Path("/playRound")
+	public ArrayList<Card> playRound() 
 	{
 		round++;
 		cardsInPlay = playNextHand();
 		
 		return cardsInPlay;
 	}
+	
+	
+	
+	@GET
+	@Path("/AIPick")
+	public String AIPick() {
+		String attribute = currentPlayer.pickAttribute();
+		return attribute;
+		
+		
+	}
+	
+	
 	
 	@GET
 	@Path("/quitGame")
@@ -173,8 +246,8 @@ public class TopTrumpsRESTAPI {
 	{
 		ArrayList<Player> players = new ArrayList<Player>();
 
-		Player roddy = new HumanPlayer();
-		players.add(roddy);
+		Player hum = new HumanPlayer();
+		players.add(hum);
 
 		//int opponents = numPlayers - 1;
 
@@ -230,7 +303,8 @@ public class TopTrumpsRESTAPI {
 			int newCards = cardsInPlay.size() + communalDeck.size();
 			winner.addHandToDeck(cardsInPlay);
 			winner.addHandToDeck(communalDeck);
-			
+			winner.incrementRoundsWon();
+			currentPlayer = winner;
 			if (winner instanceof HumanPlayer)
 			{
 				win = "You win round " + round+" "+
@@ -241,6 +315,8 @@ public class TopTrumpsRESTAPI {
 				win = winner.getName()+" wins round "+ round+" "+
 						newCards + " cards added to their hand";;
 			}
+			//reset the communal deck
+			communalDeck = new ArrayList<Card>();
 		}
 		else
 		{
@@ -265,6 +341,73 @@ public class TopTrumpsRESTAPI {
 			{
 				win += winners.get(i).getName() + " ";
 			}
+		}
+		
+		//printRemainingCards();
+		//checkConditions();
+		return win;
+	}
+	
+	@GET
+	@Path("/deckLeft")
+	public static int[] deckLeft() {
+		
+		int[] deckLeft= new int[5];
+			for(int i =0; i<5 ;i++) {
+			deckLeft[i]=allPlayers.get(i).getDeckSize();	
+		}
+		
+		
+		
+		return deckLeft;
+	}
+	
+	
+	@GET
+	@Path("/checkConditions")
+	public static int checkConditions() {
+		int remove = 0;
+		for(Player p : allPlayers)
+		{
+			if(p.getDeckSize() == 0)
+			{
+				if(p instanceof HumanPlayer)
+				{
+					System.err.println("You have no cards remaining");
+					remove++;
+				}
+				else
+				{
+					System.err.println(p.getName() + " has no cards remaining");
+					remove++;
+				}
+				
+				
+				//remove players with no cards and decrement number of players
+				players.remove(p);
+				numberPlayers--;
+			}
+		}
+		int size = players.size();
+		//System.err.println(remove);
+		return size;
+	}
+	
+	@GET
+	@Path("/winner")
+	public static String winner() {
+		
+		String win ="";
+		if(players.get(0) instanceof HumanPlayer)
+		{
+			
+			win = "You";
+		}
+		else
+		{
+			//cast to ai player and get player name
+			win = players.get(0).getName();
+							
 		}
 		return win;
 	}

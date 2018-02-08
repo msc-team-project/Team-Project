@@ -434,15 +434,15 @@ public class TopTrumpsCLIApplication
 			   		   
 	}
 	
-	private static void printRemainingCards() {
+	public static void printRemainingCards() {
 		for (Player p : players)
 		{
 			if (p instanceof HumanPlayer)
 			{
-				System.out.println("You have " + p.getDeckSize() + " cards remaining");
+				System.err.println("You have " + p.getDeckSize() + " cards remaining");
 			} else
 			{
-				System.out.println(p.getName() + " has " + p.getDeckSize() + " cards remaining");
+				System.err.println(p.getName() + " has " + p.getDeckSize() + " cards remaining");
 			}
 		}
 	}
