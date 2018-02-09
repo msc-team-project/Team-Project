@@ -74,9 +74,47 @@ body {font-family: "Lato", sans-serif}
 </div>
 
 
-    	
-    <h3 id="pick"><b></b></h3>
-
+<div style="text-align: center">    	
+    
+    
+    <h3  id="pick"><b></b></h3>
+    
+    <div align="center">
+    
+    		<table class="top-middle" id="cardstable" style="width:10%">
+  			<tr id="tableheaders">
+    			<th>Player</th>
+    			<th>Cards</th> 
+  			</tr>
+  			<tr id="usercardsrow">
+    			<td>You</td>
+    			<td id="usercardsentry">8</td> 
+  			</tr>
+  			<tr id="ai1cardsrow">
+   				<td>AI Player 1</td>
+    			<td id="ai1cardsentry">8</td> 
+  			</tr>
+  			<tr  id="ai2cardsrow">
+   				<td>AI Player 2</td>
+    			<td id="ai2cardsentry">8</td> 
+  			</tr>
+  			<tr id="ai3cardsrow">
+   				<td>AI Player 3</td>
+    			<td id="ai3cardsentry">8</td> 
+  			</tr>
+  			<tr id="ai4cardsrow">
+   				<td>AI Player 4</td>
+    			<td id="ai4cardsentry">8</td> 
+  			</tr>
+  			
+  			  <tr id="communalcardsrow">
+   				<td>Communal</td>
+    			<td id="communalcardsentry">0</td> 
+  			</tr>
+  			
+		</table>
+    </div>
+</div>
     <!-- GameCard Section -->
 <style>
 .container.card {
@@ -148,39 +186,16 @@ button:hover, a:hover {
 		<button id="aipick" onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
 		</div>
 	
-	<div>
-		<table id="cardstable" style="width:10%">
-  			<tr>
-    			<th>Player</th>
-    			<th>Cards</th> 
-  			</tr>
-  			<tr id="usercardsrow">
-    			<td>You</td>
-    			<td id="usercardsentry">8</td> 
-  			</tr>
-  			<tr id="ai1cardsrow">
-   				<td>AI Player 1</td>
-    			<td id="ai1cardsentry">8</td> 
-  			</tr>
-  			<tr  id="ai2cardsrow">
-   				<td>AI Player 2</td>
-    			<td id="ai2cardsentry">8</td> 
-  			</tr>
-  			<tr id="ai3cardsrow">
-   				<td>AI Player 3</td>
-    			<td id="ai3cardsentry">8</td> 
-  			</tr>
-  			<tr id="ai4cardsrow">
-   				<td>AI Player 4</td>
-    			<td id="ai4cardsentry">8</td> 
-  			</tr>
-		</table>
-	</div>
+
 	
 		<script>
+			$('#tableheaders').hide();
+			$('#usercardsrow').hide();
+			$('#ai1cardsrow').hide();
 			$('#ai2cardsrow').hide();
 			$('#ai3cardsrow').hide();
 			$('#ai4cardsrow').hide();
+			$('#communalcardsrow').hide();
 		</script>
 		
 		<div id="card_1" class="cards" >
@@ -245,8 +260,6 @@ button:hover, a:hover {
 	</div>
 	
 <script>
-
-
 //var i = 0;
 var newDeck = [];
 function ButtonClick(){
@@ -355,10 +368,12 @@ $(document).ready(function(){
     $("#AI_1").click(function(){
     		$('#card_1').show()
     		var opp  = parseInt($("#AI_1").html())
+    		$('#tableheaders').show();
     		$('#usercardsrow').show();
 	   		$('#ai1cardsrow').show();
 	   		$('#usercardsentry').html(20)
 	   		$('#ai1cardsentry').html(20)
+	   		$('#communalcardsrow').show();
    			select_opponents(opp);
     });
   }); 
@@ -366,14 +381,15 @@ $(document).ready(function(){
     $("#AI_2").click(function(){
     		$('#card_1').show()
     		$('#card_2').show()
+    		$('#tableheaders').show();
     		$('#usercardsrow').show();
 	   		$('#ai1cardsrow').show();
 	   		$('#ai2cardsrow').show();
+	   		$('#communalcardsrow').show();
 	   		
 	   		$('#usercardsentry').html(14)
 	   		$('#ai1cardsentry').html(13)
 	   		$('#ai2cardsentry').html(13)
-	   		
     		var opp  = parseInt($("#AI_2").html())
    			select_opponents(opp);
     });
@@ -383,16 +399,18 @@ $(document).ready(function(){
     		$('#card_1' ).show()
     		$('#card_2').show()
     		$('#card_3').show()
-    		   		$('#usercardsrow').show();
+    		$('#tableheaders').show();
+    				$('#usercardsrow').show();
 	   		$('#ai1cardsrow').show();
 	   		$('#ai2cardsrow').show();
 	   		$('#ai3cardsrow').show();
+	   		$('#communalcardsrow').show();
 	   		
 	   		$('#usercardsentry').html(10)
 	   		$('#ai1cardsentry').html(10)
 	   		$('#ai2cardsentry').html(10)
 	   		$('#ai3cardsentry').html(10)
-	   		
+    		
     		var opp  = parseInt($("#AI_3").html())
    			select_opponents(opp);
     });
@@ -404,18 +422,20 @@ $(document).ready(function(){
     		$('#card_2').show()
     		$('#card_3').show()
     		$('#card_4').show()
-    			   		$('#usercardsrow').show();
+    		$('#tableheaders').show();
+    		$('#usercardsrow').show();
 	   		$('#ai1cardsrow').show();
 	   		$('#ai2cardsrow').show();
 	   		$('#ai3cardsrow').show();
 	   		$('#ai4cardsrow').show();
+	   		$('#communalcardsrow').show();
 	   		
 	   		$('#usercardsentry').html(8)
 	   		$('#ai1cardsentry').html(8)
 	   		$('#ai2cardsentry').html(8)
 	   		$('#ai3cardsentry').html(8)
 	   		$('#ai4cardsentry').html(8)
-	   		
+    		
     		var opp  = parseInt($("#AI_4").html())
    			select_opponents(opp);
     });
@@ -457,11 +477,8 @@ var opponents = opp;
    }
 }
 var finalPlayerList;
-
-
 function playGame(numPlayers){
 	
-
 	var xhr5 = createCORSRequest('GET', "http://localhost:7777/toptrumps/playGame?numPlayers="+numPlayers);
 						
 	if (!xhr5) {
@@ -479,7 +496,6 @@ function playGame(numPlayers){
 	xhr5.send();
 	
 	}
-
 function turn(){
 	var xhr7 = createCORSRequest('GET', "http://localhost:7777/toptrumps/turn");
 						
@@ -495,9 +511,19 @@ function turn(){
 		$('#next').hide();
 		if (turn.includes("AI")){
 			$('#aipick').show();
+			document.getElementById("size0").disabled = true;
+			document.getElementById("speed0").disabled = true;
+			document.getElementById("range0").disabled = true;
+			document.getElementById("firepower0").disabled = true;
+			document.getElementById("cargo0").disabled = true;
 			
 		}
 		else{
+		document.getElementById("size0").disabled = false;
+		document.getElementById("speed0").disabled = false;
+		document.getElementById("range0").disabled = false;
+		document.getElementById("firepower0").disabled = false;
+		document.getElementById("cargo0").disabled = false;
 		//$('#next').hide();
 		$('#aipick').hide();
 		$("#card_1").hide();
@@ -511,10 +537,6 @@ function turn(){
 	
 	xhr7.send();
 	}
-
-
-
-
 function playRound(){
 			
 	var playerArray = []; //stores info for each player
@@ -567,7 +589,6 @@ function deckArray(){
 	xhr2.send();
 	}
 	
-
 	
 function topcard(finalPlayerList){
 			//console.log(i);
@@ -629,7 +650,6 @@ function processSelection(id){
 	
 	
 }
-
   
 function getRoundWinner(att){
   	var xhr4 = createCORSRequest('GET', "http://localhost:7777/toptrumps/getRoundWinner?getRoundWinner="+att); 
@@ -651,7 +671,6 @@ function getRoundWinner(att){
 	
 	xhr4.send();
 	}
-
 function showRound(){
 	$("#next").show();
 	$("#aipick").hide();
@@ -677,7 +696,6 @@ function showRound(){
 	checkConditions();
 }  
   
-
 function checkConditions(){
 	var xhr6 = createCORSRequest('GET', "http://localhost:7777/toptrumps/checkConditions");
   
@@ -700,7 +718,6 @@ function checkConditions(){
 	xhr6.send();
 	}
   
-
   
   
   
@@ -731,7 +748,7 @@ function winner(){
 		alert("CORS not supported");
 	}
 	xhr8.onload = function(e) {
-		
+		$('#next').hide();
 		var win = xhr8.response;
 		pick.innerText=win+" wins!";
 	};
@@ -756,7 +773,6 @@ var eliminations;
 		for(var x = 0; x < 5; x++){
 			if( cardsLeft[x] == 0){
 				elims++;
-				cardsLeft[x] = "eliminated";
 			}
 		}
 		
@@ -770,6 +786,8 @@ var eliminations;
 		$("#ai2cardsentry").html( ai2Cards );
 		$("#ai3cardsentry").html( ai3Cards );
 		$("#ai4cardsentry").html( ai4Cards );
+		var commCards = 40 - (ai1Cards + ai2Cards + ai3Cards + ai4Cards + userCards);
+		$("#communalcardsentry").html( commCards );
 		eliminations=elims;
 		/*if(elims > 0){
 			$("#card_4").hide();
@@ -783,7 +801,7 @@ var eliminations;
 		if(elims > 3){
 			$("#card_1").hide();
 		}*/
-			
+			//console.log(elims);	
 	};
 	//playRound();
 	xhr9.send();
