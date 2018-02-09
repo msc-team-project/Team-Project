@@ -75,7 +75,7 @@ body {font-family: "Lato", sans-serif}
 
 
     	
-    <h3 id="pick"><b></b></h3>
+    <h3 style="text-align: center" id="pick"><b></b></h3>
 
     <!-- GameCard Section -->
 <style>
@@ -130,7 +130,7 @@ button:hover, a:hover {
 
 	<div id="cards" style="display: none; width 100%; position: relative; height: 800px">
 		<div id="card0" class="cards">
-				<h2 style="text-align:center" >Your Card</h2>    
+				<h2 id="name0" style="text-align:center" ></h2>    
 				<div class="container card"  >
 					<img id= "ship0" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname0"></h3>
@@ -144,13 +144,13 @@ button:hover, a:hover {
 				</div>
 		
 		<!--- Testing next card function ----->
-		<button onclick="ButtonClick()"  class="center button gamebutton" > Next Card </button>
-		<button onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
+		<button id="next" onclick="ButtonClick()"  class="center button gamebutton" > Next Card </button>
+		<button id="aipick" onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
 		</div>
 	
 		
 		<div id="card_1" class="cards" >
-				<h2 style="text-align:center"  >AI Player 1</h2>    
+				<h2 id ="name1" style="text-align:center"  ></h2>    
 				<div class="container card"  >
 					<img id= "ship1" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname1"></h3>
@@ -165,7 +165,7 @@ button:hover, a:hover {
 		</div>
 		
 		<div id="card_2" class="cards">
-				<h2 style="text-align:center"  >AI Player 2</h2>    
+				<h2 id="name2" style="text-align:center"  ></h2>    
 				<div class="container card center"  >
 					<img id= "ship2" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname2"></h3>
@@ -180,7 +180,7 @@ button:hover, a:hover {
 		</div>
 		
 		<div id="card_3" class="cards">
-				<h2 style="text-align:center"  >AI Player 3</h2>    
+				<h2 id="name3" style="text-align:center"  ></h2>    
 				<div class="container card center"  >
 					<img id= "ship3" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname3"></h3>
@@ -195,7 +195,7 @@ button:hover, a:hover {
 		</div>
 		
 <div id="card_4" class="cards">
-		<h2 style="text-align:center"  >AI Player 4</h2>    
+		<h2 id="name4" style="text-align:center"  ></h2>    
 				<div class="container card center"  >
 					<img id= "ship4" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname4"></h3>
@@ -211,10 +211,23 @@ button:hover, a:hover {
 	</div>
 	
 <script>
-var i = 0;
+//var i = 0;
 var newDeck = [];
 function ButtonClick(){
-	i++; 	
+	//deckLeft();
+	if(eliminations > 0){
+			$("#card_4").hide();
+		}
+		if(eliminations > 1){
+			$("#card_3").hide();
+		}
+		if(eliminations > 2){
+			$("#card_2").hide();
+		}
+		if(eliminations > 3){
+			$("#card_1").hide();
+		}
+	turn(); 	
 	playRound();
 }
 $(document).ready(function(){
@@ -224,7 +237,7 @@ $(document).ready(function(){
 	    });
 	    
 function attributeSelected(id){
-	processSelection(id, i, newDeck);
+	processSelection(id);
 }
 	        
 </script>
@@ -365,6 +378,7 @@ var opponents = opp;
    		alert("Total number of players (inc. human): " + numPlayers)
    		
    		//Start game
+   		$('#next').hide();
    		playGame(numPlayers);
    		
 		//deckArray();
@@ -374,7 +388,7 @@ var opponents = opp;
 }
 var finalPlayerList;
 
-//currently not used
+
 function playGame(numPlayers){
 	
 
@@ -405,15 +419,41 @@ function turn(){
 	
 	xhr7.onload = function(e) {
 		var turn = xhr7.response;
+		//turn = JSON.stringify(turn);
 		pick.innerText=turn+" turn to pick";
+		console.log(turn);
+		$('#next').hide();
+		if (turn.includes("AI")){
+			$('#aipick').show();
+			document.getElementById("size0").disabled = true;
+			document.getElementById("speed0").disabled = true;
+			document.getElementById("range0").disabled = true;
+			document.getElementById("firepower0").disabled = true;
+			document.getElementById("cargo0").disabled = true;
+			
+		}
+		else{
+		document.getElementById("size0").disabled = false;
+		document.getElementById("speed0").disabled = false;
+		document.getElementById("range0").disabled = false;
+		document.getElementById("firepower0").disabled = false;
+		document.getElementById("cargo0").disabled = false;
+		//$('#next').hide();
+		$('#aipick').hide();
+		$("#card_1").hide();
+		$("#card_2").hide();
+		$("#card_3").hide();
+		$("#card_4").hide();
+		}
+		
 	}
 	
 	
 	xhr7.send();
-	
+	}
 
 
-}
+
 
 function playRound(){
 			
@@ -435,7 +475,7 @@ function playRound(){
 		//var firstPlayerPick = finalPlayerList[firstPick];
 		//var fPick = firstPlayerPick.name;
 		//alert(finalPlayer);
-		console.log(finalPlayerList);
+		//console.log(finalPlayerList);
 		topcard(finalPlayerList);
 	}
 	
@@ -458,7 +498,7 @@ function deckArray(){
 		
 		deck = xhr2.response;
 		newDeck = JSON.parse(deck);
-		console.log(newDeck);
+		//console.log(newDeck);
 		deckSplit();
 	};
 	
@@ -470,18 +510,22 @@ function deckArray(){
 
 	
 function topcard(finalPlayerList){
-			console.log(i);
+			//console.log(i);
 			for (j=0; j<numPlayers; j++){	
 				
 				var card = finalPlayerList[j];
-				console.log(card);
+				//console.log(card);
 				var shipname = (JSON.stringify(card.description)).slice(1,-1);
 				var size = JSON.stringify(card.size);
 				var speed = JSON.stringify(card.speed);
 				var range = JSON.stringify(card.range);
 			 	var firepower = JSON.stringify(card.firepower);
 				var cargo = JSON.stringify(card.cargo);
-				console.log(size);
+				var name = JSON.stringify(card.owner).slice(1,-1);
+				if (name == "ul"){
+    				name = "You";
+				}
+				//console.log(size);
 				document.getElementById("ship"+j).src="http://dcs.gla.ac.uk/~richardm/TopTrumps/"+shipname+".jpg";
 				document.getElementById("shipname"+j).innerHTML=shipname;
 				document.getElementById("size"+j).innerHTML="Size "+size;
@@ -489,11 +533,11 @@ function topcard(finalPlayerList){
 				document.getElementById("range"+j).innerHTML="Range  "+range;
 				document.getElementById("firepower"+j).innerHTML="Firepower "+firepower;
 				document.getElementById("cargo"+j).innerHTML="Cargo "+cargo;
-		
+				document.getElementById("name"+j).innerHTML=name;
 			}
 		}
 	
-function processSelection(id, i){
+function processSelection(id){
 	var trueID = id.slice(0, -1); //removes digit from end of ID
   		
   	var humanCard = finalPlayerList[0];
@@ -537,14 +581,41 @@ function getRoundWinner(att){
 		
 		var roundWinner = xhr4.response;
 		alert(roundWinner);
+		pick.innerText=roundWinner;
+		showRound();
 		deckLeft();
-		checkConditions();
-		turn();
+		//checkConditions();
+		//turn();
+			
 	};
 	
 	xhr4.send();
 	}
-  
+
+function showRound(){
+	$("#next").show();
+	$("#aipick").hide();
+	if(numPlayers > 1)
+	{
+		$("#card_1").show();
+	}
+	if(numPlayers > 2)
+	{
+		$("#card_2").show();
+	}
+	if(numPlayers > 3)
+	{
+		$("#card_3").show();
+	}
+	if(numPlayers > 4)
+	{
+		$("#card_4").show();
+	}
+	
+	
+	//deckLeft();
+	checkConditions();
+}  
   
 
 function checkConditions(){
@@ -561,8 +632,9 @@ function checkConditions(){
 		{
 		winner()
 		}
+		
 		numPlayers=remaining;
-		console.log(numPlayers);
+		//console.log(numPlayers);
 	};
 	
 	xhr6.send();
@@ -583,10 +655,13 @@ function checkConditions(){
 		var att = xhr7.response;
 		alert(att);
 		getRoundWinner(att);
+		
 	};
 	
 	xhr7.send();
 	}
+ 
+ 
   
   
 function winner(){
@@ -596,7 +671,7 @@ function winner(){
 		alert("CORS not supported");
 	}
 	xhr8.onload = function(e) {
-		
+		$('#next').hide();
 		var win = xhr8.response;
 		pick.innerText=win+" wins!";
 	};
@@ -604,24 +679,41 @@ function winner(){
 	xhr8.send();
 }
 var cardsLeft = [];
-
+var eliminations;
   function deckLeft(){
 	var xhr9 = createCORSRequest('GET', "http://localhost:7777/toptrumps/deckLeft");
-  
+  var elimination=0;
   if (!xhr9) {
 		alert("CORS not supported");
 	}
 	xhr9.onload = function(e) {
 		
 		cardsLeft = xhr9.response;
-		alert(cardsLeft);
-		//for (var i = 0; i < cardsLeft.length; i++) {
-    	//	if (cardsLeft[i]==0){
-    		
-    		//}
-//}
+		cardsLeft = JSON.parse(cardsLeft);
+		console.log(cardsLeft);
+		
+		var elims = 0;
+		for(var x = 0; x < 5; x++){
+			if( cardsLeft[x] == 0){
+				elims++;
+			}
+		}
+		eliminations=elims;
+		/*if(elims > 0){
+			$("#card_4").hide();
+		}
+		if(elims > 1){
+			$("#card_3").hide();
+		}
+		if(elims > 2){
+			$("#card_2").hide();
+		}
+		if(elims > 3){
+			$("#card_1").hide();
+		}*/
+			//console.log(elims);	
 	};
-	
+	//playRound();
 	xhr9.send();
 	}
 	
@@ -640,7 +732,7 @@ var cardsLeft = [];
 		
 		deck = xhr8.response;
 		newDeck = JSON.parse(deck);
-		console.log(newDeck);
+		//console.log(newDeck);
 		deckSplit();
 	};
 	
@@ -662,7 +754,7 @@ arrayOfHands = new Array();
 	}
 	var cardCount = newDeck.length;
 	var player = 0;
-	console.log(arrayOfHands);
+	//console.log(arrayOfHands);
 	for (var j = 0; j < cardCount; j++) {
 	    arrayOfHands[player].push(newDeck[j]);
 	    player++;
@@ -670,7 +762,7 @@ arrayOfHands = new Array();
 	        player = 0;
 	    }
 	}
-	console.log(arrayOfHands);
+	//console.log(arrayOfHands);
 	topcard(arrayOfHands);
 }
   
@@ -787,7 +879,7 @@ arrayOfHands = new Array();
 				// to do when the response arrives 
 				xhr.onload = function(e) {
  					var responseText = xhr.response; // the text of the response
-					console.log(responseText)
+					//console.log(responseText)
 					alert(responseText); // lets produce an alert
 				};
 				
