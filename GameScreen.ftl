@@ -148,6 +148,40 @@ button:hover, a:hover {
 		<button id="aipick" onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
 		</div>
 	
+			<div>
+		<table id="cardstable" style="width:10%">
+  			<tr>
+    			<th>Player</th>
+    			<th>Cards</th> 
+  			</tr>
+  			<tr id="usercardsrow">
+    			<td>You</td>
+    			<td id="usercardsentry">8</td> 
+  			</tr>
+  			<tr id="ai1cardsrow">
+   				<td>AI Player 1</td>
+    			<td id="ai1cardsentry">8</td> 
+  			</tr>
+  			<tr  id="ai2cardsrow">
+   				<td>AI Player 2</td>
+    			<td id="ai2cardsentry">8</td> 
+  			</tr>
+  			<tr id="ai3cardsrow">
+   				<td>AI Player 3</td>
+    			<td id="ai3cardsentry">8</td> 
+  			</tr>
+  			<tr id="ai4cardsrow">
+   				<td>AI Player 4</td>
+    			<td id="ai4cardsentry">8</td> 
+  			</tr>
+		</table>
+	</div>
+	
+		<script>
+			$('#ai2cardsrow').hide();
+			$('#ai3cardsrow').hide();
+			$('#ai4cardsrow').hide();
+		</script>
 		
 		<div id="card_1" class="cards" >
 				<h2 id ="name1" style="text-align:center"  ></h2>    
@@ -319,6 +353,10 @@ $(document).ready(function(){
     $("#AI_1").click(function(){
     		$('#card_1').show()
     		var opp  = parseInt($("#AI_1").html())
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#usercardsentry').html(20)
+	   		$('#ai1cardsentry').html(20)
    			select_opponents(opp);
     });
   }); 
@@ -326,6 +364,13 @@ $(document).ready(function(){
     $("#AI_2").click(function(){
     		$('#card_1').show()
     		$('#card_2').show()
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		
+	   		$('#usercardsentry').html(14)
+	   		$('#ai1cardsentry').html(13)
+	   		$('#ai2cardsentry').html(13)
     		var opp  = parseInt($("#AI_2").html())
    			select_opponents(opp);
     });
@@ -335,6 +380,16 @@ $(document).ready(function(){
     		$('#card_1' ).show()
     		$('#card_2').show()
     		$('#card_3').show()
+    				$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		$('#ai3cardsrow').show();
+	   		
+	   		$('#usercardsentry').html(10)
+	   		$('#ai1cardsentry').html(10)
+	   		$('#ai2cardsentry').html(10)
+	   		$('#ai3cardsentry').html(10)
+    		
     		var opp  = parseInt($("#AI_3").html())
    			select_opponents(opp);
     });
@@ -346,6 +401,18 @@ $(document).ready(function(){
     		$('#card_2').show()
     		$('#card_3').show()
     		$('#card_4').show()
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		$('#ai3cardsrow').show();
+	   		$('#ai4cardsrow').show();
+	   		
+	   		$('#usercardsentry').html(8)
+	   		$('#ai1cardsentry').html(8)
+	   		$('#ai2cardsentry').html(8)
+	   		$('#ai3cardsentry').html(8)
+	   		$('#ai4cardsentry').html(8)
+    		
     		var opp  = parseInt($("#AI_4").html())
    			select_opponents(opp);
     });
@@ -698,6 +765,17 @@ var eliminations;
 				elims++;
 			}
 		}
+		
+				var userCards = cardsLeft[0];
+		var ai1Cards = cardsLeft[1];
+		var ai2Cards = cardsLeft[2];
+		var ai3Cards = cardsLeft[3];
+		var ai4Cards = cardsLeft[4];
+		$("#usercardsentry").html( userCards );
+		$("#ai1cardsentry").html( ai1Cards );
+		$("#ai2cardsentry").html( ai2Cards );
+		$("#ai3cardsentry").html( ai3Cards );
+		$("#ai4cardsentry").html( ai4Cards );
 		eliminations=elims;
 		/*if(elims > 0){
 			$("#card_4").hide();
