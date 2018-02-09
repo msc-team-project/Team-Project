@@ -130,7 +130,7 @@ button:hover, a:hover {
 
 	<div id="cards" style="display: none; width 100%; position: relative; height: 800px">
 		<div id="card0" class="cards">
-				<h2 style="text-align:center" >Your Card</h2>    
+				<h2 id="name0" style="text-align:center" ></h2>    
 				<div class="container card"  >
 					<img id= "ship0" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname0"></h3>
@@ -144,13 +144,47 @@ button:hover, a:hover {
 				</div>
 		
 		<!--- Testing next card function ----->
-		<button onclick="ButtonClick()"  class="center button gamebutton" > Next Card </button>
-		<button onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
+		<button id="next" onclick="ButtonClick()"  class="center button gamebutton" > Next Card </button>
+		<button id="aipick" onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
 		</div>
 	
+	<div>
+		<table id="cardstable" style="width:10%">
+  			<tr>
+    			<th>Player</th>
+    			<th>Cards</th> 
+  			</tr>
+  			<tr id="usercardsrow">
+    			<td>You</td>
+    			<td id="usercardsentry">8</td> 
+  			</tr>
+  			<tr id="ai1cardsrow">
+   				<td>AI Player 1</td>
+    			<td id="ai1cardsentry">8</td> 
+  			</tr>
+  			<tr  id="ai2cardsrow">
+   				<td>AI Player 2</td>
+    			<td id="ai2cardsentry">8</td> 
+  			</tr>
+  			<tr id="ai3cardsrow">
+   				<td>AI Player 3</td>
+    			<td id="ai3cardsentry">8</td> 
+  			</tr>
+  			<tr id="ai4cardsrow">
+   				<td>AI Player 4</td>
+    			<td id="ai4cardsentry">8</td> 
+  			</tr>
+		</table>
+	</div>
+	
+		<script>
+			$('#ai2cardsrow').hide();
+			$('#ai3cardsrow').hide();
+			$('#ai4cardsrow').hide();
+		</script>
 		
 		<div id="card_1" class="cards" >
-				<h2 style="text-align:center"  >AI Player 1</h2>    
+				<h2 id ="name1" style="text-align:center"  ></h2>    
 				<div class="container card"  >
 					<img id= "ship1" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname1"></h3>
@@ -165,7 +199,7 @@ button:hover, a:hover {
 		</div>
 		
 		<div id="card_2" class="cards">
-				<h2 style="text-align:center"  >AI Player 2</h2>    
+				<h2 id="name2" style="text-align:center"  ></h2>    
 				<div class="container card center"  >
 					<img id= "ship2" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname2"></h3>
@@ -180,7 +214,7 @@ button:hover, a:hover {
 		</div>
 		
 		<div id="card_3" class="cards">
-				<h2 style="text-align:center"  >AI Player 3</h2>    
+				<h2 id="name3" style="text-align:center"  ></h2>    
 				<div class="container card center"  >
 					<img id= "ship3" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname3"></h3>
@@ -195,7 +229,7 @@ button:hover, a:hover {
 		</div>
 		
 <div id="card_4" class="cards">
-		<h2 style="text-align:center"  >AI Player 4</h2>    
+		<h2 id="name4" style="text-align:center"  ></h2>    
 				<div class="container card center"  >
 					<img id= "ship4" src="https://www.pcinvasion.com/wp-content/uploads/2015/11/star-citizen-video-shows-revampe.jpg" alt="spaceship" style="width:100%">
 		  			<h3 id="shipname4"></h3>
@@ -211,10 +245,25 @@ button:hover, a:hover {
 	</div>
 	
 <script>
-var i = 0;
+
+
+//var i = 0;
 var newDeck = [];
 function ButtonClick(){
-	i++; 	
+	//deckLeft();
+	if(eliminations > 0){
+			$("#card_4").hide();
+		}
+		if(eliminations > 1){
+			$("#card_3").hide();
+		}
+		if(eliminations > 2){
+			$("#card_2").hide();
+		}
+		if(eliminations > 3){
+			$("#card_1").hide();
+		}
+	turn(); 	
 	playRound();
 }
 $(document).ready(function(){
@@ -224,7 +273,7 @@ $(document).ready(function(){
 	    });
 	    
 function attributeSelected(id){
-	processSelection(id, i, newDeck);
+	processSelection(id);
 }
 	        
 </script>
@@ -306,6 +355,10 @@ $(document).ready(function(){
     $("#AI_1").click(function(){
     		$('#card_1').show()
     		var opp  = parseInt($("#AI_1").html())
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#usercardsentry').html(20)
+	   		$('#ai1cardsentry').html(20)
    			select_opponents(opp);
     });
   }); 
@@ -313,6 +366,14 @@ $(document).ready(function(){
     $("#AI_2").click(function(){
     		$('#card_1').show()
     		$('#card_2').show()
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		
+	   		$('#usercardsentry').html(14)
+	   		$('#ai1cardsentry').html(13)
+	   		$('#ai2cardsentry').html(13)
+	   		
     		var opp  = parseInt($("#AI_2").html())
    			select_opponents(opp);
     });
@@ -322,6 +383,16 @@ $(document).ready(function(){
     		$('#card_1' ).show()
     		$('#card_2').show()
     		$('#card_3').show()
+    		   		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		$('#ai3cardsrow').show();
+	   		
+	   		$('#usercardsentry').html(10)
+	   		$('#ai1cardsentry').html(10)
+	   		$('#ai2cardsentry').html(10)
+	   		$('#ai3cardsentry').html(10)
+	   		
     		var opp  = parseInt($("#AI_3").html())
    			select_opponents(opp);
     });
@@ -333,6 +404,18 @@ $(document).ready(function(){
     		$('#card_2').show()
     		$('#card_3').show()
     		$('#card_4').show()
+    			   		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		$('#ai3cardsrow').show();
+	   		$('#ai4cardsrow').show();
+	   		
+	   		$('#usercardsentry').html(8)
+	   		$('#ai1cardsentry').html(8)
+	   		$('#ai2cardsentry').html(8)
+	   		$('#ai3cardsentry').html(8)
+	   		$('#ai4cardsentry').html(8)
+	   		
     		var opp  = parseInt($("#AI_4").html())
    			select_opponents(opp);
     });
@@ -365,9 +448,9 @@ var opponents = opp;
    		alert("Total number of players (inc. human): " + numPlayers)
    		
    		//Start game
-   		//playGame(numPlayers);
-   		turn();
-   		playRound();
+   		$('#next').hide();
+   		playGame(numPlayers);
+   		
 		//deckArray();
    } else{
    		alert("You must add between 1 and 4 opponents to play the game.");
@@ -375,7 +458,7 @@ var opponents = opp;
 }
 var finalPlayerList;
 
-//currently not used
+
 function playGame(numPlayers){
 	
 
@@ -386,14 +469,15 @@ function playGame(numPlayers){
 	}
 	
 	xhr5.onload = function(e) {
-		var num = xhr5.response;
-		alert(num);
-		
+		//var num = xhr5.response;
+		//alert(num);
+		turn();
+   		playRound();
 	};
 	
 	
 	xhr5.send();
-	//deckArray();
+	
 	}
 
 function turn(){
@@ -405,15 +489,31 @@ function turn(){
 	
 	xhr7.onload = function(e) {
 		var turn = xhr7.response;
+		//turn = JSON.stringify(turn);
 		pick.innerText=turn+" turn to pick";
+		console.log(turn);
+		$('#next').hide();
+		if (turn.includes("AI")){
+			$('#aipick').show();
+			
+		}
+		else{
+		//$('#next').hide();
+		$('#aipick').hide();
+		$("#card_1").hide();
+		$("#card_2").hide();
+		$("#card_3").hide();
+		$("#card_4").hide();
+		}
+		
 	}
 	
 	
 	xhr7.send();
-	
+	}
 
 
-}
+
 
 function playRound(){
 			
@@ -435,7 +535,7 @@ function playRound(){
 		//var firstPlayerPick = finalPlayerList[firstPick];
 		//var fPick = firstPlayerPick.name;
 		//alert(finalPlayer);
-		console.log(finalPlayerList);
+		//console.log(finalPlayerList);
 		topcard(finalPlayerList);
 	}
 	
@@ -458,7 +558,7 @@ function deckArray(){
 		
 		deck = xhr2.response;
 		newDeck = JSON.parse(deck);
-		console.log(newDeck);
+		//console.log(newDeck);
 		deckSplit();
 	};
 	
@@ -470,18 +570,22 @@ function deckArray(){
 
 	
 function topcard(finalPlayerList){
-			console.log(i);
+			//console.log(i);
 			for (j=0; j<numPlayers; j++){	
 				
 				var card = finalPlayerList[j];
-				console.log(card);
+				//console.log(card);
 				var shipname = (JSON.stringify(card.description)).slice(1,-1);
 				var size = JSON.stringify(card.size);
 				var speed = JSON.stringify(card.speed);
 				var range = JSON.stringify(card.range);
 			 	var firepower = JSON.stringify(card.firepower);
 				var cargo = JSON.stringify(card.cargo);
-				console.log(size);
+				var name = JSON.stringify(card.owner).slice(1,-1);
+				if (name == "ul"){
+    				name = "You";
+				}
+				//console.log(size);
 				document.getElementById("ship"+j).src="http://dcs.gla.ac.uk/~richardm/TopTrumps/"+shipname+".jpg";
 				document.getElementById("shipname"+j).innerHTML=shipname;
 				document.getElementById("size"+j).innerHTML="Size "+size;
@@ -489,11 +593,11 @@ function topcard(finalPlayerList){
 				document.getElementById("range"+j).innerHTML="Range  "+range;
 				document.getElementById("firepower"+j).innerHTML="Firepower "+firepower;
 				document.getElementById("cargo"+j).innerHTML="Cargo "+cargo;
-		
+				document.getElementById("name"+j).innerHTML=name;
 			}
 		}
 	
-function processSelection(id, i){
+function processSelection(id){
 	var trueID = id.slice(0, -1); //removes digit from end of ID
   		
   	var humanCard = finalPlayerList[0];
@@ -537,13 +641,41 @@ function getRoundWinner(att){
 		
 		var roundWinner = xhr4.response;
 		alert(roundWinner);
-		checkConditions();
-		turn();
+		pick.innerText=roundWinner;
+		showRound();
+		deckLeft();
+		//checkConditions();
+		//turn();
+			
 	};
 	
 	xhr4.send();
 	}
-  
+
+function showRound(){
+	$("#next").show();
+	$("#aipick").hide();
+	if(numPlayers > 1)
+	{
+		$("#card_1").show();
+	}
+	if(numPlayers > 2)
+	{
+		$("#card_2").show();
+	}
+	if(numPlayers > 3)
+	{
+		$("#card_3").show();
+	}
+	if(numPlayers > 4)
+	{
+		$("#card_4").show();
+	}
+	
+	
+	//deckLeft();
+	checkConditions();
+}  
   
 
 function checkConditions(){
@@ -560,8 +692,9 @@ function checkConditions(){
 		{
 		winner()
 		}
+		
 		numPlayers=remaining;
-		console.log(numPlayers);
+		//console.log(numPlayers);
 	};
 	
 	xhr6.send();
@@ -582,10 +715,13 @@ function checkConditions(){
 		var att = xhr7.response;
 		alert(att);
 		getRoundWinner(att);
+		
 	};
 	
 	xhr7.send();
 	}
+ 
+ 
   
   
 function winner(){
@@ -602,7 +738,105 @@ function winner(){
 	
 	xhr8.send();
 }
-
+var cardsLeft = [];
+var eliminations;
+  function deckLeft(){
+	var xhr9 = createCORSRequest('GET', "http://localhost:7777/toptrumps/deckLeft");
+  var elimination=0;
+  if (!xhr9) {
+		alert("CORS not supported");
+	}
+	xhr9.onload = function(e) {
+		
+		cardsLeft = xhr9.response;
+		cardsLeft = JSON.parse(cardsLeft);
+		console.log(cardsLeft);
+		
+		var elims = 0;
+		for(var x = 0; x < 5; x++){
+			if( cardsLeft[x] == 0){
+				elims++;
+				cardsLeft[x] = "eliminated";
+			}
+		}
+		
+		var userCards = cardsLeft[0];
+		var ai1Cards = cardsLeft[1];
+		var ai2Cards = cardsLeft[2];
+		var ai3Cards = cardsLeft[3];
+		var ai4Cards = cardsLeft[4];
+		$("#usercardsentry").html( userCards );
+		$("#ai1cardsentry").html( ai1Cards );
+		$("#ai2cardsentry").html( ai2Cards );
+		$("#ai3cardsentry").html( ai3Cards );
+		$("#ai4cardsentry").html( ai4Cards );
+		eliminations=elims;
+		/*if(elims > 0){
+			$("#card_4").hide();
+		}
+		if(elims > 1){
+			$("#card_3").hide();
+		}
+		if(elims > 2){
+			$("#card_2").hide();
+		}
+		if(elims > 3){
+			$("#card_1").hide();
+		}*/
+			
+	};
+	//playRound();
+	xhr9.send();
+	}
+	
+ function deckArray(deck, i){
+	
+	//build deck by calling relevant REST API method
+	var xhr8 = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
+	
+	
+	
+	
+	if (!xhr8) {
+		alert("CORS not supported");
+	}
+	xhr8.onload = function(e) {
+		
+		deck = xhr8.response;
+		newDeck = JSON.parse(deck);
+		//console.log(newDeck);
+		deckSplit();
+	};
+	
+	
+	
+	xhr8.send();
+	}
+ 
+ 
+ 
+ 
+  
+  
+  var arrayOfHands;
+function deckSplit(){
+arrayOfHands = new Array();
+	for (var j = 0; j < numPlayers; j++) {
+	   arrayOfHands.push(new Array()); //array of arrays: each array is a player's hand
+	}
+	var cardCount = newDeck.length;
+	var player = 0;
+	//console.log(arrayOfHands);
+	for (var j = 0; j < cardCount; j++) {
+	    arrayOfHands[player].push(newDeck[j]);
+	    player++;
+	    if (player == numPlayers) {
+	        player = 0;
+	    }
+	}
+	//console.log(arrayOfHands);
+	topcard(arrayOfHands);
+}
   
   
   
@@ -717,7 +951,7 @@ function winner(){
 				// to do when the response arrives 
 				xhr.onload = function(e) {
  					var responseText = xhr.response; // the text of the response
-					console.log(responseText)
+					//console.log(responseText)
 					alert(responseText); // lets produce an alert
 				};
 				
