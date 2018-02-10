@@ -9,6 +9,8 @@
   <!-- Specify which version of Dropwizard we are going to use for histing the REST API and Website -->
   <properties>
     <dropwizard.version>1.2.2</dropwizard.version>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
   
   <!-- These are the other software libruaries developed by third parties that we need -->
@@ -36,14 +38,19 @@
     	<artifactId>mysql-connector-java</artifactId>
     	<version>5.1.38</version>
 	</dependency>
-    
+   	<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+	<dependency>
+    	<groupId>postgresql</groupId>
+    	<artifactId>postgresql</artifactId>
+    	<version>9.1-901-1.jdbc4</version>
+	</dependency> 
   </dependencies>
   
   <build>
   
   	<!-- Where do our Java sources come from? -->
     <sourceDirectory>src</sourceDirectory>
-    
+    <resources><resource><directory>resources</directory></resource></resources>
     <!-- Plugin Management for users working with the Eclipse IDE. org.eclipse.m2e:lifecycle-mapping
          instructs eclipse how to build the maven project -->
     <pluginManagement>

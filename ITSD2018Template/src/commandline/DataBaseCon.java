@@ -134,7 +134,7 @@ public class DataBaseCon
 			
 			int wins = 0;
 			Statement stmt = null;
-			String query = "SELECT COUNT(gamenumber) FROM toptrumps.gamedata WHERE gamewinner = 'human';";
+			String query = "SELECT COUNT(gamenumber) FROM toptrumps.gamedata WHERE gamewinner = 'Human';";
 			try 
 			{
 				stmt = connection.createStatement();

@@ -317,13 +317,13 @@ public class TopTrumpsRESTAPI {
 			currentPlayer = winner;
 			if (winner instanceof HumanPlayer)
 			{
-				win = "You win round " + round+" "+
-				newCards + " cards added to your hand";
+				win = "You win round " + round+"; "+
+				newCards + " cards will be added to your hand";
 			} 
 			
 			else {
-				win = winner.getName()+" wins round "+ round+" "+
-						newCards + " cards added to their hand";;
+				win = winner.getName()+" wins round "+ round+"; "+
+						newCards + " cards will be added to their hand";
 			}
 			//reset the communal deck
 			communalDeck = new ArrayList<Card>();
@@ -408,17 +408,19 @@ public class TopTrumpsRESTAPI {
 	public static String winner() {
 		
 		String win ="";
+		String win1="";
 		if(players.get(0) instanceof HumanPlayer)
 		{
-			
+			win1="Human";
 			win = "You";
 		}
 		else
 		{
 			//cast to ai player and get player name
 			win = players.get(0).getName();
-							
+			win1= players.get(0).getName();			
 		}
+		DataBaseCon.inputGameInfo(round, draws, allPlayers, win1);
 		return win;
 	}
 	
@@ -486,7 +488,7 @@ public class TopTrumpsRESTAPI {
 		String ai = Integer.toString(aiWins);
 		String human = Integer.toString(humWins);
 		String max = Integer.toString(maxRounds);
-		String draw = Double.toString(avgDraws);
+		String draw = String.format("%.1f", avgDraws);
 		DataBaseCon.close();
 		stats.add(num);
 		stats.add(ai);

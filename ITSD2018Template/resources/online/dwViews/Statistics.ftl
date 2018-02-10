@@ -27,13 +27,13 @@
   	<div class="w3-bar w3-black w3-card">
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"  onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="http://localhost:7777/toptrumps/" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOME</a>
-    <a href="game" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PLAY GAME</a>
+    <a href="http://localhost:7777/toptrumps/game" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PLAY GAME</a>
  	</div>
 	</div>
 	<!-- Navbar on small screens -->
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
   <a href="http://localhost:7777/toptrumps/" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-  <a href="game" class="w3-bar-item w3-button w3-padding-large">PlAY GAME</a>
+  <a href="http://localhost:7777/toptrumps/game" class="w3-bar-item w3-button w3-padding-large">PlAY GAME</a>
   
 </div>
 

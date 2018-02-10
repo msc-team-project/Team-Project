@@ -58,7 +58,7 @@ body {font-family: "Lato", sans-serif}
 </style>
 	
 <!-- Page content -->
-<div class="w3-content" style="max-width:2000px;margin-top:46px" >
+<div class="w3-content" style="max-width:2000px;" >
 
   <!-- GameScreen Image + Play Game Button -->
   <div class="w3-display-container w3-center" id="main" >
@@ -73,9 +73,49 @@ body {font-family: "Lato", sans-serif}
   </div>
 </div>
 
-
+<div style="text-align: center">    	
+    
+    
+    <h1  style="margin-top:46px" id="pick"></h1>
+    
+    <div align="center">
+    
+    		<table class="top-middle" id="cardstable" style="width:10%; text-align:center">
+  			<tr id="tableheaders">
+    			<th>Player</th>
+    			<th>Cards</th> 
+  			</tr>
+  			<tr id="usercardsrow">
+    			<td>You</td>
+    			<td id="usercardsentry">8</td> 
+  			</tr>
+  			<tr id="ai1cardsrow">
+   				<td>AI Player 1</td>
+    			<td id="ai1cardsentry">8</td> 
+  			</tr>
+  			<tr  id="ai2cardsrow">
+   				<td>AI Player 2</td>
+    			<td id="ai2cardsentry">8</td> 
+  			</tr>
+  			<tr id="ai3cardsrow">
+  				<td>AI Player 3</td>
+    			<td id="ai3cardsentry">8</td> 
+  			</tr>
+ 			<tr id="ai4cardsrow">
+  				<td>AI Player 4</td>
+    			<td id="ai4cardsentry">8</td> 
+  			</tr>
+ 			
+ 			  <tr id="communalcardsrow">
+  				<td>Communal</td>
+   			<td id="communalcardsentry">0</td> 
+  			</tr>
+  			
+		</table>
+    </div>
+</div>
     	
-    <h3 id="pick"><b></b></h3>
+    
 
     <!-- GameCard Section -->
 <style>
@@ -84,7 +124,7 @@ body {font-family: "Lato", sans-serif}
   border: 2px;
   border-color: #707070;
   height: 450px;
-  max-width: 300px;
+  max-width: 250px;
   border: 20px;
   margin: auto;
   text-align: center;
@@ -144,10 +184,23 @@ button:hover, a:hover {
 				</div>
 		
 		<!--- Testing next card function ----->
-		<button onclick="ButtonClick()"  class="center button gamebutton" > Next Card </button>
-		<button onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
+		<button id="next" onclick="ButtonClick()"  class="center button gamebutton" > Next Card </button>
+		<button id="aipick" onclick="AIPick()" class="center button gamebutton"> Ai pick </button>
+		<a href="http://localhost:7777/toptrumps/game" id="again" class="center button gamebutton"> Play Again </a>
 		</div>
 	
+		
+	
+		<script>
+			$('#again').hide();
+			$('#tableheaders').hide();
+			$('#usercardsrow').hide();
+			$('#ai1cardsrow').hide();
+ 			$('#ai2cardsrow').hide();
+ 			$('#ai3cardsrow').hide();
+ 			$('#ai4cardsrow').hide();
+			$('#communalcardsrow').hide();
+ 		</script>
 		
 		<div id="card_1" class="cards" >
 				<h2 id ="name1" style="text-align:center"  ></h2>    
@@ -211,10 +264,22 @@ button:hover, a:hover {
 	</div>
 	
 <script>
-//var i = 0;
-var newDeck = [];
+
+
 function ButtonClick(){
-	//i++; 	
+	if(eliminations > 0){
+			$("#card_4").hide();
+		}
+		if(eliminations > 1){
+			$("#card_3").hide();
+		}
+		if(eliminations > 2){
+			$("#card_2").hide();
+		}
+		if(eliminations > 3){
+			$("#card_1").hide();
+		}
+	turn(); 	
 	playRound();
 }
 $(document).ready(function(){
@@ -251,10 +316,10 @@ function attributeSelected(id){
 	
 	
 	
-	<!-- End Page Content -->
+	<!-- End Page Content
 	
 	
-	<!-- Footer -->
+	 Footer 
 	<div>
 		<footer class=" w3-padding-64 w3-display-bottommiddle w3-opacity w3-light-grey w3-large" style= "position: relative; width: 100%; text-align: center">
 			<p> Game created by Team 13:</p> 
@@ -267,7 +332,7 @@ function attributeSelected(id){
 		</ul>
 		</footer>
 	</div>
-
+-->
 
 <script>
 // Used to toggle the menu on small screens when clicking on the menu button
@@ -306,6 +371,12 @@ $(document).ready(function(){
     $("#AI_1").click(function(){
     		$('#card_1').show()
     		var opp  = parseInt($("#AI_1").html())
+    		$('#tableheaders').show();
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#usercardsentry').html(20)
+	   		$('#ai1cardsentry').html(20)
+	   		$('#communalcardsrow').show();
    			select_opponents(opp);
     });
   }); 
@@ -313,6 +384,14 @@ $(document).ready(function(){
     $("#AI_2").click(function(){
     		$('#card_1').show()
     		$('#card_2').show()
+    		$('#tableheaders').show();
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		$('#communalcardsrow').show();
+	   		$('#usercardsentry').html(14)
+	   		$('#ai1cardsentry').html(13)
+	   		$('#ai2cardsentry').html(13)
     		var opp  = parseInt($("#AI_2").html())
    			select_opponents(opp);
     });
@@ -322,6 +401,17 @@ $(document).ready(function(){
     		$('#card_1' ).show()
     		$('#card_2').show()
     		$('#card_3').show()
+    		$('#tableheaders').show();
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		$('#ai3cardsrow').show();
+	   		$('#communalcardsrow').show();
+	   		$('#usercardsentry').html(10)
+	   		$('#ai1cardsentry').html(10)
+	   		$('#ai2cardsentry').html(10)
+	   		$('#ai3cardsentry').html(10)
+    		
     		var opp  = parseInt($("#AI_3").html())
    			select_opponents(opp);
     });
@@ -333,6 +423,19 @@ $(document).ready(function(){
     		$('#card_2').show()
     		$('#card_3').show()
     		$('#card_4').show()
+    		$('#tableheaders').show();
+    		$('#usercardsrow').show();
+	   		$('#ai1cardsrow').show();
+	   		$('#ai2cardsrow').show();
+	   		$('#ai3cardsrow').show();
+	   		$('#ai4cardsrow').show();
+	   		$('#communalcardsrow').show();
+	   		$('#usercardsentry').html(8)
+	   		$('#ai1cardsentry').html(8)
+	   		$('#ai2cardsentry').html(8)
+	   		$('#ai3cardsentry').html(8)
+	   		$('#ai4cardsentry').html(8)
+    		
     		var opp  = parseInt($("#AI_4").html())
    			select_opponents(opp);
     });
@@ -357,24 +460,25 @@ var numPlayers=0;
 function select_opponents(opp){
 var opponents = opp;
   if (opponents != null && opponents >= 1 && opponents < 5){
-   		//document.getElementById("test").innerHTML = "You have added " + opponents + " AI players.";
-   		alert("You have added " + opponents + " AI players.");
    		
-   		//total players = AI players + one human player.
+   		//alert("You have added " + opponents + " AI players.");
+   		
+   		
    		numPlayers = opponents + 1;
-   		alert("Total number of players (inc. human): " + numPlayers)
+   		//alert("Total number of players (inc. human): " + numPlayers)
    		
-   		//Start game
+   		
+   		$('#next').hide();
    		playGame(numPlayers);
    		
-		//deckArray();
+		
    } else{
    		alert("You must add between 1 and 4 opponents to play the game.");
    }
 }
 var finalPlayerList;
 
-//currently not used
+
 function playGame(numPlayers){
 	
 
@@ -385,8 +489,7 @@ function playGame(numPlayers){
 	}
 	
 	xhr5.onload = function(e) {
-		//var num = xhr5.response;
-		//alert(num);
+		
 		turn();
    		playRound();
 	};
@@ -406,19 +509,44 @@ function turn(){
 	xhr7.onload = function(e) {
 		var turn = xhr7.response;
 		pick.innerText=turn+" turn to pick";
+		console.log(turn);
+		$('#next').hide();
+		if (turn.includes("AI")){
+			$('#aipick').show();
+			document.getElementById("size0").disabled = true;
+			document.getElementById("speed0").disabled = true;
+			document.getElementById("range0").disabled = true;
+			document.getElementById("firepower0").disabled = true;
+			document.getElementById("cargo0").disabled = true;
+			
+		}
+		else{
+		document.getElementById("size0").disabled = false;
+		document.getElementById("speed0").disabled = false;
+		document.getElementById("range0").disabled = false;
+		document.getElementById("firepower0").disabled = false;
+		document.getElementById("cargo0").disabled = false;
+		//$('#next').hide();
+		$('#aipick').hide();
+		$("#card_1").hide();
+		$("#card_2").hide();
+		$("#card_3").hide();
+		$("#card_4").hide();
+		}
+		
 	}
 	
 	
 	xhr7.send();
-	
+	}
 
 
-}
+
 
 function playRound(){
 			
 	var playerArray = []; //stores info for each player
-	var deck = []; //stores all cards
+	
 	
 	//populate playerArray by calling setUpPlayer method in REST API class
 	var xhr1 = createCORSRequest('GET', "http://localhost:7777/toptrumps/playRound");
@@ -431,46 +559,21 @@ function playRound(){
 		playerArray = xhr1.response;
 		var jsonObj = JSON.parse(playerArray);
 		finalPlayerList = jsonObj;
-		//var firstPick = Math.floor(Math.random() * (numPlayers));
-		//var firstPlayerPick = finalPlayerList[firstPick];
-		//var fPick = firstPlayerPick.name;
-		//alert(finalPlayer);
-		//console.log(finalPlayerList);
+
+		console.log(finalPlayerList);
 		topcard(finalPlayerList);
 	}
 	
 	
 	xhr1.send();
-	//deckArray();
+	
 	}
-function deckArray(){
-	var deck = []; //stores all cards
-	//build deck by calling relevant REST API method
-	var xhr2 = createCORSRequest('GET', "http://localhost:7777/toptrumps/playGame?numPlayers="+numPlayers); 
-	
-	
-	
-	
-	if (!xhr2) {
-		alert("CORS not supported");
-	}
-	xhr2.onload = function(e) {
-		
-		deck = xhr2.response;
-		newDeck = JSON.parse(deck);
-		//console.log(newDeck);
-		deckSplit();
-	};
-	
-	
-	
-	xhr2.send();
-	}
+
 	
 
 	
 function topcard(finalPlayerList){
-			//console.log(i);
+			
 			for (j=0; j<numPlayers; j++){	
 				
 				var card = finalPlayerList[j];
@@ -485,7 +588,7 @@ function topcard(finalPlayerList){
 				if (name == "ul"){
     				name = "You";
 				}
-				//console.log(size);
+				
 				document.getElementById("ship"+j).src="http://dcs.gla.ac.uk/~richardm/TopTrumps/"+shipname+".jpg";
 				document.getElementById("shipname"+j).innerHTML=shipname;
 				document.getElementById("size"+j).innerHTML="Size "+size;
@@ -518,9 +621,14 @@ function processSelection(id){
 		if (trueID == stringAttributes[i]){
 			humanChoice = attributes[i]; //human player's choice = value of item in array which matches button id
 			position = i;
-			alert(humanChoice);
+			//alert(humanChoice);
 			var att = stringAttributes[i];
-			alert(att);
+			//alert(att);
+			document.getElementById("size0").disabled = true;
+		document.getElementById("speed0").disabled = true;
+		document.getElementById("range0").disabled = true;
+		document.getElementById("firepower0").disabled = true;
+		document.getElementById("cargo0").disabled = true;
 		} 
 	}
 	
@@ -540,15 +648,41 @@ function getRoundWinner(att){
 	xhr4.onload = function(e) {
 		
 		var roundWinner = xhr4.response;
-		alert(roundWinner);
+		//alert(roundWinner);
+		pick.innerText=att.charAt(0).toUpperCase()+att.slice(1)+" selected. " + roundWinner;
+		showRound();
 		deckLeft();
-		checkConditions();
-		turn();
+		
+			
 	};
 	
 	xhr4.send();
 	}
-  
+
+function showRound(){
+	$("#next").show();
+	$("#aipick").hide();
+	if(numPlayers > 1)
+	{
+		$("#card_1").show();
+	}
+	if(numPlayers > 2)
+	{
+		$("#card_2").show();
+	}
+	if(numPlayers > 3)
+	{
+		$("#card_3").show();
+	}
+	if(numPlayers > 4)
+	{
+		$("#card_4").show();
+	}
+	
+	
+	
+	checkConditions();
+}  
   
 
 function checkConditions(){
@@ -560,13 +694,14 @@ function checkConditions(){
 	xhr6.onload = function(e) {
 		
 		var remaining = xhr6.response;
-		alert(remaining);
+		//alert(remaining);
 		if(remaining==1)
 		{
 		winner()
 		}
+		
 		numPlayers=remaining;
-		//console.log(numPlayers);
+		
 	};
 	
 	xhr6.send();
@@ -585,13 +720,15 @@ function checkConditions(){
 	xhr7.onload = function(e) {
 		
 		var att = xhr7.response;
-		alert(att);
+		//alert(att);
 		getRoundWinner(att);
 		
 	};
 	
 	xhr7.send();
 	}
+ 
+ 
   
   
 function winner(){
@@ -601,15 +738,16 @@ function winner(){
 		alert("CORS not supported");
 	}
 	xhr8.onload = function(e) {
-		
+		$('#next').hide();
 		var win = xhr8.response;
 		pick.innerText=win+" wins!";
+		$('#again').show();
 	};
 	
 	xhr8.send();
 }
 var cardsLeft = [];
-
+var eliminations;
   function deckLeft(){
 	var xhr9 = createCORSRequest('GET', "http://localhost:7777/toptrumps/deckLeft");
   var elimination=0;
@@ -629,88 +767,24 @@ var cardsLeft = [];
 			}
 		}
 		
-		if(elims > 0){
-			$("#card_4").hide();
-		}
-		if(elims > 1){
-			$("#card_3").hide();
-		}
-		if(elims > 2){
-			$("#card_2").hide();
-		}
-		if(elims > 3){
-			$("#card_1").hide();
-		}
-			//console.log(elims);	
+				var userCards = cardsLeft[0];
+		var ai1Cards = cardsLeft[1];
+		var ai2Cards = cardsLeft[2];
+		var ai3Cards = cardsLeft[3];
+		var ai4Cards = cardsLeft[4];
+		$("#usercardsentry").html( userCards );
+		$("#ai1cardsentry").html( ai1Cards );
+		$("#ai2cardsentry").html( ai2Cards );
+		$("#ai3cardsentry").html( ai3Cards );
+		$("#ai4cardsentry").html( ai4Cards );
+		var commCards = 40 - (ai1Cards + ai2Cards + ai3Cards + ai4Cards + userCards);
+		$("#communalcardsentry").html( commCards );
+		eliminations=elims;	
 	};
 	
 	xhr9.send();
 	}
 	
- function deckArray(deck, i){
-	
-	//build deck by calling relevant REST API method
-	var xhr8 = createCORSRequest('GET', "http://localhost:7777/toptrumps/buildDeck");
-	
-	
-	
-	
-	if (!xhr8) {
-		alert("CORS not supported");
-	}
-	xhr8.onload = function(e) {
-		
-		deck = xhr8.response;
-		newDeck = JSON.parse(deck);
-		//console.log(newDeck);
-		deckSplit();
-	};
-	
-	
-	
-	xhr8.send();
-	}
- 
- 
- 
- 
-  
-  
-  var arrayOfHands;
-function deckSplit(){
-arrayOfHands = new Array();
-	for (var j = 0; j < numPlayers; j++) {
-	   arrayOfHands.push(new Array()); //array of arrays: each array is a player's hand
-	}
-	var cardCount = newDeck.length;
-	var player = 0;
-	//console.log(arrayOfHands);
-	for (var j = 0; j < cardCount; j++) {
-	    arrayOfHands[player].push(newDeck[j]);
-	    player++;
-	    if (player == numPlayers) {
-	        player = 0;
-	    }
-	}
-	//console.log(arrayOfHands);
-	topcard(arrayOfHands);
-}
-  
-  
-  
-  
-  
-  //will generate AI's choices and compare them to human player's choice
-  function compareAttributes(humanChoice, allPlayers){
-  
-  		//generate AI player's choice
-  		
-  
-  		alert(humanChoice);
-  		alert(allPlayers);
-  
-  }
-  
    
 </script>
 
@@ -731,24 +805,6 @@ arrayOfHands = new Array();
 			// -----------------------------------------
 			// Add your other Javascript methods Here
 			// -----------------------------------------
-			
-			
-			
-			//not sure if this is necessary
-			function splitDeck(numPlayers, gameDeck) {
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/splitDeck?numPlayers="+opponents);
-							
-				if (!xhr) {
-					alert("CORS not supported");
-				}
-				
-				xhr.onload = function(e) {
-					//do something with 
-				};
-				
-				xhr.send();
-	
-			}
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
@@ -771,52 +827,7 @@ arrayOfHands = new Array();
 		
 		</script>
 		
-		<!-- Here are examples of how to call REST API Methods 
-		<script type="text/javascript">
 		
-			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-			function helloJSONList() {
-			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloJSONList"); // Request type and URL
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					alert(responseText); // lets produce an alert
-				};
-				
-				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			}
-			
-	<!-- 	// This calls the helloJSONList REST method from TopTrumpsRESTAPI
-			function helloWord(word) {
-			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/helloWord?Word="+word); // Request type and URL+parameters
-				
-				// Message is not sent yet, but we can check that the browser supports CORS
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					//console.log(responseText)
-					alert(responseText); // lets produce an alert
-				};
-				
-				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			}-->
-		</script>
 		
 		</body>
 

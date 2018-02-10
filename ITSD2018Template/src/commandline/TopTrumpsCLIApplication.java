@@ -16,42 +16,42 @@ public class TopTrumpsCLIApplication
 	private static ArrayList<Card> deck, communalDeck;
 	/** maintains a count of the number of players currently active in the game */
 	private static int numberPlayers;
-	
+
 	/** list of all players added at the beginning of the game */
 	private static ArrayList<Player> allPlayers;
 	/** list of all players not yet eliminated from play */
 	private static ArrayList<Player> players;
-	
+
 	protected static Scanner scanner;
-	
+
 	/** whether the user is in debug mode */
 	private static boolean writeGameLogsToFile;
-	
+
 	private static TestLog log;
-	
+
 	/** the current round */
 	private static int round;
 	/** maintains a count of the draws in a single game */
 	private static int draws;
-	
+
 	/** the name of the overall winner */
 	private static String winner;
-	
+
 	private static boolean skip;
 
 	/**
 	 * This main method is called by TopTrumps.java when the user specifies that they want to run in
 	 * command line mode. 
- 	 * @param args The contents of args[0] is whether we should write game logs to a file.
+	 * @param args The contents of args[0] is whether we should write game logs to a file.
 	 */
 	public static void main(String[] args) 
 	{
 
 		writeGameLogsToFile = true; // Should we write game logs to file?
 		//if (args[0].equalsIgnoreCase("true")) writeGameLogsToFile=true; // Command line selection
-		
+
 		scanner = new Scanner(System.in);
-		
+
 		//prompt the user to either play the game, view stats or exit the game
 		while(true)
 		{
@@ -68,7 +68,7 @@ public class TopTrumpsCLIApplication
 				System.exit(0);
 		}
 	}
-	
+
 	private static void playGame()
 	{
 		// States
@@ -77,7 +77,7 @@ public class TopTrumpsCLIApplication
 		skip = false;
 		// build the deck from the text file
 		deck = buildDeck();
-		
+
 		if (writeGameLogsToFile)
 		{
 			// create a new log and log the deck in its current state
@@ -85,52 +85,52 @@ public class TopTrumpsCLIApplication
 			//'false' means the deck hasn't been shuffled yet
 			log.logDeck(deck, false);
 		}
-		
+
 		//create a new empty ArrayList for the communal deck
-		
+
 		communalDeck = new ArrayList<Card>();
-		
+
 		// shuffle the deck and log its contents
-		
+
 		Collections.shuffle(deck);
 		if(writeGameLogsToFile)
 			log.logDeck(deck, true);
-		
+
 		// set up the players and divide deck between them
-		
+
 		players = setUpPlayers();
 		//create a second array of players for reference to players after game ends
 		allPlayers = new ArrayList<Player>(players);
 		divideDeck();
-		
+
 		round = 0;
 		draws = 0;
-		
-		
+
+
 		// Loop until the user wants to exit the game (main game loop)
-		
-		
+
+
 		// select a random player to begin the game
 		int startPlayer = new Random().nextInt(numberPlayers);
-		
+
 		Player currentPlayer = players.get(startPlayer);
-		
+
 		while (!userWantsToQuit) 
 		{
-			
+
 			// increment round counter and display round details
 			round++;
 			System.out.println("\nRound " + round);
-			
+
 			//log the current round
 			if(writeGameLogsToFile)
 				log.logRound(round);
-			
+
 			//each player plays their top card
 			ArrayList<Card> cardsInPlay = playNextHand();
-			
+
 			String attribute;
-			
+
 			//if current player is the human player
 			//inform them and prompt them to pick and attribute
 			//user can quit the game by entering 'exit'
@@ -160,11 +160,11 @@ public class TopTrumpsCLIApplication
 				System.out.println(name + "'s Turn");
 				System.out.println(name + " picked " + attribute);
 			}
-			
+
 			//log the selection
 			if(writeGameLogsToFile)
 				log.logSelection(currentPlayer, attribute, cardsInPlay);
-			
+
 			//print each player's selection to standard out
 			for(int i = 1; i < players.size(); i++)
 			{
@@ -172,10 +172,10 @@ public class TopTrumpsCLIApplication
 				System.out.print(p.getName() + " plays ");
 				p.printCardInPlay();
 			}
-			
+
 			//create a list of the winners of that round
 			ArrayList<Player> winners = compareCards(attribute);
-			
+
 			//if there is only 1 winner, they win that round and get all cards in play + in communal deck
 			if (winners.size() == 1)
 			{
@@ -184,13 +184,13 @@ public class TopTrumpsCLIApplication
 				int newCards = cardsInPlay.size() + communalDeck.size();
 				winner.addHandToDeck(cardsInPlay);
 				winner.addHandToDeck(communalDeck);
-				
+
 				winner.incrementRoundsWon();
-				
+
 				//log changes to communal deck if any
 				if(writeGameLogsToFile && communalDeck.size() > 0)
 					log.logCommunalDeck();
-				
+
 				//check if winner is human player or ai player
 				if (winner instanceof HumanPlayer)
 				{
@@ -202,11 +202,11 @@ public class TopTrumpsCLIApplication
 					System.out.println(winner.getName() + " wins round " + round);
 					System.out.println(newCards + " added to " + winner.getName() +"'s hand");
 				}
-				
+
 				//log the winner of the round
 				if(writeGameLogsToFile)
 					log.logRoundWinner(winner, round);
-				
+
 				//reset the communal deck
 				communalDeck = new ArrayList<Card>();
 			}
@@ -215,14 +215,14 @@ public class TopTrumpsCLIApplication
 			{
 				draws++;
 				communalDeck.addAll(cardsInPlay);
-				
+
 				//log draw and changes to communal deck
 				if(writeGameLogsToFile)
 				{
 					log.logRoundDraw(winners, round);
 					log.logCommnalDeck(cardsInPlay, communalDeck);
 				}
-					
+
 				System.out.print("Draw between ");
 				int i = 0;
 				//check if instance of human player
@@ -239,14 +239,14 @@ public class TopTrumpsCLIApplication
 				}
 				System.out.println("\n" + communalDeck.size() + " cards in communal deck");
 			}
-			
+
 			//log the updated decks
-			
+
 			if(writeGameLogsToFile)
 				log.logAllocatedDecks(players);
-			
+
 			printRemainingCards();
-			
+
 			if(!skip)
 			{
 				String response = waitForUser();
@@ -255,20 +255,20 @@ public class TopTrumpsCLIApplication
 				else if(response.equals("quit"))
 					break;
 			}
-				
-			
+
+
 			//if the round is over, write the log to file
 			if(writeGameLogsToFile)
 				log.writeLog();
-			
-		if ((gameOver) || checkWinConditions())
-		{
-		DataBaseCon.inputGameInfo(round, draws, allPlayers, winner);
-		break;
-		}
+
+			if ((gameOver) || checkWinConditions())
+			{
+				DataBaseCon.inputGameInfo(round, draws, allPlayers, winner);
+				break;
+			}
 		}
 	}
-	
+
 	private static ArrayList<Card> buildDeck() {
 		//reads in the deck from the txt file
 		ArrayList<Card> deck = new ArrayList<Card>();
@@ -277,8 +277,8 @@ public class TopTrumpsCLIApplication
 			//I had to give the absolute path for this to work in command prompt
 			// eg "C:\\Users\\Roddy\\workspace\\Trumps\\StarCitizenDeck.txt"
 			BufferedReader reader = new BufferedReader(new FileReader("StarCitizenDeck.txt"));
-		
-			
+
+
 			String line = reader.readLine();
 			//skip the first line because it is just the names of attributes
 			//will maybe read this line in and change card constructor
@@ -332,7 +332,7 @@ public class TopTrumpsCLIApplication
 		}
 		return players;
 	}
-	
+
 	public static void printPlayerDeckSizes()
 	{
 		for (int i = 0; i < players.size(); i++)
@@ -345,7 +345,7 @@ public class TopTrumpsCLIApplication
 			System.out.println(text);
 		}
 	}
-	
+
 	private static void divideDeck() {
 		//sequentially divides the deck among players
 		//not the most efficient way of doing it but it works and was easy to implement
@@ -356,7 +356,7 @@ public class TopTrumpsCLIApplication
 			i++;
 		}
 	}
-	
+
 	private static boolean checkWinConditions()
 	{
 		//checks if a player is out of cards
@@ -377,17 +377,17 @@ public class TopTrumpsCLIApplication
 				{
 					System.out.println(p.getName() + " has no cards remaining");
 				}
-				
+
 				//log player eliminations
 				if(writeGameLogsToFile && players.contains(p))
 					log.logEliminatedPlayer(p);
-				
+
 				//remove players with no cards and decrement number of players
 				players.remove(p);
 				numberPlayers--;
 			}
 		}		
-		
+
 		if(players.size() == 1)
 		{
 			gameOver = true;
@@ -398,7 +398,7 @@ public class TopTrumpsCLIApplication
 			if(players.get(0) instanceof HumanPlayer)
 			{
 				System.out.println("You Win!!!");
-				winner = "Player";
+				winner = "Human";
 			}
 			else
 			{
@@ -416,24 +416,24 @@ public class TopTrumpsCLIApplication
 			if(writeGameLogsToFile)
 				log.logWinner();
 		}
-		
-//		//if the game is over, write the log to file
+
+		//		//if the game is over, write the log to file
 		if(gameOver && writeGameLogsToFile)
 			log.writeLog();
-		
+
 		//return true if game is over, false if multiple players remain
 		return gameOver;
 	}
-	
+
 	public static String waitForUser(){
 		String message = "Press \"ENTER\" to continue";
 		if(skip == false)
 			message += " or type 'skip' to skip to your next turn";
 		System.out.println(message);
 		return scanner.nextLine();
-			   		   
+
 	}
-	
+
 	public static void printRemainingCards() {
 		for (Player p : players)
 		{
@@ -446,7 +446,7 @@ public class TopTrumpsCLIApplication
 			}
 		}
 	}
-	
+
 
 	public static ArrayList<Card> playNextHand() {
 		ArrayList<Card> cards = new ArrayList<Card>();
@@ -465,7 +465,7 @@ public class TopTrumpsCLIApplication
 			log.logCardsInPlay(cards);
 		return cards;
 	}
-	
+
 	private static ArrayList<Player> compareCards(String attribute) {
 		ArrayList<Player> winners = new ArrayList<Player>();
 		int max = 0;
@@ -495,5 +495,5 @@ public class TopTrumpsCLIApplication
 		System.out.println(String.format("The largest number of rounds played in a single game: %d", DataBaseCon.maxRounds()));
 		DataBaseCon.close();
 	}
-	
+
 }
